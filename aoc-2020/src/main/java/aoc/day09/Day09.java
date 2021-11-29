@@ -1,6 +1,7 @@
 package aoc.day09;
 
 import aoc.Day;
+import aoc.utils.CastInputUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Day09 implements Day {
     }
 
     private void castInput(List<String> input) {
-        inputs = input.stream().mapToLong(Long::parseLong).toArray();
+        inputs = CastInputUtils.castInputToLongArray(input);
     }
 
     @Override
