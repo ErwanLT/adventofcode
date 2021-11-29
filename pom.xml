@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>aoc-2020</module>
+        <module>aoc-2021</module>
     </modules>
 
     <properties>
