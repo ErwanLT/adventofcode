@@ -27,3 +27,4 @@
 * [Day 18](src/main/java/aoc/day18/README.md)
 * [Day 19](src/main/java/aoc/day19/README.md)
 * [Day 20](src/main/java/aoc/day20/README.md)
+* [Day 21](src/main/java/aoc/day21/README.md)
