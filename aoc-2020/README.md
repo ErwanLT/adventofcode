@@ -19,3 +19,4 @@
 * [Day 10](src/main/java/aoc/day10/README.md)
 * [Day 11](src/main/java/aoc/day11/README.md)
 * [Day 12](src/main/java/aoc/day12/README.md)
+* [Day 13](src/main/java/aoc/day13/README.md)
