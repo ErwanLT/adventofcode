@@ -16,6 +16,7 @@ import aoc.day13.Day13;
 import aoc.day14.Day14;
 import aoc.day15.Day15;
 import aoc.day16.Day16;
+import aoc.day17.Day17;
 import com.eletutour.printer.PrettyPrinter;
 
 import java.io.BufferedReader;
@@ -52,6 +53,7 @@ public class App {
         DAYS.put(14, new Day14());
         DAYS.put(15, new Day15());
         DAYS.put(16, new Day16());
+        DAYS.put(17, new Day17());
     }
 
     private static List<String> loadInput(int day){
@@ -73,7 +75,7 @@ public class App {
         printer = new PrettyPrinter();
 
         //allDays(args);
-        doDay(16, args);
+        doDay(17, args);
 
     }
 
