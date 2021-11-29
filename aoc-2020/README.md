@@ -11,4 +11,5 @@
 * [Day 2](src/main/java/aoc/day02/README.md)
 * [Day 3](src/main/java/aoc/day03/README.md)
 * [Day 4](src/main/java/aoc/day04/README.md)
-* [Day 5](src/main/java/aoc/day04/README.md)
+* [Day 5](src/main/java/aoc/day05/README.md)
+* [Day 6](src/main/java/aoc/day06/README.md)
