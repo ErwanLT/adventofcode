@@ -12,6 +12,7 @@
         <module>aoc-2020</module>
         <module>aoc-2021</module>
         <module>aoc-utils</module>
+        <module>aoc-2019</module>
     </modules>
 
     <properties>
