@@ -1,7 +1,7 @@
 package aoc.day09;
 
 import aoc.Day;
-import aoc.utils.CastInputUtils;
+import aoc.ParseUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +21,7 @@ public class Day09 implements Day {
     }
 
     private void castInput(List<String> input) {
-        inputs = CastInputUtils.castInputToLongArray(input);
+        inputs = ParseUtils.castInputToLongArray(input);
     }
 
     @Override

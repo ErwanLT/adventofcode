@@ -1,7 +1,6 @@
 package aoc.day16;
 
 import aoc.Day;
-import aoc.utils.CastInputUtils;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 

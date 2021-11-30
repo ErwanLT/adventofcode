@@ -1,7 +1,7 @@
 package aoc.day10;
 
 import aoc.Day;
-import aoc.utils.CastInputUtils;
+import aoc.ParseUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class Day10 implements Day {
     }
 
     private void castInput(List<String> input) {
-        inputs = CastInputUtils.castInputToLongArray(input);
+        inputs = ParseUtils.castInputToLongArray(input);
     }
 
     private static void sortInput() {

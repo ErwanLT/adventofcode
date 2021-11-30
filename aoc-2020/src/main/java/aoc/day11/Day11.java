@@ -1,7 +1,7 @@
 package aoc.day11;
 
 import aoc.Day;
-import aoc.utils.CastInputUtils;
+import aoc.ParseUtils;
 
 import java.awt.*;
 import java.util.List;
@@ -61,7 +61,7 @@ public class Day11 implements Day {
     }
 
     public void castInput(List<String> input){
-        inputs = CastInputUtils.castInputToBiCharArray(input);
+        inputs = ParseUtils.castInputToBiCharArray(input);
     }
 
     private static int getChanges(char[][] input, int changes, char[][] newGrid, int i, int j, long occupied, long numOccupied) {

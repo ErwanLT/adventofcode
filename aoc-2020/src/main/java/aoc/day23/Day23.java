@@ -1,7 +1,7 @@
 package aoc.day23;
 
 import aoc.Day;
-import aoc.utils.CastInputUtils;
+import aoc.ParseUtils;
 import aoc.utils.CircularLinkedList;
 import aoc.utils.Node;
 import com.google.common.collect.Streams;
@@ -19,14 +19,14 @@ public class Day23 implements Day {
 
     @Override
     public String part1(List<String> input) {
-        inputArray = CastInputUtils.castInputToIntArray(input);
+        inputArray = ParseUtils.castInputToIntArray(input);
         long label = getSolution(true);
         return String.valueOf(label);
     }
 
     @Override
     public String part2(List<String> input) {
-        inputArray = CastInputUtils.castInputToIntArray(input);
+        inputArray = ParseUtils.castInputToIntArray(input);
         long label = getSolution(false);
         return String.valueOf(label);
     }

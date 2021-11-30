@@ -1,8 +1,8 @@
-package aoc.utils;
+package aoc;
 
 import java.util.List;
 
-public class CastInputUtils {
+public class ParseUtils {
 
     public static long[] castInputToLongArray(List<String> input){
         return input.stream().mapToLong(Long::parseLong).toArray();
@@ -15,4 +15,5 @@ public class CastInputUtils {
     public static char[][] castInputToBiCharArray(List<String> input) {
         return input.stream().map(String::toCharArray).toArray(char[][]::new);
     }
+
 }
