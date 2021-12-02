@@ -2,30 +2,44 @@ package aoc.day02;
 
 import aoc.Day;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Day02 implements Day {
+
+    private static final List<Instruction> instructions = new ArrayList<>();
+
     @Override
     public String part1(List<String> input) {
+
+        parseInput(input);
+
         int horizontalPosition = 0;
         int depth = 0;
 
-        for (String command: input) {
-            String[] inputCommand = command.split(" ");
-            switch (inputCommand[0]){
+        for (Instruction instruction: instructions) {
+            switch (instruction.getDirection()){
                 case "forward" :
-                    horizontalPosition += Integer.parseInt(inputCommand[1]);
+                    horizontalPosition += instruction.getValue();
                     break;
                 case "up" :
-                    depth -= Integer.parseInt(inputCommand[1]);
+                    depth -= instruction.getValue();
                     break;
                 case "down" :
-                    depth += Integer.parseInt(inputCommand[1]);
+                    depth += instruction.getValue();
                     break;
             }
         }
 
         return String.valueOf(horizontalPosition * depth);
+    }
+
+    private void parseInput(List<String> input) {
+        input.forEach( s -> {
+            String[] array = s.split(" ");
+            Instruction i = new Instruction(array[0], Integer.parseInt(array[1]));
+            instructions.add(i);
+        });
     }
 
     @Override
@@ -34,18 +48,17 @@ public class Day02 implements Day {
         int depth = 0;
         int aim = 0;
 
-        for (String command: input) {
-            String[] inputCommand = command.split(" ");
-            switch (inputCommand[0]){
+        for (Instruction instruction: instructions) {
+            switch (instruction.getDirection()){
                 case "forward" :
-                    horizontalPosition += Integer.parseInt(inputCommand[1]);
-                    depth += (aim * Integer.parseInt(inputCommand[1]));
+                    horizontalPosition += instruction.getValue();
+                    depth += (aim * instruction.getValue());
                     break;
                 case "up" :
-                    aim -= Integer.parseInt(inputCommand[1]);
+                    aim -= instruction.getValue();
                     break;
                 case "down" :
-                    aim += Integer.parseInt(inputCommand[1]);
+                    aim += instruction.getValue();
                     break;
             }
         }
