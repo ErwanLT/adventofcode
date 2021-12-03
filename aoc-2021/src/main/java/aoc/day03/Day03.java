@@ -10,17 +10,17 @@ import static java.lang.Integer.parseInt;
 
 public class Day03 implements Day {
 
-    private static String[] in;
+    private static String[] inputs;
 
     @Override
     public String part1(List<String> input) {
 
-        in = ParseUtils.castInoutToStringArray(input);
+        inputs = ParseUtils.castInoutToStringArray(input);
         StringBuilder most = new StringBuilder();
         StringBuilder least = new StringBuilder();
 
-        for(int i = 0; i<in[0].length(); i++){
-            if(moreZeros(in, i)){
+        for(int i = 0; i< inputs[0].length(); i++){
+            if(moreZeros(inputs, i)){
                 most.append("0");
                 least.append("1");
             } else {
@@ -50,7 +50,7 @@ public class Day03 implements Day {
 
     private List<String> findVal(List<String> in, boolean high, int pos) {
         List<String> res = new ArrayList<>(in);
-        res.removeIf(e -> e.charAt(pos) == (!moreZeros(in.toArray(String[]::new), pos)^high ? '1' : '0'));
+        res.removeIf(e -> e.charAt(pos) == (!moreZeros(ParseUtils.castInoutToStringArray(in), pos)^high ? '1' : '0'));
         if(res.size() == 1) return res;
         return findVal(res, high, pos+1);
     }
