@@ -3,7 +3,6 @@ package aoc.day18;
 import aoc.Day;
 import org.apache.commons.lang3.tuple.Pair;
 
-import javax.swing.*;
 import java.util.List;
 
 public class Day18 implements Day {
