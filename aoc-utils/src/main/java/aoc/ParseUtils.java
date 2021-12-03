@@ -12,6 +12,10 @@ public class ParseUtils {
         return input.stream().mapToInt(Integer::parseInt).toArray();
     }
 
+    public static String[] castInoutToStringArray(List<String> input){
+        return input.toArray(new String[input.size()]);
+    }
+
     public static char[][] castInputToBiCharArray(List<String> input) {
         return input.stream().map(String::toCharArray).toArray(char[][]::new);
     }
