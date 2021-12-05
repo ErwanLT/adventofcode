@@ -20,8 +20,8 @@ public class ParseUtils {
         return input.stream().map(String::toCharArray).toArray(char[][]::new);
     }
 
-    public static String castInputToString(List<String> input) {
-        return String.join("\n", input);
+    public static String castInputToString(CharSequence delimiter, List<String> input) {
+        return String.join(delimiter, input);
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class Day04 implements Day {
     @Override
     public String part1(List<String> input) {
-        String in = ParseUtils.castInputToString(input);
+        String in = ParseUtils.castInputToString("\n", input);
         String[] split = in.split("\n\n");
         long[] numbers = Arrays.stream(split[0].split(",")).mapToLong(Long::parseLong).toArray();
         List<BingoGrid> cards = IntStream.range(1, split.length).mapToObj(i -> split[i]).map(BingoGrid::new).collect(Collectors.toList());
@@ -28,7 +28,7 @@ public class Day04 implements Day {
 
     @Override
     public String part2(List<String> input) {
-        String in = ParseUtils.castInputToString(input);
+        String in = ParseUtils.castInputToString("\n", input);
         String[] split = in.split("\n\n");
         long[] numbers = Arrays.stream(split[0].split(",")).mapToLong(Long::parseLong).toArray();
         List<BingoGrid> cards = IntStream.range(1, split.length).mapToObj(i -> split[i]).map(BingoGrid::new).collect(Collectors.toList());
