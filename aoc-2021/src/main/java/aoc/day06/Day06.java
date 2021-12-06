@@ -37,7 +37,12 @@ public class Day06 implements Day {
         LongCountMap<Long> nc = new LongCountMap<>();
         for(int j = 0; j<256; j++) {
             for(var e : cm.entrySet()) {
-                if(e.getKey() == 0){ nc.increment(8L, e.getValue()); nc.increment(6L, e.getValue()); }else {nc.increment(e.getKey()-1, e.getValue()); }
+                if(e.getKey() == 0){
+                    nc.increment(8L, e.getValue());
+                    nc.increment(6L, e.getValue());
+                }else {
+                    nc.increment(e.getKey()-1, e.getValue());
+                }
             }
             cm = nc;
             nc = new LongCountMap<>();
