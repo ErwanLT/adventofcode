@@ -1,4 +1,4 @@
-package aoc;
+package aoc.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,7 +1,7 @@
 package aoc.day15;
 
 import aoc.Day;
-import aoc.ParseUtils;
+import aoc.parser.ParseUtils;
 
 import java.util.HashMap;
 import java.util.List;

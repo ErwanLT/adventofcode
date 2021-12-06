@@ -1,7 +1,7 @@
 package aoc.day03;
 
 import aoc.Day;
-import aoc.ParseUtils;
+import aoc.parser.ParseUtils;
 
 import java.util.ArrayList;
 import java.util.List;

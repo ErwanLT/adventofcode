@@ -1,7 +1,7 @@
 package aoc.day23;
 
 import aoc.Day;
-import aoc.ParseUtils;
+import aoc.parser.ParseUtils;
 import aoc.utils.CircularLinkedList;
 import aoc.utils.Node;
 import com.google.common.collect.Streams;

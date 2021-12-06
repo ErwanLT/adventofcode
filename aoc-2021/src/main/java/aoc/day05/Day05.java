@@ -1,10 +1,9 @@
 package aoc.day05;
 
 import aoc.Day;
-import aoc.ReadFormatedString;
+import aoc.parser.ReadFormatedString;
 
 import java.awt.*;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
