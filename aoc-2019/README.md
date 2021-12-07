@@ -7,3 +7,4 @@
 
 * [Day 1](src/main/java/aoc/day01/README.md)
 * [Day 2](src/main/java/aoc/day02/README.md)
+* [Day 3](src/main/java/aoc/day03/README.md)
