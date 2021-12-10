@@ -6,9 +6,9 @@ import java.util.*;
 
 public class Day10 implements Day {
 
-    private static Map<Character, Character> brackets = new HashMap<>();
-    private static Map<Character, Integer> weightPart1 = new HashMap<>();
-    private static Map<Character, Integer> weightPart2 = new HashMap<>();
+    private static final Map<Character, Character> brackets = new HashMap<>();
+    private static final Map<Character, Integer> weightPart1 = new HashMap<>();
+    private static final Map<Character, Integer> weightPart2 = new HashMap<>();
 
     static {
         brackets.put(')', '(');
