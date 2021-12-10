@@ -2,12 +2,31 @@ package aoc.day10;
 
 import aoc.Day;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class Day10 implements Day {
+
+    private static Map<Character, Character> brackets = new HashMap<>();
+    private static Map<Character, Integer> weightPart1 = new HashMap<>();
+    private static Map<Character, Integer> weightPart2 = new HashMap<>();
+
+    static {
+        brackets.put(')', '(');
+        brackets.put(']', '[');
+        brackets.put('>', '<');
+        brackets.put('}', '{');
+
+        weightPart1.put('(', 1);
+        weightPart1.put('[', 2);
+        weightPart1.put('{', 3);
+        weightPart1.put('<', 4);
+
+        weightPart2.put(')', 3);
+        weightPart2.put(']', 57);
+        weightPart2.put('}', 1197);
+        weightPart2.put('>', 25137);
+    }
+
     @Override
     public String part1(List<String> input) {
         return String.valueOf(getScore(input, false).get(0));
@@ -20,17 +39,16 @@ public class Day10 implements Day {
     }
 
     private List<Long> getScore(List<String> input, boolean part) {
-        Map<Character, Character> m = Map.of(')', '(', ']', '[', '>', '<', '}', '{');
-        Map<Character, Integer> p = part ? Map.of('(', 1, '[', 2, '{', 3, '<', 4) : Map.of(')', 3, ']', 57, '>', 25137, '}', 1197);
+        Map<Character, Integer> p = part ? weightPart1 : weightPart2;
         List<Long> scores = new ArrayList<>();
         long score1 = 0;
         out: for(String line : input){
             Stack<Character> s = new Stack<>();
             for(Character c : line.toCharArray()){
-                if(m.containsKey(c)){
+                if(brackets.containsKey(c)){
                     if(!s.isEmpty()){
                         Character stackC = s.pop();
-                        if(!m.get(c).equals(stackC)){
+                        if(!brackets.get(c).equals(stackC)){
                             if(!part) score1+=p.get(c);
                             continue out;
                         }

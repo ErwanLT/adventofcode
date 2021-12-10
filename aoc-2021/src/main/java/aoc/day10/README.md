@@ -97,3 +97,4 @@ Autocomplete tools are an odd bunch: the winner is found by **sorting** all of t
 
 Find the completion string for each incomplete line, score the completion strings, and sort the scores. **What is the middle score?**
 
+Your puzzle answer was `1118976874`.
