@@ -24,4 +24,8 @@ public class ParseUtils {
         return String.join(delimiter, input);
     }
 
+    public static int[][] castInputToBiIntarray(List<String> input) {
+        return input.stream().map(row -> row.chars().map(i -> i - '0').toArray())
+                .toArray(int[][]::new);
+    }
 }
