@@ -1,7 +1,7 @@
 package aoc.day06;
 
 import aoc.Day;
-import aoc.LongCountMap;
+import aoc.customMap.LongCountMap;
 
 import java.util.Arrays;
 import java.util.List;

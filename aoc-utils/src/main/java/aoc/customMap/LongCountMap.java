@@ -1,4 +1,4 @@
-package aoc;
+package aoc.customMap;
 
 import java.util.HashMap;
 import java.util.Map;
