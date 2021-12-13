@@ -60,56 +60,14 @@ public class Day13 implements Day {
 
     @Override
     public String part2(List<String> input) {
-        input.stream().filter(line -> !line.isEmpty())
-                .forEach(line -> {
-                    if (line.charAt(0) == 'f') {
-                        line = line.replace("fold along ", "");
-                        String[] cmd = line.split("=");
-                        fold.add(cmd[0]);
-                        xy.add(Integer.valueOf(cmd[1]));
-                    }
-                    else {
-                        String[] cmd = line.split(",");
-                        map[Integer.parseInt(cmd[1])][Integer.parseInt(cmd[0])] = true;
-                    }
-                });
-        int part1 = 0;
-        for (int i=0; i< xy.size();i++) {
-            int val = xy.get(i);
-            if (fold.get(i).equals("y")) {
-                for (int ii=0;ii<val;ii++) {
-                    for (int jj = 0; jj < 2000; jj++) {
-                        map[val - ii - 1][jj] = map[val - ii - 1][jj] || map[val + ii + 1][jj];
-                        map[val + ii + 1][jj] = false;
-                    }
-                }
+        StringBuilder code = new StringBuilder()
+                .append("\n");
+        for (int ii=0;ii<6;ii++) {
+            for (int jj = 0; jj < 40; jj++) {
+                code.append(map[ii][jj] ? " # " : "   ");
             }
-            else {
-                for (int ii=0;ii<val;ii++) {
-                    for (int jj = 0; jj < 2000; jj++) {
-                        map[jj][val - ii - 1] = map[jj][val - ii - 1] || map[jj][val + ii + 1];
-                        map[jj][val + ii + 1] = false;
-                    }
-                }
-            }
-
-            if (i==0) {
-                for (int ii=0;ii<2000;ii++) {
-                    for (int jj=0;jj<2000;jj++) {
-                        part1 += map[ii][jj]? 1 : 0;
-                    }
-                }
-            }
-            else if (i==xy.size()-1) {
-                for (int ii=0;ii<6;ii++) {
-                    for (int jj = 0; jj < 40; jj++) {
-                        System.out.print(map[ii][jj] ? " # " : "   ");
-                    }
-                    System.out.println();
-                }
-            }
-
+            code.append("\n");
         }
-        return null;
+        return code.toString();
     }
 }
