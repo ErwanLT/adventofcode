@@ -12,22 +12,29 @@ import java.util.stream.Collectors;
 public class Day14 implements Day {
 
     private static String polymerTemplate;
+    private static LongCountMap<String> pairs;
+    private static Map<String, String> strs;
 
     @Override
     public String part1(List<String> input) {
-        return String.valueOf(simulateSteps(10, input));
+        castInput(input);
+        return String.valueOf(simulateSteps(10));
     }
 
     @Override
     public String part2(List<String> input) {
-        return String.valueOf(simulateSteps(40, input));
+        return String.valueOf(simulateSteps(40));
     }
 
-    private long simulateSteps(int steps, List<String> input) {
+    private void castInput(List<String> input) {
         String[] in = ParseUtils.castInputToString("\n", input).split("\n\n");
         polymerTemplate = in[0];
-        Map<String, String> strs = Arrays.stream(in[1].split("\n")).map(e -> e.split(" -> ")).collect(Collectors.toMap(e -> e[0], e -> e[1]));
-        LongCountMap<String> pairs = new LongCountMap<>();
+        strs = Arrays.stream(in[1].split("\n")).map(e -> e.split(" -> ")).collect(Collectors.toMap(e -> e[0], e -> e[1]));
+    }
+
+
+    private long simulateSteps(int steps) {
+        pairs = new LongCountMap<>();
         for(int i = 0; i<polymerTemplate.length()-1; i++) {
             pairs.increment(polymerTemplate.substring(i, i+2));
         }
