@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class Day14 implements Day {
 
     private static String polymerTemplate;
-    private static LongCountMap<String> pairs;
     private static Map<String, String> strs;
 
     @Override
@@ -34,7 +33,7 @@ public class Day14 implements Day {
 
 
     private long simulateSteps(int steps) {
-        pairs = new LongCountMap<>();
+        LongCountMap<String> pairs = new LongCountMap<>();
         for(int i = 0; i<polymerTemplate.length()-1; i++) {
             pairs.increment(polymerTemplate.substring(i, i+2));
         }
