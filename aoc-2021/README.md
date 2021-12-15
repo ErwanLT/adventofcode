@@ -5,18 +5,31 @@
 [![Days completed](https://img.shields.io/badge/Days%20completed-15-blue)]()
 [![Stars](https://img.shields.io/badge/⭐️-30-yellow)]()
 
-* [Day 1](src/main/java/aoc/day01/README.md)
-* [Day 2](src/main/java/aoc/day02/README.md)
-* [Day 3](src/main/java/aoc/day03/README.md)
-* [Day 4](src/main/java/aoc/day04/README.md)
-* [Day 5](src/main/java/aoc/day05/README.md)
-* [Day 6](src/main/java/aoc/day06/README.md)
-* [Day 7](src/main/java/aoc/day07/README.md)
-* [Day 8](src/main/java/aoc/day08/README.md)
-* [Day 9](src/main/java/aoc/day09/README.md)
-* [Day 10](src/main/java/aoc/day10/README.md)
-* [Day 11](src/main/java/aoc/day11/README.md)
-* [Day 12](src/main/java/aoc/day12/README.md)
-* [Day 13](src/main/java/aoc/day13/README.md)
-* [Day 14](src/main/java/aoc/day14/README.md)
-* [Day 15](src/main/java/aoc/day15/README.md)
+
+| Day 	| Name 	| Completion 	|
+|-----	|------	|------------	|
+| 1   	| [Sonar Sweep](src/main/java/aoc/day01/README.md)    	        |     ⭐️⭐️       |
+| 2   	| [Dive!](src/main/java/aoc/day02/README.md)     	            |     ⭐️⭐️      	|
+| 3   	| [Binary Diagnostic](src/main/java/aoc/day03/README.md)     	|     ⭐️⭐️      	|
+| 4   	| [Giant Squid](src/main/java/aoc/day04/README.md)     	        |     ⭐️⭐️    	|
+| 5   	| [Hydrothermal Venture](src/main/java/aoc/day05/README.md)     |     ⭐️⭐️     	|
+| 6   	| [Lanternfish](src/main/java/aoc/day06/README.md)     	        |     ⭐️⭐️       |
+| 7   	| [The Treachery of Whales](src/main/java/aoc/day07/README.md)  |     ⭐️⭐️      	|
+| 8   	| [Seven Segment Search](src/main/java/aoc/day08/README.md)     |     ⭐️⭐️       |
+| 9   	| [Smoke Basin](src/main/java/aoc/day09/README.md)     	        |     ⭐️⭐️       |
+| 10  	| [Syntax Scoring](src/main/java/aoc/day10/README.md)     	    |     ⭐️⭐️       |
+| 11  	| [Dumbo Octopus](src/main/java/aoc/day11/README.md)     	    |     ⭐️⭐️       |
+| 12  	| [Passage Pathing](src/main/java/aoc/day12/README.md)     	    |     ⭐️⭐️       |
+| 13  	| [Transparent Origami](src/main/java/aoc/day13/README.md)     	|     ⭐️⭐️       |
+| 14  	| [Extended Polymerization](src/main/java/aoc/day14/README.md)  |     ⭐️⭐️       |
+| 15  	| [Chiton](src/main/java/aoc/day15/README.md)     	            |     ⭐️⭐️       |
+| 16  	|      	|            	|
+| 17  	|      	|            	|
+| 18  	|      	|            	|
+| 19  	|      	|            	|
+| 20  	|      	|            	|
+| 21  	|      	|            	|
+| 22  	|      	|            	|
+| 23  	|      	|            	|
+| 24  	|      	|            	|
+| 25  	|      	|            	|

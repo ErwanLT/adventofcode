@@ -1,4 +1,4 @@
-# Day 07 : he Treachery of Whales
+# Day 07 : The Treachery of Whales
 ## Part 1
 
 A giant [whale](https://en.wikipedia.org/wiki/Sperm_whale) has decided your submarine is its next meal, and it's much faster than you are. There's nowhere to run!

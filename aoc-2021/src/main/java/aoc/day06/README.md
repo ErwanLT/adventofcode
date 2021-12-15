@@ -1,4 +1,4 @@
-# Day 06 : 
+# Day 06 : Lanternfish
 ## Part 1
 The sea floor is getting steeper. Maybe the sleigh keys got carried this way?
 
