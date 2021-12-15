@@ -15,7 +15,7 @@
 | 6     | [Probably a Fire Hazard](src/main/java/aoc/day06/README.md)           |    ⭐️⭐ ️️       |
 | 7     | [Some Assembly Required](src/main/java/aoc/day07/README.md)         |     ️️⭐️⭐       |
 | 8     | [Matchsticks](src/main/java/aoc/day08/README.md)         |     ️️⭐️⭐       |
-| 9     | [](src/main/java/aoc/day09/README.md)           |     ️️       |
+| 9     | [All in a Single Night](src/main/java/aoc/day09/README.md)           |     ️️⭐️⭐️️       |
 | 10    | [](src/main/java/aoc/day10/README.md)            |     ️️       |
 | 11    | [](src/main/java/aoc/day11/README.md)           |     ️️       |
 | 12    | [](src/main/java/aoc/day12/README.md)                |     ️️       |
