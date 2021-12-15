@@ -10,9 +10,9 @@
 | 1     | [Not Quite Lisp](src/main/java/aoc/day01/README.md)            |    ⭐️⭐️ ️️       |
 | 2     | [I Was Told There Would Be No Math](src/main/java/aoc/day02/README.md)             |     ️️⭐️⭐️       |
 | 3     | [Perfectly Spherical Houses in a Vacuum](src/main/java/aoc/day03/README.md)             |     ️️️️⭐️⭐       |
-| 4     | [](src/main/java/aoc/day04/README.md)      |     ️️       |
-| 5     | [](src/main/java/aoc/day05/README.md)          |     ️️       |
-| 6     | [](src/main/java/aoc/day06/README.md)           |     ️️       |
+| 4     | [The Ideal Stocking Stuffer](src/main/java/aoc/day04/README.md)      |     ️️️️️️⭐️⭐       |
+| 5     | [Doesn't He Have Intern-Elves For This?](src/main/java/aoc/day05/README.md)          |    ⭐️⭐ ️️       |
+| 6     | [Probably a Fire Hazard](src/main/java/aoc/day06/README.md)           |    ⭐️⭐ ️️       |
 | 7     | [](src/main/java/aoc/day07/README.md)         |     ️️       |
 | 8     | [](src/main/java/aoc/day08/README.md)         |     ️️       |
 | 9     | [](src/main/java/aoc/day09/README.md)           |     ️️       |
