@@ -7,7 +7,7 @@
 
 
 | Day 	| Name 	| Completion 	|
-|-----	|------	|------------	|
+|:-----:	|------	|:------------:	|
 | 1   	| [Sonar Sweep](src/main/java/aoc/day01/README.md)    	        |     ⭐️⭐️       |
 | 2   	| [Dive!](src/main/java/aoc/day02/README.md)     	            |     ⭐️⭐️      	|
 | 3   	| [Binary Diagnostic](src/main/java/aoc/day03/README.md)     	|     ⭐️⭐️      	|
