@@ -19,7 +19,7 @@
 | 10    | [Elves Look, Elves Say](src/main/java/aoc/day10/README.md)            |    ⭐️⭐ ️️       |
 | 11    | [Corporate Policy](src/main/java/aoc/day11/README.md)           |     ⭐️⭐️️       |
 | 12    | [JSAbacusFramework.io](src/main/java/aoc/day12/README.md)                |     ⭐️⭐️️       |
-| 13    | [](src/main/java/aoc/day13/README.md)           |     ️️       |
+| 13    | [Knights of the Dinner Table](src/main/java/aoc/day13/README.md)           |    ⭐️⭐       |
 | 14    | [](src/main/java/aoc/day14/README.md)             |     ️️       |
 | 15    | [](src/main/java/aoc/day15/README.md)  |     ️️       |
 | 16    | [](src/main/java/aoc/day16/README.md)       |     ️       |
