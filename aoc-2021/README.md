@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2021-brightgreen)](https://adventofcode.com/2021/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-15-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-30-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-16-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-32-yellow)]()
 
 
 | Day 	| Name 	| Completion 	|
@@ -23,13 +23,13 @@
 | 13  	| [Transparent Origami](src/main/java/aoc/day13/README.md)     	|     ⭐️⭐️       |
 | 14  	| [Extended Polymerization](src/main/java/aoc/day14/README.md)  |     ⭐️⭐️       |
 | 15  	| [Chiton](src/main/java/aoc/day15/README.md)     	            |     ⭐️⭐️       |
-| 16  	|      	|            	|
-| 17  	|      	|            	|
-| 18  	|      	|            	|
-| 19  	|      	|            	|
-| 20  	|      	|            	|
-| 21  	|      	|            	|
-| 22  	|      	|            	|
-| 23  	|      	|            	|
-| 24  	|      	|            	|
-| 25  	|      	|            	|
+| 16  	| [Packet Decoder](src/main/java/aoc/day16/README.md)     	    |     ⭐️⭐️       |
+| 17  	|      	|     🔒🔒     	|
+| 18  	|      	|     🔒🔒     	|
+| 19  	|      	|     🔒🔒     	|
+| 20  	|      	|     🔒🔒     	|
+| 21  	|      	|     🔒🔒     	|
+| 22  	|      	|     🔒🔒     	|
+| 23  	|      	|     🔒🔒    	|
+| 24  	|      	|     🔒🔒     	|
+| 25  	|      	|     🔒🔒    	|
