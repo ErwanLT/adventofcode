@@ -112,15 +112,23 @@ public class Day16 implements Day {
     }
 
     private static long performOp(List<Long> op, int id) {
-        return switch (id) {
-            case 0 -> op.stream().mapToLong(e -> e).sum();
-            case 1 -> op.stream().mapToLong(e -> e).reduce((a,b) -> a*b).getAsLong();
-            case 2 -> op.stream().mapToLong(e -> e).min().getAsLong();
-            case 3 -> op.stream().mapToLong(e -> e).max().getAsLong();
-            case 5 -> op.get(0) > op.get(1) ? 1L : 0L;
-            case 6 -> op.get(0) < op.get(1) ? 1L : 0L;
-            case 7 -> op.get(0).equals(op.get(1)) ? 1L : 0L;
-            default -> throw new IllegalStateException("Not known id: "+id);
-        };
+        switch (id) {
+            case 0 :
+                return op.stream().mapToLong(e -> e).sum();
+            case 1 :
+                return op.stream().mapToLong(e -> e).reduce((a,b) -> a*b).getAsLong();
+            case 2 :
+                return op.stream().mapToLong(e -> e).min().getAsLong();
+            case 3 :
+                return op.stream().mapToLong(e -> e).max().getAsLong();
+            case 5 :
+                return op.get(0) > op.get(1) ? 1L : 0L;
+            case 6 :
+                return op.get(0) < op.get(1) ? 1L : 0L;
+            case 7 :
+                return op.get(0).equals(op.get(1)) ? 1L : 0L;
+            default :
+                throw new IllegalStateException("Not known id: "+id);
+        }
     }
 }
