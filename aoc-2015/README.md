@@ -16,9 +16,9 @@
 | 7     | [Some Assembly Required](src/main/java/aoc/day07/README.md)         |     ️️⭐️⭐       |
 | 8     | [Matchsticks](src/main/java/aoc/day08/README.md)         |     ️️⭐️⭐       |
 | 9     | [All in a Single Night](src/main/java/aoc/day09/README.md)           |     ️️⭐️⭐️️       |
-| 10    | [](src/main/java/aoc/day10/README.md)            |     ️️       |
-| 11    | [](src/main/java/aoc/day11/README.md)           |     ️️       |
-| 12    | [](src/main/java/aoc/day12/README.md)                |     ️️       |
+| 10    | [Elves Look, Elves Say](src/main/java/aoc/day10/README.md)            |    ⭐️⭐ ️️       |
+| 11    | [Corporate Policy](src/main/java/aoc/day11/README.md)           |     ⭐️⭐️️       |
+| 12    | [JSAbacusFramework.io](src/main/java/aoc/day12/README.md)                |     ⭐️⭐️️       |
 | 13    | [](src/main/java/aoc/day13/README.md)           |     ️️       |
 | 14    | [](src/main/java/aoc/day14/README.md)             |     ️️       |
 | 15    | [](src/main/java/aoc/day15/README.md)  |     ️️       |
