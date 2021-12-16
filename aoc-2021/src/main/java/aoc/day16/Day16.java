@@ -75,7 +75,6 @@ public class Day16 implements Day {
     static int prevI = 0;
     private static List<Long> findPackets2(String in, int toParse) {
         List<Long> res = new ArrayList<>();
-        long sum = 0;
         for(int i = 0, parsed = 0; i< in.length();parsed++){
             if(parsed >= toParse){
                 break;
