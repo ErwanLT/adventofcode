@@ -2,24 +2,24 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2015-brightgreen)](https://adventofcode.com/2020/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-12-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-24-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-13-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-26-yellow)]()
 
 | Day   | Name    | Completion    |
 |:-----:|------	|:------------:	|
-| 1     | [Not Quite Lisp](src/main/java/aoc/day01/README.md)            |    ⭐️⭐️ ️️       |
-| 2     | [I Was Told There Would Be No Math](src/main/java/aoc/day02/README.md)             |     ️️⭐️⭐️       |
-| 3     | [Perfectly Spherical Houses in a Vacuum](src/main/java/aoc/day03/README.md)             |     ️️️️⭐️⭐       |
-| 4     | [The Ideal Stocking Stuffer](src/main/java/aoc/day04/README.md)      |     ️️️️️️⭐️⭐       |
-| 5     | [Doesn't He Have Intern-Elves For This?](src/main/java/aoc/day05/README.md)          |    ⭐️⭐ ️️       |
-| 6     | [Probably a Fire Hazard](src/main/java/aoc/day06/README.md)           |    ⭐️⭐ ️️       |
-| 7     | [Some Assembly Required](src/main/java/aoc/day07/README.md)         |     ️️⭐️⭐       |
-| 8     | [Matchsticks](src/main/java/aoc/day08/README.md)         |     ️️⭐️⭐       |
-| 9     | [All in a Single Night](src/main/java/aoc/day09/README.md)           |     ️️⭐️⭐️️       |
-| 10    | [Elves Look, Elves Say](src/main/java/aoc/day10/README.md)            |    ⭐️⭐ ️️       |
-| 11    | [Corporate Policy](src/main/java/aoc/day11/README.md)           |     ⭐️⭐️️       |
-| 12    | [JSAbacusFramework.io](src/main/java/aoc/day12/README.md)                |     ⭐️⭐️️       |
-| 13    | [Knights of the Dinner Table](src/main/java/aoc/day13/README.md)           |    ⭐️⭐       |
+| 1     | [Not Quite Lisp](src/main/java/aoc/day01/README.md)                                   |    ⭐️⭐️ ️️       |
+| 2     | [I Was Told There Would Be No Math](src/main/java/aoc/day02/README.md)                |     ️️⭐️⭐️       |
+| 3     | [Perfectly Spherical Houses in a Vacuum](src/main/java/aoc/day03/README.md)           |     ️️️️⭐️⭐       |
+| 4     | [The Ideal Stocking Stuffer](src/main/java/aoc/day04/README.md)                       |     ️️️️️️⭐️⭐       |
+| 5     | [Doesn't He Have Intern-Elves For This?](src/main/java/aoc/day05/README.md)           |    ⭐️⭐ ️️       |
+| 6     | [Probably a Fire Hazard](src/main/java/aoc/day06/README.md)                           |    ⭐️⭐ ️️       |
+| 7     | [Some Assembly Required](src/main/java/aoc/day07/README.md)                           |     ️️⭐️⭐       |
+| 8     | [Matchsticks](src/main/java/aoc/day08/README.md)                                      |     ️️⭐️⭐       |
+| 9     | [All in a Single Night](src/main/java/aoc/day09/README.md)                            |     ️️⭐️⭐️️       |
+| 10    | [Elves Look, Elves Say](src/main/java/aoc/day10/README.md)                            |    ⭐️⭐ ️️       |
+| 11    | [Corporate Policy](src/main/java/aoc/day11/README.md)                                 |     ⭐️⭐️️       |
+| 12    | [JSAbacusFramework.io](src/main/java/aoc/day12/README.md)                             |     ⭐️⭐️️       |
+| 13    | [Knights of the Dinner Table](src/main/java/aoc/day13/README.md)                      |    ⭐️⭐       |
 | 14    | [](src/main/java/aoc/day14/README.md)             |     ️️       |
 | 15    | [](src/main/java/aoc/day15/README.md)  |     ️️       |
 | 16    | [](src/main/java/aoc/day16/README.md)       |     ️       |

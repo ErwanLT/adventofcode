@@ -6,8 +6,8 @@ One module for a year / one module per day inside year.
 
 * [2015](aoc-2015/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-12-blue)](2015)
-[![Stars](https://img.shields.io/badge/⭐️-24-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-13-blue)](2015)
+[![Stars](https://img.shields.io/badge/⭐️-26-yellow)]()
 
 * [2019](aoc-2019/README.md)
 
@@ -21,5 +21,5 @@ One module for a year / one module per day inside year.
 
 * [2021](aoc-2021/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-16-blue)](2021)
-[![Stars](https://img.shields.io/badge/⭐️-32-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-17-blue)](2021)
+[![Stars](https://img.shields.io/badge/⭐️-34-yellow)]()
