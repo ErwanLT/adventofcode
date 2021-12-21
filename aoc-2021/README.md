@@ -27,8 +27,8 @@
 | 17  	| [Trick Shot](src/main/java/aoc/day17/README.md)     	        |     ⭐️⭐     	|
 | 18  	| [Snailfish](src/main/java/aoc/day18/README.md)     	        |     ⭐️⭐     	|
 | 19  	| [Beacon Scanner](src/main/java/aoc/day19/README.md)      	    |     ⭐️⭐     	|
-| 20  	| [Trench Map](src/main/java/aoc/day20/README.md)     	        |     🔒🔒     	|
-| 21  	|      	|     🔒🔒     	|
+| 20  	| [Trench Map](src/main/java/aoc/day20/README.md)     	        |     ⭐️⭐     	|
+| 21  	| [Dirac Dice](src/main/java/aoc/day21/README.md)      	        |     ⭐🔒     	|
 | 22  	|      	|     🔒🔒     	|
 | 23  	|      	|     🔒🔒    	|
 | 24  	|      	|     🔒🔒     	|

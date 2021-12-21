@@ -113,3 +113,4 @@ If you enhance the starting input image in the above example a total of 50 times
 
 Start again with the original input image and apply the image enhancement algorithm 50 times. **How many pixels are lit in the resulting image?**
 
+Your puzzle answer was `17096`
