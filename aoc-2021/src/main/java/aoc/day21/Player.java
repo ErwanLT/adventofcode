@@ -8,8 +8,8 @@ import lombok.Getter;
 @Builder
 @EqualsAndHashCode
 public class Player {
-    private int points;
-    private int position;
+    public int points;
+    public int position;
 
     public int move(int diceValue) {
         position = (position + diceValue - 1) % 10 + 1;
