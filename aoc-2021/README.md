@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2021-brightgreen)](https://adventofcode.com/2021/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-21-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-42-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-22-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-43-yellow)]()
 
 
 | Day 	| Name 	| Completion 	|
@@ -29,7 +29,7 @@
 | 19  	| [Beacon Scanner](src/main/java/aoc/day19/README.md)      	    |     ⭐️⭐     	|
 | 20  	| [Trench Map](src/main/java/aoc/day20/README.md)     	        |     ⭐️⭐     	|
 | 21  	| [Dirac Dice](src/main/java/aoc/day21/README.md)      	        |     ⭐⭐     	|
-| 22  	|      	|     🔒🔒     	|
+| 22  	| [Reactor Reboot](src/main/java/aoc/day22/README.md)     	    |     ⭐🔒     	|
 | 23  	|      	|     🔒🔒    	|
 | 24  	|      	|     🔒🔒     	|
 | 25  	|      	|     🔒🔒    	|
