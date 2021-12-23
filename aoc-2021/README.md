@@ -30,6 +30,6 @@
 | 20  	| [Trench Map](src/main/java/aoc/day20/README.md)     	        |     ⭐️⭐     	|
 | 21  	| [Dirac Dice](src/main/java/aoc/day21/README.md)      	        |     ⭐⭐     	|
 | 22  	| [Reactor Reboot](src/main/java/aoc/day22/README.md)     	    |     ⭐🔒     	|
-| 23  	|      	|     🔒🔒    	|
+| 23  	| [Amphipod](src/main/java/aoc/day23/README.md)     	        |     🔒🔒    	|
 | 24  	|      	|     🔒🔒     	|
 | 25  	|      	|     🔒🔒    	|
