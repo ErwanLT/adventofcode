@@ -21,5 +21,5 @@ One module for a year / one module per day inside year.
 
 * [2021](aoc-2021/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-23-blue)](2021)
-[![Stars](https://img.shields.io/badge/⭐️-46-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](2021)
+[![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
