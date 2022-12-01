@@ -31,6 +31,6 @@ public class Day01 implements Day {
     private LongStream input () {
         return Arrays.stream(inputs.split("\n\n"))
                 .mapToLong(s -> Arrays.stream(s.split("\n"))
-                        .map(String::trim).mapToLong(e -> Long.parseLong(e)).sum());
+                        .map(String::trim).mapToLong(Long::parseLong).sum());
     }
 }
