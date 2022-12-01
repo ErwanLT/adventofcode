@@ -14,10 +14,7 @@ public class Day01 implements Day {
     @Override
     public String part1(List<String> input) {
         parseInput(input);
-
-
         return input().max().toString();
-
     }
 
     @Override
@@ -32,6 +29,8 @@ public class Day01 implements Day {
     }
 
     private LongStream input () {
-        return Arrays.stream(inputs.split("\n\n")).mapToLong(s -> Arrays.stream(s.split("\n")).map(String::trim).mapToLong(e -> Long.parseLong(e)).sum());
+        return Arrays.stream(inputs.split("\n\n"))
+                .mapToLong(s -> Arrays.stream(s.split("\n"))
+                        .map(String::trim).mapToLong(e -> Long.parseLong(e)).sum());
     }
 }
