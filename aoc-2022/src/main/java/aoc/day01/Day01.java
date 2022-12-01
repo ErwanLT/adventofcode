@@ -25,7 +25,7 @@ public class Day01 implements Day {
     }
 
     private void parseInput(List<String> input) {
-        inputs = String.join("\n", input);
+        inputs = ParseUtils.castInputToString("\n", input);
     }
 
     private LongStream input () {
