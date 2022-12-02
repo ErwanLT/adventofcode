@@ -1,5 +1,5 @@
 package aoc.day02;
 
 public enum Outcome {
-    DRAW, WIN, LOSS;
+    DRAW, WIN, LOSS
 }

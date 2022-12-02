@@ -1,7 +1,6 @@
 package aoc.day02;
 
 import aoc.Day;
-import aoc.parser.ParseUtils;
 
 import java.util.List;
 import java.util.stream.Stream;
