@@ -1,8 +1,13 @@
 package aoc.parser;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ParseUtils {
+
+    public static Stream<String> castInputToStream(List<String> input){
+        return input.stream();
+    }
 
     public static long[] castInputToLongArray(List<String> input){
         return input.stream().mapToLong(Long::parseLong).toArray();
