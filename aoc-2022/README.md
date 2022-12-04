@@ -2,17 +2,16 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2022-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-03-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-06-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-04-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-08-yellow)]()
 
-[![](img/Aoc2021.png)](https://adventofcode.com/2021)
 
 | Day 	 | Name 	                                                        | Completion 	 |
-|:-----:|:--------------------------------------------------------------|--------------|
+|:-----:|:--------------------------------------------------------------|:------------:|
 | 1   	 | [Calorie Counting](src/main/java/aoc/day01/README.md)	        |     ⭐️⭐      |
 | 2   	 | [Rock Paper Scissors](src/main/java/aoc/day02/README.md)      |  ⭐️⭐      	  |
 | 3   	 | [Rucksack Reorganization](src/main/java/aoc/day03/README.md)	 |  ⭐️⭐      	  |
-| 4   	 |                                                               |   ❌ ❌    	   |
+| 4   	 | [Camp Cleanup](src/main/java/aoc/day04/README.md)             |   ⭐️⭐    	   |
 | 5   	 |                                                               |  ❌ ❌     	   |
 | 6   	 |                                                               |     ❌ ❌      |
 | 7   	 |                                                               |  ❌ ❌      	  |

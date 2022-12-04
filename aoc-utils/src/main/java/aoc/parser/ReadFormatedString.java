@@ -13,17 +13,11 @@ public interface ReadFormatedString {
             if (pattern.length() > 1 && pattern.charAt(0) == '%') {
                 int size = mappedObjs.size();
                 switch (pattern.charAt(1)) {
-                    case 'n':
-                        mappedObjs.add(crunchNumber(s, pattern));
-                        break;
-                    case 'c':
-                        mappedObjs.add(s.charAt(0));
-                        break;
-                    case 's':
-                        mappedObjs.add(crunchString(s, pattern));
-                        break;
-                    default:
-                        break;
+                    case 'n' -> mappedObjs.add(crunchNumber(s, pattern));
+                    case 'c' -> mappedObjs.add(s.charAt(0));
+                    case 's' -> mappedObjs.add(crunchString(s, pattern));
+                    default -> {
+                    }
                 }
                 if (mappedObjs.size() != size) {
                     s = s.substring(mappedObjs.get(size).toString().length());
