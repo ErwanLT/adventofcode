@@ -1,4 +1,4 @@
-package aoc.day07;
+package aoc.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class File {
-    private long size;
+public class FileNode {
     private String name;
-
+    private int size;
 }
