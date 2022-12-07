@@ -16,6 +16,7 @@ import java.io.UncheckedIOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static java.util.stream.Collectors.toList;
 
@@ -62,7 +63,7 @@ public class App {
         }
         String fileName = "day" + paddedDay + ".txt";
 
-        try(BufferedReader r = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(fileName)))){
+        try(BufferedReader r = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ClassLoader.getSystemResourceAsStream(fileName))))){
             return r.lines().collect(toList());
         } catch(IOException e){
             throw new UncheckedIOException(e);
@@ -73,7 +74,7 @@ public class App {
         printer = new PrettyPrinter();
 
         //allDays(args);
-        doDay(06, args);
+        doDay(07, args);
 
     }
 
