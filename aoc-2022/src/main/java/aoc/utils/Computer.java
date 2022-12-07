@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -47,6 +48,19 @@ public class Computer {
         int total = node.getChildren().stream().mapToInt(this::setSizeNode).sum() + node.getFiles().stream().mapToInt(FileNode::getSize).sum();
         node.setSize(total);
         return total;
+    }
+
+    public List<Node> getSmallNodes(Node node, int threshold) {
+        List<Node> nodes = new ArrayList<>();
+        for (Node child : node.getChildren()) {
+            nodes.addAll(getSmallNodes(child, threshold));
+        }
+
+        if (node.getSize() < threshold) {
+            nodes.add(node);
+        }
+
+        return nodes;
     }
 
 

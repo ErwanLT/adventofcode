@@ -19,25 +19,11 @@ public class Day07 implements Day {
 
         computer.setSizes();
 
-        List<Node> smallNodes = getSmallNodes(computer.getRoot(), 100_000);
+        List<Node> smallNodes = computer.getSmallNodes(computer.getRoot(), 100_000);
 
         var sum = smallNodes.stream().mapToInt(Node::getSize).sum();
 
         return String.valueOf(sum);
-    }
-
-
-    public List<Node> getSmallNodes(Node node, int threshold) {
-        List<Node> nodes = new ArrayList<>();
-        for (Node child : node.getChildren()) {
-            nodes.addAll(getSmallNodes(child, threshold));
-        }
-
-        if (node.getSize() < threshold) {
-            nodes.add(node);
-        }
-
-        return nodes;
     }
 
     @Override
