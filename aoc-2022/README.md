@@ -14,7 +14,7 @@
 | 4   	 | [Camp Cleanup](src/main/java/aoc/day04/README.md)             |   ⭐️⭐    	   |
 | 5   	 | [Supply Stacks](src/main/java/aoc/day05/README.md)            |  ⭐️⭐     	   |
 | 6   	 | [Tuning Trouble](src/main/java/aoc/day06/README.md)           |     ⭐️⭐      |
-| 7   	 |                                                               |  ❌ ❌      	  |
+| 7   	 | [No Space Left On Device](src/main/java/aoc/day07/README.md)  |  ❌ ❌      	  |
 | 8   	 |                                                               |     ❌ ❌      |
 | 9   	 | 	                                                             |     ❌ ❌      |
 | 10  	 | 	                                                             |     ❌ ❌      |
