@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2022-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-07-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-14-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-08-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-16-yellow)]()
 
 
 | Day 	 | Name 	                                                        | Completion 	 |
@@ -15,7 +15,7 @@
 | 5   	 | [Supply Stacks](src/main/java/aoc/day05/README.md)            |     ⭐️⭐      |
 | 6   	 | [Tuning Trouble](src/main/java/aoc/day06/README.md)           |     ⭐️⭐      |
 | 7   	 | [No Space Left On Device](src/main/java/aoc/day07/README.md)  |     ⭐️⭐      |
-| 8   	 |                                                               |     ❌ ❌      |
+| 8   	 | [Treetop Tree House](src/main/java/aoc/day08/README.md)       |     ⭐️⭐      |
 | 9   	 | 	                                                             |     ❌ ❌      |
 | 10  	 | 	                                                             |     ❌ ❌      |
 | 11  	 |                                                               |     ❌ ❌      |
@@ -24,12 +24,12 @@
 | 14  	 |                                                               |     ❌ ❌      |
 | 15  	 | 	                                                             |     ❌ ❌      |
 | 16  	 | 	                                                             |     ❌ ❌      |
-| 17  	 | 	                                                             |  ❌ ❌     	   |
-| 18  	 | 	                                                             |  ❌ ❌     	   |
-| 19  	 | 	                                                             |  ❌ ❌     	   |
-| 20  	 | 	                                                             |  ❌ ❌     	   |
-| 21  	 | 	                                                             |  ❌ ❌     	   |
-| 22  	 | 	                                                             |  ❌ ❌     	   |
-| 23  	 | 	                                                             |   ❌ ❌    	   |
-| 24  	 |                                                               |  ❌ ❌     	   |
-| 25  	 | 	                                                             |   ❌ ❌    	   |
+| 17  	 | 	                                                             |     ❌ ❌      |
+| 18  	 | 	                                                             |     ❌ ❌      |
+| 19  	 | 	                                                             |     ❌ ❌      |
+| 20  	 | 	                                                             |     ❌ ❌      |
+| 21  	 | 	                                                             |     ❌ ❌      |
+| 22  	 | 	                                                             |     ❌ ❌      |
+| 23  	 | 	                                                             |     ❌ ❌      |
+| 24  	 |                                                               |     ❌ ❌      |
+| 25  	 | 	                                                             |     ❌ ❌      |
