@@ -8,6 +8,7 @@ import aoc.day05.Day05;
 import aoc.day06.Day06;
 import aoc.day07.Day07;
 import aoc.day08.Day08;
+import aoc.day09.Day09;
 import com.eletutour.printer.PrettyPrinter;
 
 import java.io.BufferedReader;
@@ -37,8 +38,8 @@ public class App {
         DAYS.put(6, new Day06());
         DAYS.put(7, new Day07());
         DAYS.put(8, new Day08());
-        /*DAYS.put(9, new Day09());
-        DAYS.put(10, new Day10());
+        DAYS.put(9, new Day09());
+        /*DAYS.put(10, new Day10());
         DAYS.put(11, new Day11());
         DAYS.put(12, new Day12());
         DAYS.put(13, new Day13());
@@ -75,7 +76,7 @@ public class App {
         printer = new PrettyPrinter();
 
         //allDays(args);
-        doDay(8, args);
+        doDay(9, args);
 
     }
 
