@@ -13,9 +13,12 @@ import static java.util.Optional.of;
 import static java.util.stream.IntStream.range;
 
 public class Day13 implements Day {
+
+    private String inStr = "";
+
     @Override
     public String part1(List<String> input) {
-        var inStr = ParseUtils.castInputToString("\n", input);
+        inStr = ParseUtils.castInputToString("\n", input);
         var in = inStr.split("\n\n");
         List<Integer> indices = new ArrayList<>();
         for(int i = 0; i<in.length; i++){
@@ -32,7 +35,6 @@ public class Day13 implements Day {
 
     @Override
     public String part2(List<String> input) {
-        var inStr = ParseUtils.castInputToString("\n", input);
         inStr = inStr+"\n[[2]]\n[[6]]";
         inStr = inStr.replace("\n\n", "\n");
         var inArr = inStr.split("\n");
