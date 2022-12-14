@@ -1,7 +1,6 @@
-package aoc;
+package aoc.location;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Loc3D {
     public final long x;
