@@ -1,6 +1,9 @@
 package aoc.location;
 
+import aoc.Direction;
+
 import java.awt.*;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -78,5 +81,21 @@ public class Loc {
 
     public int intY() {
         return toIntExact(y);
+    }
+
+    public long distance(Loc pt) {
+        return Math.abs(pt.x-x) + Math.abs(pt.y-y);
+    }
+
+    public Stream<Loc> eightDirs() {
+        return Arrays.stream(Direction.eightDirections()).map(d -> d.move(this));
+    }
+
+    public Stream<Loc> expand(long howMuch) {
+        return new Range(new Loc(x-(howMuch/2), y-(howMuch/2)), new Loc(x+(howMuch/2), y+(howMuch/2))).stream();
+    }
+
+    public Stream<Loc> walk(Direction dir, long howFar) {
+        return IntStream.range(0, toIntExact(howFar)).mapToObj(i -> dir.move(this, i));
     }
 }

@@ -4,6 +4,7 @@ import aoc.location.Loc;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static java.lang.Math.abs;
 
@@ -172,5 +173,15 @@ public enum Direction {
 
     public Direction turnDegrees(int degrees) {
         return turnDegrees(abs(degrees), degrees > 0);
+    }
+
+    public static Direction[] round() {
+        return new Direction[]{NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
+    }
+
+    public Direction turnSteps(int steps) {
+        Direction[] d = round();
+        int index = IntStream.range(0, d.length).filter(i -> d[i] == this).findFirst().getAsInt();
+        return d[(index + steps) % d.length];
     }
 }
