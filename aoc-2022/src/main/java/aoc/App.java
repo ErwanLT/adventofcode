@@ -18,6 +18,7 @@ import aoc.day15.Day15;
 import aoc.day16.Day16;
 import aoc.day17.Day17;
 import aoc.day18.Day18;
+import aoc.day19.Day19;
 import com.eletutour.printer.PrettyPrinter;
 
 import java.io.BufferedReader;
@@ -57,8 +58,8 @@ public class App {
         DAYS.put(16, new Day16());
         DAYS.put(17, new Day17());
         DAYS.put(18, new Day18());
-        /*DAYS.put(19, new Day19());
-        DAYS.put(20, new Day20());
+        DAYS.put(19, new Day19());
+        /*DAYS.put(20, new Day20());
         DAYS.put(21, new Day21());
         DAYS.put(22, new Day22());
         DAYS.put(23, new Day23());

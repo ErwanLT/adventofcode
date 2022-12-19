@@ -1,12 +1,15 @@
 package aoc.day18;
 
 import aoc.Day;
+import aoc.customMap.LongCountMap;
 import aoc.day24.HexDirection;
 import aoc.location.Loc3D;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+import static aoc.customMap.LongCountMap.toCountMap;
 import static aoc.parser.ReadFormatedString.readString;
 
 
@@ -41,25 +44,26 @@ public class Day18 implements Day {
         List<Loc3D> locs = parseInput(input);
         List<Loc3D> connecting = locs.stream().flatMap(l -> Arrays.stream(HexDirection.values()).map(d -> d.move(l, 1))).collect(Collectors.toCollection(ArrayList::new));
         List<Loc3D> exterior = connecting.stream().filter(locs::contains).toList();
-        connecting.removeAll(exterior);
-        List<Set<Loc3D>> pockets = connecting.stream().map(l -> new HashSet<>(Set.of(l))).collect(Collectors.toCollection(ArrayList::new));
-        int trapped = 0;
-        for(int i = 0; i<1000; i++) {
-            for(int j = 0; j<pockets.size(); j++) {
-                Set<Loc3D> pocket = pockets.get(j);
-                Set<Loc3D> s = new HashSet<>(pocket);
-                pocket.addAll(pocket.stream().flatMap(l -> Arrays.stream(HexDirection.values()).map(d -> d.move(l, 1))).filter(l -> !locs.contains(l)).collect(Collectors.toSet()));
-                if(s.size() == pocket.size()) {
-                    trapped++;
-                    pockets.remove(j);
-                    j--;
-                } else if(pocket.size()>2000) {
-                    pockets.remove(j);
-                    j--;
+        LongCountMap<Set<Loc3D>> pockets = connecting.stream().filter(l -> !locs.contains(l)).map(l -> new HashSet<>(Set.of(l))).collect(toCountMap());
+        var trapped = new AtomicLong();
+        for(int i = 0; i<100; i++) {
+            LongCountMap<Set<Loc3D>> newPockets = new LongCountMap<>();
+            pockets.forEach((pocket, n) -> {
+                Set<Loc3D> spread = pocket.stream().flatMap(l -> Arrays.stream(HexDirection.values()).map(d -> d.move(l, 1))).filter(l -> !locs.contains(l)).collect(Collectors.toSet());
+                spread.addAll(pocket);
+                if(spread.size() == pocket.size()) {
+                    trapped.addAndGet(n);
+                } else if(spread.size()<=connecting.size()) {
+                    var matching = newPockets.keySet().stream().filter(e -> e.stream().anyMatch(spread::contains)).findAny();
+                    matching.ifPresentOrElse(c -> {
+                        spread.addAll(c);
+                        newPockets.increment(spread, n + newPockets.remove(c));
+                    }, () -> newPockets.increment(spread, n));
                 }
-            }
+            });
+            pockets = newPockets;
         }
-        var surface = (locs.size()*6L) - exterior.size() - trapped;
+        var surface = (locs.size()*6L) - exterior.size() - trapped.get();
         return String.valueOf(surface);
     }
 }

@@ -2,9 +2,19 @@ package aoc.customMap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public class LongCountMap<K> extends HashMap<K, Long> {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     public LongCountMap() {
     }
@@ -46,9 +56,28 @@ public class LongCountMap<K> extends HashMap<K, Long> {
         amountPerCloneClassSize.entrySet().stream().forEach(e -> this.increment(e.getKey(), e.getValue()));
     }
 
-    public void incrementAll(LongCountMap<K> input) {
+    public LongCountMap<K> incrementAll(LongCountMap<K> input) {
         for (Entry<K, Long> i : input.entrySet()) {
             increment(i.getKey(), i.getValue());
         }
+        return this;
+    }
+
+    public long sumValues() {
+        return values().stream().mapToLong(e -> e).sum();
+    }
+
+    public static LongCountMap<Long> ofFrequencies(LongStream frequencies) {
+        var lcm = new LongCountMap<Long>();
+        frequencies.forEach(lcm::increment);
+        return lcm;
+    }
+
+    public static<T> Collector<T, LongCountMap<T>, LongCountMap<T>> toCountMap() {
+        final Supplier<LongCountMap<T>> supplier = LongCountMap::new;
+        final BiConsumer<LongCountMap<T>, T> accumulator = LongCountMap::increment;
+        final BinaryOperator<LongCountMap<T>> combiner = LongCountMap::incrementAll;
+        final Function<LongCountMap<T>, LongCountMap<T>> finisher = LongCountMap::new;
+        return Collector.of(supplier, accumulator, combiner, finisher);
     }
 }
