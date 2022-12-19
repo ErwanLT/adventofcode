@@ -42,6 +42,10 @@ public class Loc {
         return new Loc(x + dx, y + dy);
     }
 
+    public Loc move(long dx, long dy) {
+        return new Loc(x + dx, y + dy);
+    }
+
     public Loc move(Loc l) {
         return new Loc(x + l.x, y + l.y);
     }
@@ -97,5 +101,9 @@ public class Loc {
 
     public Stream<Loc> walk(Direction dir, long howFar) {
         return IntStream.range(0, toIntExact(howFar)).mapToObj(i -> dir.move(this, i));
+    }
+
+    public Stream<Loc> fourDirs() {
+        return Arrays.stream(Direction.fourDirections()).map(d -> d.move(this));
     }
 }

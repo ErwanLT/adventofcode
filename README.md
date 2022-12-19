@@ -75,8 +75,8 @@ One module for a year / one module per day inside year.
 | 13  	 | [Distress Signal](aoc-2022/src/main/java/aoc/day13/README.md)         |     ⭐️⭐      |
 | 14  	 | [Regolith Reservoir](aoc-2022/src/main/java/aoc/day14/README.md)      |     ⭐️⭐      |
 | 15  	 | [Beacon Exclusion Zone](aoc-2022/src/main/java/aoc/day15/README.md)   |     ⭐️⭐      |
-| 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	  |     ⭐ ❌      |
-| 17  	 | 	                                                                     |     ❌ ❌      |
+| 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	  |     ⭐️ ❌     |
+| 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	       |     ⭐ ❌      |
 | 18  	 | 	                                                                     |     ❌ ❌      |
 | 19  	 | 	                                                                     |     ❌ ❌      |
 | 20  	 | 	                                                                     |     ❌ ❌      |
