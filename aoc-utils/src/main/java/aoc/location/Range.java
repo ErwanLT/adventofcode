@@ -21,7 +21,7 @@ public class Range {
     }
 
     public Range(Pair<Loc, Loc> pair) {
-        this(pair.getA(), pair.getB());
+        this(pair.a(), pair.b());
     }
 
     public Stream<Loc> stream(){

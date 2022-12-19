@@ -1,43 +1,22 @@
 package aoc;
 
-import java.util.Objects;
+import java.util.function.BiFunction;
 
-public class Pair<A, B> {
-    private final A a;
-    private final B b;
+public record Pair<A, B>(A a, B b) {
 
-    public Pair(A a, B b){
-        this.a = a;
-        this.b = b;
-    }
-
-    public static<A, B> Pair<A, B> of(A a, B b) {
+    public static <A, B> Pair<A, B> of(A a, B b) {
         return new Pair(a, b);
     }
 
-    public A getA() {
+    public A getLeft() {
         return a;
     }
 
-    public B getB() {
+    public B getRight() {
         return b;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Pair<?, ?> either = (Pair<?, ?>) o;
-
-        if (!Objects.equals(a, either.a)) return false;
-        return Objects.equals(b, either.b);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = a != null ? a.hashCode() : 0;
-        result = 31 * result + (b != null ? b.hashCode() : 0);
-        return result;
+    public<C, D> Pair<C, D> map(BiFunction<A, B, Pair<C, D>> func) {
+        return func.apply(a(), b());
     }
 }

@@ -1,27 +1,38 @@
 package aoc.parser;
 
+import aoc.Tuple;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import static com.google.common.base.Preconditions.checkState;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static aoc.AOCUtils.verify;
+import static aoc.Tuple.of;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
+import static java.util.Arrays.stream;
 
 public interface ReadFormatedString {
+    static <T> T readString(String s, String pattern, Class<T> target, Class<?>...nested) {
+        return readString(s, pattern, ",", target, nested);
+    }
 
-    static <T> T readString(String s, String pattern, Class<T> target) {
+    static <T> T readString(String s, String pattern, String listSeparator, Class<T> target, Class<?>...nested) {
         List<Object> mappedObjs = new ArrayList<>();
+        int listIndex = 0;
         while (s.length() > 0) {
             if (pattern.length() > 1 && pattern.charAt(0) == '%') {
-                int size = mappedObjs.size();
-                switch (pattern.charAt(1)) {
-                    case 'n' -> mappedObjs.add(crunchNumber(s, pattern));
-                    case 'c' -> mappedObjs.add(s.charAt(0));
-                    case 's' -> mappedObjs.add(crunchString(s, pattern));
-                    default -> {
-                    }
-                }
-                if (mappedObjs.size() != size) {
-                    s = s.substring(mappedObjs.get(size).toString().length());
-                    pattern = pattern.substring(2);
+                char c = pattern.charAt(1);
+                var data = crunch(s, pattern, listSeparator, c == 'l' && pattern.charAt(2) == '(' ? nested[listIndex] : null);
+                if (data.isPresent()) {
+                    if(c == 'l' && pattern.charAt(2) == '(') listIndex++;
+                    var d = data.get();
+                    mappedObjs.add(d.a());
+                    s = s.substring(d.b());
+                    pattern = pattern.substring(d.c());
+                    if(c == 'u') mappedObjs.remove(mappedObjs.size()-1);
                     continue;
                 }
             }
@@ -33,23 +44,59 @@ public interface ReadFormatedString {
             }
         }
         try {
-            checkState(target.getConstructors().length > 0, "Class "+target+" has no constructor!");
-            return (T) Arrays.stream(target.getConstructors()).filter(c -> c.getParameterCount() == mappedObjs.size()).findAny().get()//.getConstructor(mappedObjs.stream().map(Object::getClass).toArray(Class[]::new))
-                    .newInstance(mappedObjs.toArray());
+            verify(target.getConstructors().length > 0, "Class "+target+" has no constructor!");
+            return (T) stream(target.getConstructors()).filter(c -> c.getParameterCount() == mappedObjs.size()).findAny().get().newInstance(mappedObjs.toArray());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    static long crunchNumber(String s, String pattern) {
-        return Long.parseLong(crunchString(s, pattern));
+    private static<T> Optional<Tuple<?, Integer, Integer>> crunch(String s, String pattern, String listSeparator, Class<T> target) {
+        char c = pattern.charAt(1);
+        return switch (c) {
+            case 'd' -> Optional.of(crunchDouble(s, pattern));
+            case 'n' -> Optional.of(crunchNumber(s, pattern));
+            case 'i' -> Optional.of(crunchInteger(s, pattern));
+            case 'l' -> Optional.of(crunchList(s, pattern, listSeparator, target));
+            case 'c' -> Optional.of(of(s.charAt(0), 1, 2));
+            case 's', 'u' -> Optional.of(crunchString(s, pattern));
+            default -> null;
+        };
     }
 
-    static String crunchString(String s, String pattern) {
-        return pattern.length() > 2 ? s.substring(0, s.indexOf(pattern.charAt(2))) : s;
+    private static Tuple<Long, Integer, Integer> crunchNumber(String s, String pattern) {
+        return crunchString(s, pattern).map((a, b, c) -> of(parseLong(a), b, c));
     }
 
-    default int i(long n) {
-        return Math.toIntExact(n);
+    private static Tuple<Integer, Integer, Integer> crunchInteger(String s, String pattern) {
+        return crunchString(s, pattern).map((a, b, c) -> of(parseInt(a), b, c));
+    }
+
+    private static Tuple<Double, Integer, Integer> crunchDouble(String s, String pattern) {
+        return crunchString(s, pattern).map((a, b, c) -> of(parseDouble(a), b, c));
+    }
+
+    private static<T> Tuple<List<?>, Integer, Integer> crunchList(String s, String pattern, String listSeparator, Class<T> target) {
+        char type = pattern.charAt(2);
+        var mapped = crunchString(s, pattern);
+        return of(stream(mapped.a().split(listSeparator)).map(String::trim).map(e ->
+                switch (type) {
+                    case 'd' -> parseDouble(e);
+                    case 'n' -> parseLong(e);
+                    case 'i' -> parseInt(e);
+                    case 'c' -> e.charAt(0);
+                    case '(' -> readString(e, pattern.substring(3, pattern.indexOf(')')), target);
+                    default -> e;
+                }
+        ).collect(Collectors.toCollection(ArrayList::new)), mapped.b(), type == '(' ? pattern.indexOf(')') + 1 : 3);
+    }
+
+    private static Tuple<String, Integer, Integer> crunchString(String s, String pattern) {
+        if(pattern.length()<=2) return of(s, s.length(), 2);
+        int next = pattern.indexOf('%', 2);
+        String substring = pattern.substring(pattern.charAt(1) == 'l' ? 3 : 2, next == -1 ? pattern.length() : next);
+        int end = substring.isEmpty() ? s.length() : s.indexOf(substring);
+        verify(end != -1, "Malformatted pattern ("+pattern+") for string ("+s+")");
+        return Tuple.of(s.substring(0, end), end, 2);
     }
 }
