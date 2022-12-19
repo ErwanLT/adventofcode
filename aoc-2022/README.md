@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2022-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-17-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-32-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-18-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-33-yellow)]()
 
 
 | Day 	 | Name 	                                                        | Completion 	 |
@@ -25,7 +25,7 @@
 | 15  	 | [Beacon Exclusion Zone](src/main/java/aoc/day15/README.md)    |     ⭐️⭐      |
 | 16  	 | [Proboscidea Volcanium](src/main/java/aoc/day16/README.md)	   |     ⭐️ ❌     |
 | 17  	 | [Pyroclastic Flow](src/main/java/aoc/day17/README.md)	        |     ⭐ ❌      |
-| 18  	 | 	                                                             |     ❌ ❌      |
+| 18  	 | [Boiling Boulders](src/main/java/aoc/day18/README.md)	        |     ⭐ ❌      |
 | 19  	 | 	                                                             |     ❌ ❌      |
 | 20  	 | 	                                                             |     ❌ ❌      |
 | 21  	 | 	                                                             |     ❌ ❌      |

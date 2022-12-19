@@ -20,6 +20,7 @@ public interface ReadFormatedString {
     }
 
     static <T> T readString(String s, String pattern, String listSeparator, Class<T> target, Class<?>...nested) {
+//    System.out.println(s+", "+pattern);
         List<Object> mappedObjs = new ArrayList<>();
         int listIndex = 0;
         while (s.length() > 0) {
@@ -45,6 +46,7 @@ public interface ReadFormatedString {
         }
         try {
             verify(target.getConstructors().length > 0, "Class "+target+" has no constructor!");
+            verify(stream(target.getConstructors()).anyMatch(c -> c.getParameterCount() == mappedObjs.size()), "Class "+target+" has no constructor of size "+mappedObjs.size()+"!");
             return (T) stream(target.getConstructors()).filter(c -> c.getParameterCount() == mappedObjs.size()).findAny().get().newInstance(mappedObjs.toArray());
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -85,16 +87,18 @@ public interface ReadFormatedString {
                     case 'n' -> parseLong(e);
                     case 'i' -> parseInt(e);
                     case 'c' -> e.charAt(0);
-                    case '(' -> readString(e, pattern.substring(3, pattern.indexOf(')')), target);
+                    case '(' -> readString(e, pattern.substring(3, pattern.lastIndexOf(')')), " and ", target);
                     default -> e;
                 }
-        ).collect(Collectors.toCollection(ArrayList::new)), mapped.b(), type == '(' ? pattern.indexOf(')') + 1 : 3);
+        ).collect(Collectors.toCollection(ArrayList::new)), mapped.b(), type == '(' ? pattern.lastIndexOf(')') + 1 : 3);
     }
 
     private static Tuple<String, Integer, Integer> crunchString(String s, String pattern) {
         if(pattern.length()<=2) return of(s, s.length(), 2);
-        int next = pattern.indexOf('%', 2);
+        int next = pattern.indexOf('%', pattern.charAt(1) == 'l' ? pattern.lastIndexOf(')') : 2);
+//    if(next == -1 && pattern.charAt(1) == 'l') next =
         String substring = pattern.substring(pattern.charAt(1) == 'l' ? 3 : 2, next == -1 ? pattern.length() : next);
+//    System.out.println(substring);
         int end = substring.isEmpty() ? s.length() : s.indexOf(substring);
         verify(end != -1, "Malformatted pattern ("+pattern+") for string ("+s+")");
         return Tuple.of(s.substring(0, end), end, 2);
