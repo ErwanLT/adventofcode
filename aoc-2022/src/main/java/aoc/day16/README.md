@@ -230,4 +230,4 @@ With the elephant helping, after 26 minutes, the best you could do would release
 
 **With you and an elephant working together for 26 minutes, what is the most pressure you could release?**
 
-Your puzzle answer was `xxxx`.
+Your puzzle answer was `2207`.

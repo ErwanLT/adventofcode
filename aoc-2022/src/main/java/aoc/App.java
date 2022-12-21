@@ -87,7 +87,7 @@ public class App {
         printer = new PrettyPrinter();
 
         //allDays(args);
-        doDay(20, args);
+        doDay(16, args);
 
     }
 

@@ -3,91 +3,217 @@ package aoc.day16;
 import aoc.Day;
 
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static aoc.AOCUtils.allPairs;
-import static aoc.parser.ReadFormatedString.readString;
-import static java.util.List.of;
 
 public class Day16 implements Day {
 
-    private Map<String, Valve> valves;
-
-    public record Valve(String name, long flow, List<String> others) {}
-    public record State(Map<String, Long> open, Valve valve, long totalFlow) {}
-    public record State2(Map<String, Long> open, Valve me, Valve elephant, long totalFlow) {}
+    private ArrayList<Valve> valves = new ArrayList<>();
 
     @Override
     public String part1(List<String> input) {
-        valves = input(input);
-        Set<State> states = new HashSet<>();
-        states.add(new State(new HashMap<>(), valves.get("AA"), 0));
-        for(int minutes = 0; minutes<30; minutes++) {
-            Set<State> newStates = new HashSet<>();
-            for(State s : states) {
-                long flow = s.open.values().stream().mapToLong(e -> e).sum() + s.totalFlow;
-                if(s.valve.flow > 0 && !s.open.containsKey(s.valve.name)) {
-                    Map<String, Long> newOpen = new HashMap<>(s.open);
-                    newOpen.put(s.valve.name, s.valve.flow);
-                    newStates.add(new State(newOpen, s.valve, flow));
+        valves = parseInput(input);
+
+        HashMap<String,HashMap<String,Integer>> paths = new HashMap<>();
+        for(Valve v : valves) {
+            LinkedList<Valve> queue = new LinkedList<>();
+            queue.add(v);
+            HashMap<String,Integer> dists = new HashMap<>();
+            dists.put(v.name,0);
+            HashSet<String> seen = new HashSet<>();
+            seen.add(v.name);
+
+            while(queue.size() > 0) {
+                Valve cur = queue.poll();
+                int distFrom = dists.get(cur.name);
+
+                for(String connection : cur.connections) {
+                    if(!seen.contains(connection)) {
+                        seen.add(connection);
+                        dists.put(connection, distFrom + 1);
+                        queue.add(valves.stream().filter(x -> x.name.equals(connection)).findFirst().get());
+                    }
                 }
-                s.valve.others.stream().forEach(name -> newStates.add(new State(s.open, valves.get(name), flow)));
             }
-            states = newStates;
+
+            paths.put(v.name,dists);
         }
 
-        var pressure = states.stream().mapToLong(State::totalFlow).max().getAsLong();
+        ArrayList<Valve> nonzeroFlow = new ArrayList<>(valves.stream().filter(x -> x.flow > 0).toList());
 
-        return String.valueOf(pressure);
+        final int BITSET_MAX = 1 << nonzeroFlow.size();
+        int[][][] dp = new int[31][nonzeroFlow.size()][BITSET_MAX];
+
+        for(int[][] square : dp)
+            for(int[] row : square)
+                Arrays.fill(row,Integer.MIN_VALUE);
+
+        for(int i = 0; i < nonzeroFlow.size(); i++) {
+            int distFromStart = paths.get("AA").get(nonzeroFlow.get(i).name);
+            dp[distFromStart + 1][i][1 << i] = 0;
+        }
+
+        int bestPressure = 0;
+        for(int minute = 1; minute < 31; minute++) {
+            for(int curPos = 0; curPos < nonzeroFlow.size(); curPos++) {
+                for(int bitset = 0; bitset < BITSET_MAX; bitset++) {
+
+                    int potentialFlow = getFlowOfBitmask(nonzeroFlow,bitset);
+
+                    int newPressure = dp[minute-1][curPos][bitset] + potentialFlow;
+                    if(newPressure > dp[minute][curPos][bitset]) {
+                        dp[minute][curPos][bitset] = newPressure;
+                    }
+
+                    bestPressure = Math.max(bestPressure,newPressure);
+
+                    if(((1 << curPos) & bitset) == 0) {
+                        continue;
+                    }
+
+                    for(int other = 0; other < nonzeroFlow.size(); other++) {
+                        if(((1 << other)& bitset) != 0)
+                            continue;
+
+                        int distTo = paths.get(nonzeroFlow.get(curPos).name).get(nonzeroFlow.get(other).name);
+
+                        if(minute + distTo + 1 > 30)
+                            continue;
+
+                        int travelPressure =  dp[minute][curPos][bitset] + potentialFlow * (distTo + 1);
+
+                        int newBitset = bitset | (1 << other);
+
+                        if(travelPressure > dp[minute + distTo + 1][other][newBitset]) {
+                            dp[minute + distTo + 1][other][newBitset] = travelPressure;
+                        }
+                    }
+                }
+            }
+        }
+        return Integer.toString(bestPressure);
     }
 
-    private Map<String, Valve> input(List<String> input) {
-        return input.stream().map(s -> readString(s, "Valve %s has flow rate=%n; tunnel%u lead%u to valve%u %ls", Valve.class)).collect(Collectors.toMap(v -> v.name, v -> v));
+    private ArrayList<Valve> parseInput(List<String> input){
+        ArrayList<Valve> valveArrayList = new ArrayList<>();
+        for (String s:input) {
+            String[] words = s.split(", |; | ");
+            Valve v = new Valve();
+            v.name = words[1];
+            v.flow = Integer.parseInt(words[4].split("=")[1]);
+            v.connections.addAll(Arrays.asList(words).subList(9, words.length));
+            valveArrayList.add(v);
+        }
+        return valveArrayList;
     }
+
+    public int getFlowOfBitmask(ArrayList<Valve> nonzero, int bitmask) {
+        int flow = 0;
+        for(int i = 0; i < nonzero.size(); i++) {
+            if(((1 << i) & bitmask) != 0) {
+                flow += nonzero.get(i).flow;
+            }
+        }
+        return flow;
+    }
+
 
     @Override
     public String part2(List<String> input) {
-        valves = input(input);
-        Set<String> openable = valves.values().stream().filter(s -> s.flow > 0).map(Valve::name).collect(Collectors.toSet());
-        Set<State2> states = new HashSet<>();
-        states.add(new State2(new HashMap<>(), valves.get("AA"), valves.get("AA"), 0));
-        Map<Integer, Long> kpis = Map.of(5, 25L, 10, 50L, 15, 100L, 20, 140L, 25, 160L);
-        for(int minutes = 0; minutes<26; minutes++) {
-            Set<State2> newStates = new HashSet<>();
-            for(State2 s : states) {
-                long flow = s.open.values().stream().mapToLong(e -> e).sum() + s.totalFlow;
-                if(s.open.size() == openable.size()) { // All valves are open, time to chill
-                    newStates.add(new State2(s.open, valves.get("AA"), valves.get("AA"), flow));
-                }
-                int nStates = newStates.size();
-                newStates.addAll(openValve(s.me, s.elephant, false, valves, s, flow));
-                newStates.addAll(openValve(s.elephant, s.me, false, valves, s, flow));
-                newStates.addAll(openValve(s.me, s.elephant, true, valves, s, flow));
-                if(newStates.size() == nStates) { // If there are no valves to be opened, we walk
-                    allPairs(s.me.others, s.elephant.others)
-                            .forEach(p -> newStates.add(new State2(s.open, valves.get(p.a()), valves.get(p.b()), flow)));
+        valves = parseInput(input);
+        HashMap<String,HashMap<String,Integer>> paths = new HashMap<>();
+        for(Valve v : valves) {
+            LinkedList<Valve> queue = new LinkedList<>();
+            queue.add(v);
+            HashMap<String,Integer> dists = new HashMap<>();
+            dists.put(v.name,0);
+            HashSet<String> seen = new HashSet<>();
+            seen.add(v.name);
+
+            while(queue.size() > 0) {
+                Valve cur = queue.poll();
+                int distFrom = dists.get(cur.name);
+
+                for(String connection : cur.connections) {
+                    if(!seen.contains(connection)) {
+                        seen.add(connection);
+                        dists.put(connection, distFrom + 1);
+                        queue.add(valves.stream().filter(x -> x.name.equals(connection)).findFirst().get());
+                    }
                 }
             }
-            states = newStates;
-            if(kpis.containsKey(minutes)){
-                long kpi = kpis.get(minutes);
-                states = states.stream().filter(e -> e.open.values().stream().mapToLong(f -> f).sum()>=kpi).collect(Collectors.toSet());
+
+            paths.put(v.name,dists);
+        }
+
+        ArrayList<Valve> nonzeroFlow = new ArrayList<>(valves.stream().filter(x -> x.flow > 0).toList());
+
+        final int BITSET_MAX = 1 << nonzeroFlow.size();
+
+        int[][][] dp = new int[31][nonzeroFlow.size()][BITSET_MAX];
+
+        for(int[][] square : dp)
+            for(int[] row : square)
+                Arrays.fill(row,Integer.MIN_VALUE);
+
+        for(int i = 0; i < nonzeroFlow.size(); i++) {
+            int distFromStart = paths.get("AA").get(nonzeroFlow.get(i).name);
+            dp[distFromStart + 1][i][1 << i] = 0;
+        }
+
+        for(int minute = 1; minute < 27; minute++) {
+            for(int curPos = 0; curPos < nonzeroFlow.size(); curPos++) {
+                for(int bitset = 0; bitset < BITSET_MAX; bitset++) {
+
+                    int potentialFlow = getFlowOfBitmask(nonzeroFlow,bitset);
+
+                    int newPressure = dp[minute-1][curPos][bitset] + potentialFlow;
+                    if(newPressure > dp[minute][curPos][bitset]) {
+                        dp[minute][curPos][bitset] = newPressure;
+                    }
+
+                    if(((1 << curPos) & bitset) == 0) {
+                        continue;
+                    }
+
+                    for(int other = 0; other < nonzeroFlow.size(); other++) {
+                        if(((1 << other)& bitset) != 0)
+                            continue;
+
+                        int distTo = paths.get(nonzeroFlow.get(curPos).name).get(nonzeroFlow.get(other).name);
+
+                        if(minute + distTo + 1 > 26)
+                            continue;
+
+                        int travelPressure =  dp[minute][curPos][bitset] + potentialFlow * (distTo + 1);
+
+                        int newBitset = bitset | (1 << other);
+
+                        if(travelPressure > dp[minute + distTo + 1][other][newBitset]) {
+                            dp[minute + distTo + 1][other][newBitset] = travelPressure;
+                        }
+                    }
+                }
             }
         }
-        var pressure = states.stream().mapToLong(State2::totalFlow).max().getAsLong();
-        return String.valueOf(pressure);
+
+        int bestPressure = 0;
+        for(int mask1 = 1; mask1 < BITSET_MAX; mask1++) {
+            for(int mask2 = 1; mask2 < BITSET_MAX; mask2++) {
+                if((mask1 & mask2) != mask2)
+                    continue;
+
+                int best1 = 0;
+                int best2 = 0;
+
+                for(int i = 0; i < nonzeroFlow.size(); i++) {
+                    best1 = Math.max(best1,dp[26][i][(mask1 & (~mask2))]);
+                    best2 = Math.max(best2,dp[26][i][mask2]);
+                }
+
+                bestPressure = Math.max(bestPressure,best1 + best2);
+            }
+        }
+
+        return Integer.toString(bestPressure);
     }
 
-    private List<State2> openValve(Valve v1, Valve v2, boolean both, Map<String, Valve> valves, State2 s, long flow) {
-        if(v1.flow > 0 && !s.open.containsKey(v1.name) && (!both || (v2.flow > 0 && !s.open.containsKey(v2.name)))) {
-            Map<String, Long> newOpen = new HashMap<>(s.open);
-            newOpen.put(v1.name, v1.flow);
-            if(both) {
-                newOpen.put(v2.name, v2.flow);
-                return of(new State2(newOpen, v1, v2, flow));
-            }
-            return v2.others.stream().map(name -> new State2(newOpen, v1, valves.get(name), flow)).toList();
-        }
-        return of();
-    }
 }
