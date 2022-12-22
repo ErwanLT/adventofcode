@@ -16,13 +16,15 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 public class InfiniteGrid implements Grid {
-    final Map<Loc, Character> grid;
+    public final Map<Loc, Character> grid;
 
     public InfiniteGrid(char[][] g) {
         this();
         for (int i = 0; i < g.length; i++) {
-            for (int j = 0; j < g[0].length; j++) {
-                grid.put(new Loc(j, i), g[i][j]);
+            for (int j = 0; j < g[i].length; j++) {
+                if(g[i][j] != ' ') {
+                    grid.put(new Loc(j, i), g[i][j]);
+                }
             }
         }
     }
@@ -64,7 +66,7 @@ public class InfiniteGrid implements Grid {
     }
 
     public boolean canPlace(InfiniteGrid g, long r, long c) {
-        return g.grid.keySet().stream().map(l -> l.move((int) c, (int) r)).noneMatch(grid::containsKey);
+        return g.grid.keySet().stream().map(l -> l.move(c, r)).noneMatch(grid::containsKey);
     }
 
     public boolean canPlace(InfiniteGrid g) {
@@ -88,7 +90,7 @@ public class InfiniteGrid implements Grid {
     }
 
     public InfiniteGrid move(long x, long y) {
-        return new InfiniteGrid(grid.entrySet().stream().map(e -> new Pair<>(e.getKey().move((int) x, (int) y), e.getValue())).collect(Collectors.toMap(Pair::a, Pair::b)));
+        return new InfiniteGrid(grid.entrySet().stream().map(e -> new Pair<>(e.getKey().move(x, y), e.getValue())).collect(Collectors.toMap(Pair::a, Pair::b)));
     }
 
     public void place(InfiniteGrid s) {

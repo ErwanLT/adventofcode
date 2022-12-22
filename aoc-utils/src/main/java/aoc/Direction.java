@@ -61,6 +61,24 @@ public enum Direction {
         return new Direction[]{NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST};
     }
 
+    public static Direction[] round() {
+        return new Direction[]{NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
+    }
+
+    public Direction turnSteps(int steps) {
+        Direction[] d = round();
+        int index = IntStream.range(0, d.length).filter(i -> d[i] == this).findFirst().getAsInt();
+        return d[(index + steps) % d.length];
+    }
+
+    public static Direction[] diagonals() {
+        return new Direction[]{NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST};
+    }
+
+    public Direction turn() {
+        return turn(true);
+    }
+
     public Direction turn(boolean right) {
         int cur = ordinal() + (right ? 1 : -1);
         if (cur == fourDirections().length) cur = 0;
@@ -82,7 +100,7 @@ public enum Direction {
         };
     }
 
-    public Loc move(Loc currentLocation, int amount) {
+    public Loc move(Loc currentLocation, long amount) {
         return switch (this) {
             case SOUTH -> new Loc(currentLocation.x, currentLocation.y + amount);
             case NORTH -> new Loc(currentLocation.x, currentLocation.y - amount);
@@ -155,6 +173,14 @@ public enum Direction {
         };
     }
 
+    public boolean diagonal() {
+        return this == NORTH || this == SOUTH;
+    }
+
+    public boolean horizontal() {
+        return this == EAST || this == WEST;
+    }
+
     public boolean leftOf(Direction robotDir) {
         int n = this.ordinal() - 1;
         if (n == -1) n = values().length - 1;
@@ -173,15 +199,5 @@ public enum Direction {
 
     public Direction turnDegrees(int degrees) {
         return turnDegrees(abs(degrees), degrees > 0);
-    }
-
-    public static Direction[] round() {
-        return new Direction[]{NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
-    }
-
-    public Direction turnSteps(int steps) {
-        Direction[] d = round();
-        int index = IntStream.range(0, d.length).filter(i -> d[i] == this).findFirst().getAsInt();
-        return d[(index + steps) % d.length];
     }
 }
