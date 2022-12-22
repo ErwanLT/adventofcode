@@ -26,7 +26,7 @@
 | 16  	 | [Proboscidea Volcanium](src/main/java/aoc/day16/README.md)	    |     ⭐️⭐      |
 | 17  	 | [Pyroclastic Flow](src/main/java/aoc/day17/README.md)	         |      ⭐❌      |
 | 18  	 | [Boiling Boulders](src/main/java/aoc/day18/README.md)	         |     ⭐️⭐      |
-| 19  	 | [](src/main/java/aoc/day19/README.md)	                         |     ❌ ❌      |
+| 19  	 | [Not Enough Minerals](src/main/java/aoc/day19/README.md)	      |     ❌ ❌      |
 | 20  	 | [Grove Positioning System](src/main/java/aoc/day20/README.md)	 |     ⭐️⭐      |
 | 21  	 | 	                                                              |     ❌ ❌      |
 | 22  	 | 	                                                              |     ❌ ❌      |
