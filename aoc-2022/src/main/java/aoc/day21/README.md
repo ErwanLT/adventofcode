@@ -55,4 +55,4 @@ In the above example, the number you need to yell to pass `root`'s equality test
 
 **What number do you yell to pass root's equality test?**
 
-Your puzzle answer was `xxxx`.
+Your puzzle answer was `3592056845086`.
