@@ -55,8 +55,8 @@ One module for a year / one module per day inside year.
 
 * [2022](aoc-2022/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-20-blue)](2022)
-[![Stars](https://img.shields.io/badge/⭐️-37-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%21completed-20-blue)](2022)
+[![Stars](https://img.shields.io/badge/⭐️-39-yellow)]()
 
 | Day 	 | Name 	                                                                  | Completion 	 |
 |:-----:|:------------------------------------------------------------------------|:------------:|
@@ -80,7 +80,7 @@ One module for a year / one module per day inside year.
 | 18  	 | [Boiling Boulders](aoc-2022/src/main/java/aoc/day18/README.md)	         |     ⭐️⭐      |
 | 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	      |     ❌ ❌      |
 | 20  	 | [Grove Positioning System](aoc-2022/src/main/java/aoc/day20/README.md)	 |     ⭐️⭐      |
-| 21  	 | 	                                                                       |     ❌ ❌      |
+| 21  	 | [Monkey Math](aoc-2022/src/main/java/aoc/day21/README.md)	              |     ⭐️⭐      |
 | 22  	 | 	                                                                       |     ❌ ❌      |
 | 23  	 | 	                                                                       |     ❌ ❌      |
 | 24  	 |                                                                         |     ❌ ❌      |
