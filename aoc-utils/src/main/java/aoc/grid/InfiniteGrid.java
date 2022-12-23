@@ -22,7 +22,7 @@ public class InfiniteGrid implements Grid {
         this();
         for (int i = 0; i < g.length; i++) {
             for (int j = 0; j < g[i].length; j++) {
-                if(g[i][j] != ' ') {
+                if(g[i][j] != ' ' && g[i][j] != '.') {
                     grid.put(new Loc(j, i), g[i][j]);
                 }
             }
@@ -34,7 +34,11 @@ public class InfiniteGrid implements Grid {
     }
 
     public InfiniteGrid() {
-        this.grid = new HashMap<>();
+        this(new HashMap<>());
+    }
+
+    public InfiniteGrid(String s) {
+        this(new CharGrid(s).grid);
     }
 
     public IntStream iterate() {
@@ -43,6 +47,10 @@ public class InfiniteGrid implements Grid {
 
     public Optional<Character> get(Loc p) {
         return grid.containsKey(p) ? of(grid.get(p)) : empty();
+    }
+
+    public char getChar(Loc p) {
+        return get(p).orElse((char)0);
     }
 
     public void set(Loc p, char c) {

@@ -30,6 +30,6 @@
 | 20  	 | [Grove Positioning System](src/main/java/aoc/day20/README.md)	 |     ⭐️⭐      |
 | 21  	 | [Monkey Math](src/main/java/aoc/day21/README.md)	              |     ⭐️⭐      |
 | 22  	 | [Monkey Map](src/main/java/aoc/day22/README.md)	               |     ⭐️⭐      |
-| 23  	 | 	                                                              |     ❌ ❌      |
+| 23  	 | [Unstable Diffusion](src/main/java/aoc/day23/README.md)        |     ⭐️⭐      |
 | 24  	 |                                                                |     ❌ ❌      |
 | 25  	 | 	                                                              |     ❌ ❌      |
