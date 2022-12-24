@@ -5,6 +5,7 @@ import aoc.location.Loc;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.lang.Math.abs;
 
@@ -59,6 +60,10 @@ public enum Direction {
 
     public static Direction[] eightDirections() {
         return new Direction[]{NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST};
+    }
+
+    public static Stream<Direction> five() {
+        return Stream.of(NORTH, EAST, SOUTH, WEST, CENTER);
     }
 
     public static Direction[] round() {

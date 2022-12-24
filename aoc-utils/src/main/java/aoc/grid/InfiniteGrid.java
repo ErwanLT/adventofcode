@@ -4,13 +4,11 @@ import aoc.Pair;
 import aoc.location.Loc;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -19,10 +17,14 @@ public class InfiniteGrid implements Grid {
     public final Map<Loc, Character> grid;
 
     public InfiniteGrid(char[][] g) {
+        this(g, ' ');
+    }
+
+    public InfiniteGrid(char[][] g, char transparent) {
         this();
         for (int i = 0; i < g.length; i++) {
             for (int j = 0; j < g[i].length; j++) {
-                if(g[i][j] != ' ' && g[i][j] != '.') {
+                if(transparent != g[i][j]) {
                     grid.put(new Loc(j, i), g[i][j]);
                 }
             }
@@ -30,7 +32,7 @@ public class InfiniteGrid implements Grid {
     }
 
     public InfiniteGrid(Map<Loc, Character> grid) {
-        this.grid = grid;
+        this.grid = new HashMap<>(grid);
     }
 
     public InfiniteGrid() {
@@ -111,5 +113,17 @@ public class InfiniteGrid implements Grid {
 
     public long width() {
         return maxX()+1-minX();
+    }
+
+    public boolean contains(Loc p) {
+        return grid.keySet().contains(p);
+    }
+
+    public Stream<Loc> stream() {
+        return grid.keySet().stream();
+    }
+
+    public void removeIf(BiPredicate<Loc, Character> p) {
+        new HashSet<>(grid.entrySet()).stream().filter(e -> p.test(e.getKey(), e.getValue())).forEach(e -> grid.remove(e.getKey()));
     }
 }

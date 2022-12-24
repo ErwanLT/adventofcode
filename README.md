@@ -55,8 +55,8 @@ One module for a year / one module per day inside year.
 
 * [2022](aoc-2022/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-22-blue)](2022)
-[![Stars](https://img.shields.io/badge/⭐️-41-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-24-blue)](2022)
+[![Stars](https://img.shields.io/badge/⭐️-45-yellow)]()
 
 | Day 	 | Name 	                                                                  | Completion 	 |
 |:-----:|:------------------------------------------------------------------------|:------------:|
@@ -83,5 +83,5 @@ One module for a year / one module per day inside year.
 | 21  	 | [Monkey Math](aoc-2022/src/main/java/aoc/day21/README.md)	              |     ⭐️⭐      |
 | 22  	 | [Monkey Map](aoc-2022/src/main/java/aoc/day22/README.md)	               |     ⭐️⭐      |
 | 23  	 | [Unstable Diffusion](aoc-2022/src/main/java/aoc/day23/README.md)        |     ⭐️⭐      |
-| 24  	 |                                                                         |     ❌ ❌      |
+| 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)            |     ⭐️⭐      |
 | 25  	 | 	                                                                       |     ❌ ❌      |
