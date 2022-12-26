@@ -84,4 +84,4 @@ One module for a year / one module per day inside year.
 | 22  	 | [Monkey Map](aoc-2022/src/main/java/aoc/day22/README.md)	               |     ⭐️⭐      |
 | 23  	 | [Unstable Diffusion](aoc-2022/src/main/java/aoc/day23/README.md)        |     ⭐️⭐      |
 | 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)            |     ⭐️⭐      |
-| 25  	 | 	                                                                       |     ❌ ❌      |
+| 25  	 | [Full of Hot Air](aoc-2022/src/main/java/aoc/day25/README.md)           |     ⭐️❌      |

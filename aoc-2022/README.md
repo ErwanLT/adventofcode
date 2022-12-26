@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2022-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-24-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-45-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-46-yellow)]()
 
 
 | Day 	 | Name 	                                                        | Completion 	 |
@@ -26,10 +26,10 @@
 | 16  	 | [Proboscidea Volcanium](src/main/java/aoc/day16/README.md)	   |     ⭐️⭐      |
 | 17  	 | [Pyroclastic Flow](src/main/java/aoc/day17/README.md)	        |      ⭐❌      |
 | 18  	 | [Boiling Boulders](src/main/java/aoc/day18/README.md)	        |     ⭐️⭐      |
-| 19  	 | [Not Enough Minerals](src/main/java/aoc/day19/README.md)	     |     ❌ ❌      |
+| 19  	 | [Not Enough Minerals](src/main/java/aoc/day19/README.md)	     |      ❌❌      |
 | 20  	 | [Grove Positioning System](src/main/java/aoc/day20/README.md) |     ⭐️⭐      |
 | 21  	 | [Monkey Math](src/main/java/aoc/day21/README.md)	             |     ⭐️⭐      |
 | 22  	 | [Monkey Map](src/main/java/aoc/day22/README.md)	              |     ⭐️⭐      |
 | 23  	 | [Unstable Diffusion](src/main/java/aoc/day23/README.md)       |     ⭐️⭐      |
 | 24  	 | [Blizzard Basin](src/main/java/aoc/day24/README.md)           |     ⭐️⭐      |
-| 25  	 | 	                                                             |     ❌ ❌      |
+| 25  	 | [Full of Hot Air](src/main/java/aoc/day25/README.md)          |     ⭐️❌      |

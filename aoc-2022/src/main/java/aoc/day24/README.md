@@ -252,4 +252,4 @@ In the above example, the first trip to the goal takes `18` minutes, the trip ba
 
 **What is the fewest number of minutes required to reach the goal, go back to the start, then reach the goal again?**
 
-Your puzzle answer was `xxxx`.
+Your puzzle answer was `842`.
