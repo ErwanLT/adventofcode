@@ -5,6 +5,7 @@
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)]()
 [![Stars](https://img.shields.io/badge/⭐️-46-yellow)]()
 
+[![](img/Aoc2022.png)](https://adventofcode.com/2022)
 
 | Day 	 | Name 	                                                        | Completion 	 |
 |:-----:|:--------------------------------------------------------------|:------------:|
