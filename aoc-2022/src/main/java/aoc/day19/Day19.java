@@ -1,92 +1,161 @@
 package aoc.day19;
 
 import aoc.Day;
-import aoc.TopUniqueElements;
-import aoc.customMap.LongCountMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static aoc.parser.ReadFormatedString.readString;
-import static java.util.Comparator.comparing;
+import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class Day19 implements Day {
 
-    public record Blueprint(long n, long oreCost, long clayCost, long obsidianOre, long obsidianClay, long geodeOre, long geodeObsidian){}
-    public record State(LongCountMap<String> inventory, LongCountMap<String> perTurn, String target) {}
     @Override
     public String part1(List<String> input) {
-        List<Blueprint> blueprints = input.stream().map(s -> readString(s, "Blueprint %n: Each ore robot costs %n ore. Each clay robot costs %n ore. Each obsidian robot costs %n ore and %n clay. Each geode robot costs %n ore and %n obsidian.", " ", Blueprint.class)).toList();
-        long quality = getQuality(blueprints, 24, 100000);
-        return String.valueOf(quality);
-    }
+        var blueprints = getBlueprints(input);
+        var qualityLevel = 0;
 
-    private long getQuality(List<Blueprint> blueprints, int minutes, int capacity) {
-        long totalQuality = 0;
-        Collection<State> states = getStates(new LongCountMap<>(), new LongCountMap<>(), "ore", "clay")
-                .peek(s -> s.perTurn.increment("ore"))
-                .toList();
-
-        for(Blueprint b: blueprints){
-            System.out.println("Blueprint " + b.n);
-            System.out.println("-----------------------------");
-            for (int i = 0; i < minutes; i++) {
-                TopUniqueElements<State> newStates = new TopUniqueElements<>(capacity, comparing(state -> state.inventory.sumValues()));
-                for (State s : states){
-                    LongCountMap<String> perTurn = new LongCountMap<>(s.perTurn);
-                    boolean buildGeode = s.inventory.get("ore") >= b.geodeOre && s.inventory.get("obsidian") >= b.geodeObsidian;
-                    boolean buildObsidian = s.inventory.get("ore") >= b.obsidianOre && s.inventory.get("clay") >= b.obsidianClay;
-                    boolean buildOre = s.target.equals("ore") && s.inventory.get("ore") >= b.oreCost;
-                    boolean buildClay = s.target.equals("clay") && s.inventory.get("ore") >= b.clayCost;
-                    perTurn.forEach(s.inventory::increment);
-
-                    if (!buildGeode && !buildObsidian && buildOre) {
-                        //System.out.println("build ore robot");
-                        s.inventory.increment("ore", -b.oreCost);
-                        s.perTurn.increment("ore");
-                        getStates(s.inventory, s.perTurn, "ore", "clay").forEach(newStates::add);
-                    } else if (!buildGeode && !buildObsidian && buildClay) {
-                        //System.out.println("build clay robot");
-                        s.inventory.increment("ore", -b.clayCost);
-                        s.perTurn.increment("clay");
-                        getStates(s.inventory, s.perTurn, "ore", "clay", "obsidian").forEach(newStates::add);
-                    } else if (!buildGeode && buildObsidian) {
-                        //System.out.println("build obsidian robot");
-                        s.inventory.increment("ore", -b.obsidianOre);
-                        s.inventory.increment("clay", -b.obsidianClay);
-                        s.perTurn.increment("obsidian");
-                        getStates(s.inventory, s.perTurn, "ore", "clay", "obsidian", "geode").forEach(newStates::add);
-                    } else if (buildGeode) {
-                        //System.out.println("build geode robot");
-                        s.inventory.increment("ore", -b.geodeOre);
-                        s.inventory.increment("obsidian", -b.geodeObsidian);
-                        s.perTurn.increment("geode");
-                        getStates(s.inventory, s.perTurn, "ore", "clay", "obsidian", "geode").forEach(newStates::add);
-                    } else {
-                        newStates.add(s);
-                    }
-                }
-                states = newStates;
-            }
-            var quality = b.n * states.stream().mapToLong(e -> e.inventory.get("geode")).max().orElse(0L);
-            System.out.println("the blueprint quality is "+ quality);
-            totalQuality += quality;
-
+        for (var blueprint: blueprints) {
+            qualityLevel += blueprint.id * findMaxGeodeForBlueprint(blueprint, 24);
         }
-        return totalQuality;
+
+        return String.valueOf(qualityLevel);
     }
 
-    private static Stream<State> getStates(LongCountMap<String> inventory, LongCountMap<String> perTurn, String...ores) {
-        return Arrays.stream(ores).map(ore -> new State(new LongCountMap<>(inventory), new LongCountMap<>(perTurn), ore));
+    private int findMaxGeodeForBlueprint(Blueprint blueprint, int minutes) {
+        var maxGeode = 0;
+        var bestMinutePerRobotDistribution = new HashMap<RobotsCount, Integer>();
+        var bestGeodePerMinute = new HashMap<Integer, Integer>();
+        var queue = new PriorityQueue<State>((a, b) -> b.minutes - a.minutes);
+        queue.add(new State(0, new Inventory(0, 0, 0, 0), new RobotsCount(1, 0, 0, 0)));
+
+        while (!queue.isEmpty()) {
+            var state = queue.poll();
+
+            if (state.minutes == minutes) {
+                if (state.inventory.geode > maxGeode) {
+                    maxGeode = state.inventory.geode;
+                }
+                continue;
+            }
+
+            for (Type type: Type.values()) {
+                var newRobots = new RobotsCount(state.robots, type);
+                var cost = blueprint.robotCost.get(type);
+
+                if (
+                        newRobots.ore > blueprint.max.ore
+                                || newRobots.clay > blueprint.max.clay
+                                || newRobots.obsidian > blueprint.max.obsidian
+                                || (state.robots.clay == 0 && cost.clay > 0)
+                                || (state.robots.obsidian == 0 && cost.obsidian > 0)
+                ) {
+                    continue;
+                }
+                var neededMinutes = (int) Math.ceil(Math.max(0, cost.ore - state.inventory.ore) / (double) state.robots.ore);
+
+                if (state.robots.clay > 0 && cost.clay > 0) {
+                    neededMinutes = Math.max(
+                            neededMinutes,
+                            (int) Math.ceil(Math.max(0, cost.clay - state.inventory.clay) / (double) state.robots.clay)
+                    );
+                }
+
+                if (state.robots.obsidian > 0 && cost.obsidian > 0) {
+                    neededMinutes = Math.max(
+                            neededMinutes,
+                            (int) Math.ceil(Math.max(0, cost.obsidian - state.inventory.obsidian) / (double) state.robots.obsidian)
+                    );
+                }
+
+                neededMinutes++;
+
+                if (state.minutes + neededMinutes > minutes) {
+                    continue;
+                }
+
+                var newInventory = new Inventory(
+                        state.inventory.ore - cost.ore + (state.robots.ore * neededMinutes),
+                        state.inventory.clay - cost.clay + (state.robots.clay * neededMinutes),
+                        state.inventory.obsidian - cost.obsidian + (state.robots.obsidian * neededMinutes),
+                        state.inventory.geode + (state.robots.geode * neededMinutes)
+                );
+
+                var newState = new State(state.minutes + neededMinutes, newInventory, newRobots);
+
+                if (
+                        (
+                                bestGeodePerMinute.containsKey(newState.minutes)
+                                        && bestGeodePerMinute.get(newState.minutes) > newState.robots.geode
+                        ) || (
+                                bestMinutePerRobotDistribution.containsKey(newState.robots)
+                                        && bestMinutePerRobotDistribution.get(newState.robots) < newState.minutes
+                        )
+                ) {
+                    continue;
+                }
+
+                bestGeodePerMinute.put(newState.minutes, newState.robots.geode);
+                bestMinutePerRobotDistribution.put(newState.robots, newState.minutes);
+
+                queue.add(newState);
+            }
+
+            var totalGeode = state.inventory.geode + state.robots.geode * (minutes - state.minutes);
+
+            if (totalGeode > maxGeode) {
+                maxGeode = totalGeode;
+            }
+        }
+
+        return maxGeode;
+    }
+
+    private List<Blueprint> getBlueprints(List<String> input) {
+        var blueprints = new ArrayList<Blueprint>();
+
+        for (var blueprint : input) {
+            var inputNum = extractIntegersFromString(blueprint);
+            blueprints.add(new Blueprint(
+                    inputNum[0],
+                    Map.of(
+                            Type.ORE, new Cost(inputNum[1], 0, 0, 0),
+                            Type.CLAY, new Cost(inputNum[2], 0, 0, 0),
+                            Type.OBSIDIAN, new Cost(inputNum[3], inputNum[4], 0, 0),
+                            Type.GEODE, new Cost(inputNum[5], 0, inputNum[6], 0)
+                    )
+            ));
+        }
+
+        return blueprints;
+    }
+
+    public static Integer[] extractIntegersFromString(String s) {
+        var list = new LinkedList<Integer>();
+
+        var p = Pattern.compile("-?\\d+");
+        var m = p.matcher(s);
+
+        while (m.find()) {
+            list.add(Integer.parseInt(m.group()));
+        }
+
+        return list.toArray(new Integer[0]);
     }
 
     @Override
     public String part2(List<String> input) {
-        return null;
+        var blueprints = getBlueprints(input);
+
+        if (blueprints.size() > 2) {
+            blueprints = blueprints.subList(0, 3);
+        }
+
+        var result = 1;
+
+        for (var blueprint: blueprints) {
+            result *= findMaxGeodeForBlueprint(blueprint, 32);
+        }
+
+        return String.valueOf(result);
     }
 
 }

@@ -56,7 +56,7 @@ One module for a year / one module per day inside year.
 * [2022](aoc-2022/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-24-blue)](2022)
-[![Stars](https://img.shields.io/badge/⭐️-45-yellow)]()
+[![Stars](https://img.shields.io/badge/⭐️-48-yellow)]()
 
 | Day 	 | Name 	                                                                  | Completion 	 |
 |:-----:|:------------------------------------------------------------------------|:------------:|
@@ -78,7 +78,7 @@ One module for a year / one module per day inside year.
 | 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	    |     ⭐️⭐      |
 | 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	         |     ⭐ ❌      |
 | 18  	 | [Boiling Boulders](aoc-2022/src/main/java/aoc/day18/README.md)	         |     ⭐️⭐      |
-| 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	      |     ❌ ❌      |
+| 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	      |     ⭐️⭐      |
 | 20  	 | [Grove Positioning System](aoc-2022/src/main/java/aoc/day20/README.md)	 |     ⭐️⭐      |
 | 21  	 | [Monkey Math](aoc-2022/src/main/java/aoc/day21/README.md)	              |     ⭐️⭐      |
 | 22  	 | [Monkey Map](aoc-2022/src/main/java/aoc/day22/README.md)	               |     ⭐️⭐      |
