@@ -107,5 +107,3 @@ The **head smoothie chef** has just finished warming up the industrial-grade smo
 As you do, a very young Elf - one you recognize from the expedition team - approaches the table and holds up a single **star** fruit he found. The head smoothie chef places it in the blender.
 
 Only **49 stars** to go.
-
-You don't have enough stars to fill the blender, though. You need 3 more.
