@@ -76,7 +76,7 @@ One module for a year / one module per day inside year.
 | 14  	 | [Regolith Reservoir](aoc-2022/src/main/java/aoc/day14/README.md)        |     ⭐️⭐      |
 | 15  	 | [Beacon Exclusion Zone](aoc-2022/src/main/java/aoc/day15/README.md)     |     ⭐️⭐      |
 | 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	    |     ⭐️⭐      |
-| 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	         |     ⭐ ❌      |
+| 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	         |     ⭐️⭐      |
 | 18  	 | [Boiling Boulders](aoc-2022/src/main/java/aoc/day18/README.md)	         |     ⭐️⭐      |
 | 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	      |     ⭐️⭐      |
 | 20  	 | [Grove Positioning System](aoc-2022/src/main/java/aoc/day20/README.md)	 |     ⭐️⭐      |

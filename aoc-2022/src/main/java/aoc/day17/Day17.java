@@ -1,251 +1,111 @@
 package aoc.day17;
 
 import aoc.Day;
-import aoc.location.Coord;
+import aoc.day17.shapes.*;
+import aoc.day17.shapes.Shape;
+import com.google.common.collect.Iterables;
+import com.google.common.primitives.Chars;
 
+import java.awt.*;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 
 public class Day17 implements Day {
 
+    record RepeatingWindow(
+            int startRockNumber,
+            int size,
+            int heightIncrease
+    ) {}
+
     @Override
     public String part1(List<String> input) {
-        HashSet<Coord> rocksInCave = new HashSet<>();
-        for(int i = 0; i < 7; i++) {
-            rocksInCave.add(new Coord(i,-1));
-        }
-        LinkedList<Boolean> jetPattern = new LinkedList<>();
-        for(char c : input.get(0).trim().toCharArray())
-            jetPattern.add(c == '>');
+        return getMaxRockHeight(input.get(0), 2022);
+    }
 
-        ArrayList<HashSet<Coord>> rocks = new ArrayList<>();
+    public String getMaxRockHeight(String input, long targetRockCount) {
+        var jets = Iterables.cycle(Chars.asList(input.trim().toCharArray())).iterator();
+        var shapes = Iterables.cycle(Shape1.class, Shape2.class, Shape3.class, Shape4.class, Shape5.class).iterator();
+        var grid = new HashSet<Point>();
+        var highestY = 0;
+        var heightDifferences = new ArrayList<Integer>();
+        var comparedSlice = 50;
+        var hashStore = new HashMap<Integer, Integer>();
+        RepeatingWindow repeatingWindow;
+        var recordedHeights = new HashMap<Integer, Integer>();
+        var rockIndex = 0;
 
-        HashSet<Coord> horizLine = new HashSet<>();
-        for(int i = 0; i < 4; i++)
-            horizLine.add(new Coord(i,0));
+        while (true) {
+            rockIndex++;
 
-        rocks.add(horizLine);
+            Shape rock;
+            int previousMaxHeight = highestY;
 
-        //plus sign
-        HashSet<Coord> plus = new HashSet<>();
-        plus.add(new Coord(0,1));
-        plus.add(new Coord(1,1));
-        plus.add(new Coord(2,1));
-        plus.add(new Coord(1,2));
-        plus.add(new Coord(1,0));
-        rocks.add(plus);
+            try {
+                rock = shapes.next().getConstructor(Point.class).newInstance(new Point(3, highestY + 4));
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
 
-        //backwards L
-        HashSet<Coord> backL = new HashSet<>();
-        backL.add(new Coord(0,0));
-        backL.add(new Coord(1,0));
-        backL.add(new Coord(2,0));
-        backL.add(new Coord(2,1));
-        backL.add(new Coord(2,2));
-        rocks.add(backL);
-
-        //vertical line
-        HashSet<Coord> vertLine = new HashSet<>();
-        for(int i = 0; i < 4; i++)
-            vertLine.add(new Coord(0,i));
-        rocks.add(vertLine);
-
-        //square
-        HashSet<Coord> square = new HashSet<>();
-        square.add(new Coord(0,0));
-        square.add(new Coord(0,1));
-        square.add(new Coord(1,1));
-        square.add(new Coord(1,0));
-        rocks.add(square);
-
-        int jetCounter = 0;
-        for(int rockCount = 0; rockCount < 2022; rockCount++) {
-            HashSet<Coord> curRock = new HashSet<>(rocks.get(rockCount % 5));
-
-            int maxY = rocksInCave.stream().map(x -> x.y).max(Integer::compare).get();
-
-            //offset rock to proper starting position
-            curRock = (HashSet<Coord>) curRock.stream().map(x -> x.sum(new Coord(2, maxY + 4))).collect(Collectors.toSet());
-            movement:
-            while(true) {
-                //try to push with jet
-                if(jetPattern.get(jetCounter % jetPattern.size())) {
-                    int highestX = curRock.stream().map(x -> x.x).max(Integer::compare).get();
-                    HashSet<Coord> tentativeRight = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.RIGHT)).collect(Collectors.toSet());
-                    if(highestX < 6 && !containsAny(rocksInCave,tentativeRight)) {
-                        //push entire to right
-                        curRock = tentativeRight;
-                    }
+            while (true) {
+                if (jets.next().equals('>')) {
+                    rock.moveRight(grid);
                 } else {
-                    int lowestX = curRock.stream().map(x -> x.x).min(Integer::compare).get();
-                    HashSet<Coord> tentativeLeft = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.LEFT)).collect(Collectors.toSet());
-                    if(lowestX > 0 && !containsAny(rocksInCave,tentativeLeft))
-                        curRock = tentativeLeft;
+                    rock.moveLeft(grid);
                 }
-                jetCounter++;
 
-                //check if resting on something
-                for(Coord c : curRock) {
-                    //coord system is reversed for this problem - this checks one below
-                    if(rocksInCave.contains(c.sum(Coord.UP))) {
-                        //solidify rock and continue to next loop
-                        rocksInCave.addAll(curRock);
-                        break movement;
+                if (!rock.moveDown(grid)) {
+                    for (var point: rock.getPoints()) {
+                        grid.add(point);
+                        highestY = Math.max(point.y, highestY);
                     }
+
+                    break;
                 }
+            }
 
-                //if not resting on something, shift entire rock down
-                curRock = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.UP)).collect(Collectors.toSet());
+            if (rockIndex == targetRockCount) {
+                return String.valueOf(highestY);
+            }
 
+            recordedHeights.put(rockIndex, highestY);
+            heightDifferences.add(highestY - previousMaxHeight);
+
+            if (heightDifferences.size() > comparedSlice) {
+                var hash = heightDifferences.subList(heightDifferences.size() - comparedSlice, heightDifferences.size()).hashCode();
+
+                if (hashStore.containsKey(hash)) {
+                    repeatingWindow = new RepeatingWindow(
+                            hashStore.get(hash),
+                            rockIndex - hashStore.get(hash),
+                            highestY - recordedHeights.get(hashStore.get(hash))
+                    );
+                    break;
+                } else {
+                    hashStore.put(hash, rockIndex);
+                }
             }
         }
 
-        return Integer.toString(rocksInCave.stream().map(x -> x.y).max(Integer::compare).get() + 1);
-    }
+        var rockCountFromStartOfRepeatingWindow = targetRockCount - (repeatingWindow.startRockNumber - 1);
+        var repeatingWindowCount = rockCountFromStartOfRepeatingWindow / repeatingWindow.size;
+        var heightBeforeRepeatingStarts = recordedHeights.get(repeatingWindow.startRockNumber - 1);
+        var maxRockHeight = heightBeforeRepeatingStarts + (repeatingWindowCount * repeatingWindow.heightIncrease);
+        var countedRocks = repeatingWindow.startRockNumber - 1 + (repeatingWindowCount * repeatingWindow.size);
 
-    public boolean containsAny(HashSet<Coord> big, HashSet<Coord> small) {
-        for(Coord c : small)
-            if(big.contains(c))
-                return true;
-        return false;
+        var recordedHeightDifferencesIndex = repeatingWindow.startRockNumber - 1;
+
+        while (++countedRocks <= targetRockCount) {
+            maxRockHeight += heightDifferences.get(recordedHeightDifferencesIndex++);
+        }
+
+        return String.valueOf(maxRockHeight);
     }
 
     @Override
     public String part2(List<String> input) {
         final long LENGTH = 1000000000000L;
-
-        HashSet<Coord> rocksInCave = new HashSet<Coord>();
-        //put in floor
-        for(int i = 0; i < 7; i++) {
-            rocksInCave.add(new Coord(i,-1));
-        }
-        LinkedList<Boolean> jetPattern = new LinkedList<>();
-        for(char c : input.get(0).trim().toCharArray())
-            jetPattern.add(c == '>');
-
-        ArrayList<HashSet<Coord>> rocks = new ArrayList<>();
-
-        //for each rock, x=0 is the leftmost point and y=0 is the bottommost point
-
-        //horizontal line
-        HashSet<Coord> horizLine = new HashSet<Coord>();
-        for(int i = 0; i < 4; i++)
-            horizLine.add(new Coord(i,0));
-
-        rocks.add(horizLine);
-
-        //plus sign
-        HashSet<Coord> plus = new HashSet<>();
-        plus.add(new Coord(0,1));
-        plus.add(new Coord(1,1));
-        plus.add(new Coord(2,1));
-        plus.add(new Coord(1,2));
-        plus.add(new Coord(1,0));
-        rocks.add(plus);
-
-        //backwards L
-        HashSet<Coord> backL = new HashSet<>();
-        backL.add(new Coord(0,0));
-        backL.add(new Coord(1,0));
-        backL.add(new Coord(2,0));
-        backL.add(new Coord(2,1));
-        backL.add(new Coord(2,2));
-        rocks.add(backL);
-
-        //vertical line
-        HashSet<Coord> vertLine = new HashSet<>();
-        for(int i = 0; i < 4; i++)
-            vertLine.add(new Coord(0,i));
-        rocks.add(vertLine);
-
-        //square
-        HashSet<Coord> square = new HashSet<>();
-        square.add(new Coord(0,0));
-        square.add(new Coord(0,1));
-        square.add(new Coord(1,1));
-        square.add(new Coord(1,0));
-        rocks.add(square);
-
-        int jetCounter = 0;
-
-        //cache keeps track of seen states in the form of the top 30 rows of the state, mapped to the rock it occurred on and the max Y at the time
-        HashMap<HashSet<Coord>,Coord> cache = new HashMap<HashSet<Coord>,Coord>();
-
-        boolean cycleFound = false;
-        long heightFromCycleRepeat = 0;
-
-        long rockCount = 0;
-        while(rockCount < LENGTH) {
-            HashSet<Coord> curRock = new HashSet<Coord>(rocks.get((int) (rockCount % 5)));
-
-            int maxY = rocksInCave.stream().map(x -> x.y).max(Integer::compare).get();
-
-            //offset rock to proper starting position
-            curRock = (HashSet<Coord>) curRock.stream().map(x -> x.sum(new Coord(2, maxY + 4))).collect(Collectors.toSet());
-
-            movement:
-            while(true) {
-                //try to push with jet
-                if(jetPattern.get(jetCounter % jetPattern.size())) {
-                    int highestX = curRock.stream().map(x -> x.x).max(Integer::compare).get();
-                    HashSet<Coord> tentativeRight = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.RIGHT)).collect(Collectors.toSet());
-                    if(highestX < 6 && !containsAny(rocksInCave,tentativeRight)) {
-                        //push entire to right
-                        curRock = tentativeRight;
-                    }
-                } else {
-                    int lowestX = curRock.stream().map(x -> x.x).min(Integer::compare).get();
-                    HashSet<Coord> tentativeLeft = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.LEFT)).collect(Collectors.toSet());
-                    if(lowestX > 0 && !containsAny(rocksInCave,tentativeLeft))
-                        curRock = tentativeLeft;
-                }
-                jetCounter++;
-
-                //check if resting on something
-                for(Coord c : curRock) {
-                    //coord system is reversed for this problem - this checks one below each coord in rock
-                    if(rocksInCave.contains(c.sum(Coord.UP))) {
-                        //solidify rock
-                        rocksInCave.addAll(curRock);
-
-                        int curHeight = rocksInCave.stream().map(x->x.y).max(Integer::compare).get();
-                        //create cache key for current rock state
-                        HashSet<Coord> cacheKey = convertToCacheKey(rocksInCave);
-                        if(!cycleFound && cache.containsKey(cacheKey)) {
-                            //get info about cycle
-                            Coord info = cache.get(cacheKey);
-                            int oldTime = info.x;
-                            int oldHeight = info.y;
-                            int cycleLength = (int) (rockCount - oldTime);
-                            int cycleHeightChange = curHeight - oldHeight;
-                            //calculate number of times we could cycle without going over LENGTH
-                            long numCycles = (LENGTH - rockCount) / cycleLength;
-                            //add total height that we would gain from repeating cycle, and add time that cycle repeat would take
-                            heightFromCycleRepeat = cycleHeightChange * numCycles;
-                            rockCount += numCycles * cycleLength;
-                            //mark cycle found to avoid further repeating
-                            cycleFound = true;
-                        } else {
-                            Coord info = new Coord((int) rockCount, curHeight);
-                            cache.put(cacheKey,info);
-                        }
-                        break movement;
-                    }
-                }
-
-                //if not resting on something, shift entire rock down
-                curRock = (HashSet<Coord>) curRock.stream().map(x -> x.sum(Coord.UP)).collect(Collectors.toSet());
-            }
-            rockCount++;
-        }
-
-        //get the height we found manually in the loop, plus the length we calculated for the cycle repeat, plus 1 for starting at 0
-        return Long.toString(rocksInCave.stream().map(x -> x.y).max(Integer::compare).get() + heightFromCycleRepeat + 1);
-    }
-
-    public HashSet<Coord> convertToCacheKey(HashSet<Coord> rocks) {
-        int maxY = rocks.stream().map(x -> x.y).max(Integer::compare).get();
-        return (HashSet<Coord>) rocks.stream().filter(x -> maxY - x.y <= 30).map(x -> new Coord(x.x, maxY - x.y)).collect(Collectors.toSet());
+        return getMaxRockHeight(input.get(0), LENGTH);
     }
 }

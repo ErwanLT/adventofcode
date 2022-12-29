@@ -347,4 +347,4 @@ In the example above, the tower would be **1514285714288** units tall!
 
 **How tall will the tower be after 1000000000000 rocks have stopped?**
 
-Your puzzle answer was `xxxx`.
+Your puzzle answer was `1560932944615`.
