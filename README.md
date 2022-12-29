@@ -24,27 +24,24 @@ One module for a year / one module per day inside year.
 | 11  | [Corporate Policy](aoc-2015/src/main/java/aoc/day11/README.md)                       |   ⭐️⭐️️    |
 | 12  | [JSAbacusFramework.io](aoc-2015/src/main/java/aoc/day12/README.md)                   |   ⭐️⭐️️    |
 | 13  | [Knights of the Dinner Table](aoc-2015/src/main/java/aoc/day13/README.md)            |    ⭐️⭐     |
-| 14  | [](aoc-2015/src/main/java/aoc/day14/README.md)                                       |     ️️     |
-| 15  | [](aoc-2015/src/main/java/aoc/day15/README.md)                                       |     ️️     |
-| 16  | [](aoc-2015/src/main/java/aoc/day16/README.md)                                       |     ️      |
-| 17  | [](aoc-2015/src/main/java/aoc/day17/README.md)                                       |     ️      |
-| 18  | [](aoc-2015/src/main/java/aoc/day18/README.md)                                       |     ️      |
-| 19  | [](aoc-2015/src/main/java/aoc/day19/README.md)                                       |     ️      |
-| 20  | [](aoc-2015/src/main/java/aoc/day20/README.md)                                       |     ️      |
-| 21  | [](aoc-2015/src/main/java/aoc/day21/README.md)                                       |     ️      |
-| 22  | [](aoc-2015/src/main/java/aoc/day22/README.md)                                       |     ️      |
-| 23  | [](aoc-2015/src/main/java/aoc/day23/README.md)                                       |     ️      |
-| 24  | [](aoc-2015/src/main/java/aoc/day24/README.md)                                       |     ️      |
-| 25  | [](aoc-2015/src/main/java/aoc/day25/README.md)                                       |     ️      |
+
+* [2017](aoc-2017/README.md)
+ 
+[![Days completed](https://img.shields.io/badge/Days%20completed-01-blue)](aoc-2017)
+[![Stars](https://img.shields.io/badge/⭐️-01-yellow)]()
+
+| Day 	 | Name 	                                               | Completion 	 |
+|:-----:|:-----------------------------------------------------|:------------:|
+| 1   	 | [Inverse Captcha](src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
 
 * [2019](aoc-2019/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](2020)
+[![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](aoc-2019)
 [![Stars](https://img.shields.io/badge/⭐️-19-yellow)]()
 
 * [2020](aoc-2020/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](2020)
+[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2020)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
 
 | Day | Name                                                                  | Completion |
@@ -77,7 +74,7 @@ One module for a year / one module per day inside year.
 
 * [2021](aoc-2021/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](2021)
+[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2021)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
 
 | Day 	 | Name 	                                                                | Completion 	 |
@@ -110,7 +107,7 @@ One module for a year / one module per day inside year.
 
 * [2022](aoc-2022/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](2022)
+[![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2022)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
 
 | Day 	 | Name 	                                                                 | Completion 	 |
