@@ -35,6 +35,6 @@ public class Day25 implements Day {
 
     @Override
     public String part2(List<String> input) {
-        return null;
+        return "That's all folk!";
     }
 }
