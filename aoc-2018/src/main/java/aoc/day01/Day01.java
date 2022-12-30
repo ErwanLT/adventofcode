@@ -14,13 +14,13 @@ public class Day01 implements Day {
 
     @Override
     public String part1(List<String> input) {
-        return String.valueOf(dayNumbersStream(input).sum());
+        return String.valueOf(ParseUtils.castInputToLongStream(input).sum());
     }
 
     @Override
     public String part2(List<String> input) {
         Set<Long> encountered = new HashSet<>();
-        var numbers = dayNumbers(input);
+        var numbers = ParseUtils.castInputToLongArray(input);
 
         var frequency = 0L;
         while (true) {
@@ -29,17 +29,6 @@ public class Day01 implements Day {
                 if (!encountered.add(frequency)) return String.valueOf(frequency);
             }
         }
-    }
-
-    private LongStream dayNumbersStream(List<String> input) {
-        return ParseUtils.castInputToStream(input)
-                .filter(e -> !e.isEmpty()).map(e -> e.replace("\n", "").trim()).mapToLong(Long::parseLong);
-    }
-
-
-    private long[] dayNumbers(List<String> input) {
-        return dayNumbersStream(input)
-                .toArray();
     }
 
 }
