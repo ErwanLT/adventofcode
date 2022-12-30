@@ -1,15 +1,13 @@
 package aoc.day19;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
-import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Day19 implements Day {
+public class Day19 implements DayOld {
 
     // rotation matrixes
     static int[][] X = { { 1, 0, 0}, { 0, 0, -1}, { 0, 1, 0}, };

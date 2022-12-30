@@ -1,11 +1,11 @@
 package aoc.day02;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day02 implements Day {
+public class Day02 implements DayOld {
 
     private static List<Box> boxes;
 

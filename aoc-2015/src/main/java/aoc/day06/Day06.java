@@ -1,12 +1,12 @@
 package aoc.day06;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day06 implements Day {
+public class Day06 implements DayOld {
     @Override
     public String part1(List<String> input) {
         boolean[][] lit = new boolean[1000][1000];

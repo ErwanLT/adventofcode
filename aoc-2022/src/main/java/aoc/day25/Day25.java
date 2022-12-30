@@ -1,12 +1,12 @@
 package aoc.day25;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
 import static java.lang.Math.toIntExact;
 
-public class Day25 implements Day {
+public class Day25 implements DayOld {
 
     List<Character> digits = List.of('=', '-', '0', '1', '2');
 

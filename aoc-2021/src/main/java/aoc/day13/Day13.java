@@ -1,11 +1,11 @@
 package aoc.day13;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day13 implements Day {
+public class Day13 implements DayOld {
 
     private static final List<Integer> xy = new ArrayList<>();
     private static final List<String> fold = new ArrayList<>();

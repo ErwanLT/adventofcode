@@ -1,12 +1,12 @@
 package aoc.day09;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class Day09 implements Day {
+public class Day09 implements DayOld {
 
     private static int H, W;
     private static List<List<Integer>> data;

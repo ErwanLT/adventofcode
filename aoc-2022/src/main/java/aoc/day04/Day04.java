@@ -1,6 +1,6 @@
 package aoc.day04;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import static aoc.parser.ReadFormatedString.readString;
 
-public class Day04 implements Day {
+public class Day04 implements DayOld {
 
     private List<Assignment> assignments;
 

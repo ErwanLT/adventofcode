@@ -1,6 +1,6 @@
 package aoc.day07;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -9,7 +9,7 @@ import static java.lang.StrictMath.toIntExact;
 import static java.util.Arrays.stream;
 import static java.util.Collections.singletonList;
 
-public class Day07 implements Day {
+public class Day07 implements DayOld {
 
     private static Trade[] trades;
 

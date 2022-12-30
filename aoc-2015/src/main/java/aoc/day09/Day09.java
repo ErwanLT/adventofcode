@@ -1,10 +1,10 @@
 package aoc.day09;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 
-public class Day09 implements Day {
+public class Day09 implements DayOld {
     @Override
     public String part1(List<String> input) {
         HashSet<String> towns = new HashSet<>();

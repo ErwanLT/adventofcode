@@ -1,11 +1,11 @@
 package aoc.day01;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.List;
 
-public class Day01 implements Day {
+public class Day01 implements DayOld {
 
     private static int[] inputs;
 

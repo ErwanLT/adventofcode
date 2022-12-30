@@ -1,6 +1,6 @@
 package aoc.day02;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 import com.google.common.collect.Sets;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Optional.empty;
 
-public class Day02 implements Day {
+public class Day02 implements DayOld {
     @Override
     public String part1(List<String> input) {
         int two = 0, three = 0;

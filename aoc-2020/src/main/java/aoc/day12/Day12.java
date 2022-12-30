@@ -1,6 +1,6 @@
 package aoc.day12;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.awt.*;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 import static java.lang.Math.abs;
 import static java.util.stream.Collectors.toList;
 
-public class Day12 implements Day {
+public class Day12 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

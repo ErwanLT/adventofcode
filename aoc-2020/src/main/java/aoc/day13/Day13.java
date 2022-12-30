@@ -1,6 +1,6 @@
 package aoc.day13;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Day13 implements Day {
+public class Day13 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

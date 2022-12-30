@@ -1,6 +1,6 @@
 package aoc.day10;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static java.util.Arrays.sort;
 
-public class Day10 implements Day {
+public class Day10 implements DayOld {
 
     private static long[] inputs;
 

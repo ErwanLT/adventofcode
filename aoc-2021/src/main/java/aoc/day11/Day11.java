@@ -1,6 +1,6 @@
 package aoc.day11;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-public class Day11 implements Day {
+public class Day11 implements DayOld {
 
     private static int[][] map;
 

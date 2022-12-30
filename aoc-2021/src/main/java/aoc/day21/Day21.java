@@ -1,14 +1,13 @@
 package aoc.day21;
 
-import aoc.Day;
-import lombok.Builder;
+import aoc.DayOld;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day21 implements Day {
+public class Day21 implements DayOld {
 
     private static int player1Start = 0;
     private static int player2Start = 0;

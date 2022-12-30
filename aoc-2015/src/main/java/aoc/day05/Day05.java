@@ -1,11 +1,11 @@
 package aoc.day05;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Day05 implements Day {
+public class Day05 implements DayOld {
 
     private static final String VOWELS_REGEX = ".*(.*[aeiou]){3}.*";
     private static final String SAME_LETTER_ROW_TWICE = "(.)\\1";

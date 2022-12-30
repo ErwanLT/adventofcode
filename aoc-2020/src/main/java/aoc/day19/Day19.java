@@ -1,6 +1,6 @@
 package aoc.day19;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.day19.helper.Helper;
 import aoc.day19.helper.ParseUtils;
 import aoc.day19.helper.RegexHelper;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class Day19 implements Day {
+public class Day19 implements DayOld {
 
     private static Map<Integer, Rule> rules;
     private static List<String> messages;

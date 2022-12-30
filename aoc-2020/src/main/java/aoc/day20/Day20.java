@@ -1,10 +1,10 @@
 package aoc.day20;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 
-public class Day20 implements Day {
+public class Day20 implements DayOld {
 
     private static List<Pane> panes;
     private static String[] monster = {"                  # ", "#    ##    ##    ###", " #  #  #  #  #  #   "};

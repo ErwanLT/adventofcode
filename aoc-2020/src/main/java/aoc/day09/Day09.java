@@ -1,6 +1,6 @@
 package aoc.day09;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
 import static java.util.Arrays.copyOfRange;
 import static java.util.Arrays.stream;
 
-public class Day09 implements Day {
+public class Day09 implements DayOld {
 
     private static long[] inputs;
 

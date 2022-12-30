@@ -1,10 +1,10 @@
 package aoc.day25;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
-public class Day25 implements Day {
+public class Day25 implements DayOld {
 
     private static final long cardPublicKey = 6930903L;
     private static final long doorPublicKey = 19716708L;

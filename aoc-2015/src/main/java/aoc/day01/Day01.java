@@ -1,10 +1,10 @@
 package aoc.day01;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
-public class Day01 implements Day {
+public class Day01 implements DayOld {
 
     private static char[] inputArray;
     private static int floor = 0;

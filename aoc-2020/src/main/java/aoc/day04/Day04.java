@@ -1,6 +1,6 @@
 package aoc.day04;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import static com.google.common.collect.ImmutableSet.toImmutableSet;
 
-public class Day04 implements Day {
+public class Day04 implements DayOld {
 
     private static String[][] passports;
 

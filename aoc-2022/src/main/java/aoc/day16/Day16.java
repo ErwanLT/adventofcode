@@ -1,10 +1,10 @@
 package aoc.day16;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 
-public class Day16 implements Day {
+public class Day16 implements DayOld {
 
     private ArrayList<Valve> valves = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package aoc.day03;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-public class Day03 implements Day {
+public class Day03 implements DayOld {
 
     private static String[] inputs;
 

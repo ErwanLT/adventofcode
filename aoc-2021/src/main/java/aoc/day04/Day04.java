@@ -1,6 +1,6 @@
 package aoc.day04;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Day04 implements Day {
+public class Day04 implements DayOld {
     @Override
     public String part1(List<String> input) {
         String in = ParseUtils.castInputToString("\n", input);

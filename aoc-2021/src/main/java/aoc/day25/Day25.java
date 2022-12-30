@@ -1,12 +1,11 @@
 package aoc.day25;
 
-import aoc.Day;
-import aoc.parser.ParseUtils;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day25 implements Day {
+public class Day25 implements DayOld {
     @Override
     public String part1(List<String> input) {
         List<char[]> map = new ArrayList<>();

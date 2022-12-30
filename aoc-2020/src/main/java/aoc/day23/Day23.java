@@ -1,6 +1,6 @@
 package aoc.day23;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 import aoc.utils.CircularLinkedList;
 import aoc.utils.Node;
@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 
-public class Day23 implements Day {
+public class Day23 implements DayOld {
 
     private static int[] inputArray;
 

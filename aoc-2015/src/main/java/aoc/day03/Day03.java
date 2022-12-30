@@ -1,13 +1,13 @@
 package aoc.day03;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.awt.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day03 implements Day {
+public class Day03 implements DayOld {
 
     private static char[] in;
 

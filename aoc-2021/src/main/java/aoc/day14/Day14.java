@@ -1,6 +1,6 @@
 package aoc.day14;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.customMap.LongCountMap;
 import aoc.parser.ParseUtils;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Day14 implements Day {
+public class Day14 implements DayOld {
 
     private static String polymerTemplate;
     private static Map<String, String> strs;

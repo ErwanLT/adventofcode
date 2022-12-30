@@ -1,10 +1,10 @@
 package aoc.day10;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
-public class Day10 implements Day {
+public class Day10 implements DayOld {
     @Override
     public String part1(List<String> input) {
 

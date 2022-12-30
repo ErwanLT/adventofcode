@@ -1,12 +1,12 @@
 package aoc.day24;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day24 implements Day {
+public class Day24 implements DayOld {
 
     private static final String regexX = "add x ([-]?\\d+)";
     private static final String regexY = "add y w"

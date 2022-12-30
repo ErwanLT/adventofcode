@@ -1,6 +1,6 @@
 package aoc.day24;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Direction;
 import aoc.grid.InfiniteGrid;
 import aoc.location.Loc;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 import static aoc.Direction.*;
 
-public class Day24 implements Day {
+public class Day24 implements DayOld {
 
     Map<Character, Direction> dirs = Map.of('^', NORTH, 'v', SOUTH, '>', EAST, '<', WEST);
     public record Blizzard(Loc l, Direction dir) {}

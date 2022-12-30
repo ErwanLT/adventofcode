@@ -1,6 +1,6 @@
 package aoc.day22;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ReadFormatedString;
 
 import java.math.BigInteger;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day22 implements Day {
+public class Day22 implements DayOld {
 
     private static final List<Step> steps = new ArrayList<Step>();
     private static Set<Cube> cubes = new HashSet<>();

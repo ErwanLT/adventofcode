@@ -1,12 +1,12 @@
 package aoc.day05;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day05 implements Day {
+public class Day05 implements DayOld {
     @Override
     public String part1(List<String> input) {
         int seatId = seatID(input).stream().mapToInt(i->i).max().getAsInt();

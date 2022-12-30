@@ -1,7 +1,7 @@
 package aoc.day12;
 
 import aoc.customMap.CountMap;
-import aoc.Day;
+import aoc.DayOld;
 import com.google.common.collect.ImmutableListMultimap;
 
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import static com.google.common.collect.ImmutableListMultimap.toImmutableListMultimap;
 
-public class Day12 implements Day {
+public class Day12 implements DayOld {
 
     public static final String START = "start";
 

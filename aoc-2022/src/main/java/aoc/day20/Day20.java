@@ -1,14 +1,11 @@
 package aoc.day20;
 
-import aoc.CircularList;
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
-public class Day20 implements Day {
+public class Day20 implements DayOld {
 
     public record Number(long value){};
 

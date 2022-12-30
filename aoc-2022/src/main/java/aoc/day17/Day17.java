@@ -1,6 +1,6 @@
 package aoc.day17;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.day17.shapes.*;
 import aoc.day17.shapes.Shape;
 import com.google.common.collect.Iterables;
@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.List;
 
 
-public class Day17 implements Day {
+public class Day17 implements DayOld {
 
     record RepeatingWindow(
             int startRockNumber,

@@ -1,6 +1,6 @@
 package aoc.day11;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.customMap.LongCountMap;
 import aoc.parser.ParseUtils;
 
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static aoc.parser.ReadFormatedString.readString;
 
-public class Day11 implements Day {
+public class Day11 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return String.valueOf(solution(20, true, input));

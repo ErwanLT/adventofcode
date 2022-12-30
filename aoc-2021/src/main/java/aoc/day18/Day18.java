@@ -1,6 +1,6 @@
 package aoc.day18;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 import static java.lang.Integer.parseInt;
 
-public class Day18 implements Day {
+public class Day18 implements DayOld {
     @Override
     public String part1(List<String> input) {
         List<String> in = input.stream().filter(e -> !e.isEmpty()).map(this::reduce).collect(Collectors.toCollection(ArrayList::new));

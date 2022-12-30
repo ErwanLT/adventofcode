@@ -1,10 +1,10 @@
 package aoc.day08;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
-public class Day08 implements Day {
+public class Day08 implements DayOld {
 
     private static final int doubleQuoteCount = 2;
 

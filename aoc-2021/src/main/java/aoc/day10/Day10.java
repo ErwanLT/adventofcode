@@ -1,10 +1,10 @@
 package aoc.day10;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 
-public class Day10 implements Day {
+public class Day10 implements DayOld {
 
     private static final Map<Character, Character> brackets = new HashMap<>();
     private static final Map<Character, Integer> weightPart1 = new HashMap<>();

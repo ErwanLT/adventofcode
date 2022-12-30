@@ -1,6 +1,6 @@
 package aoc.day23;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Direction;
 import aoc.Pair;
 import aoc.grid.InfiniteGrid;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static aoc.Direction.*;
 
-public class Day23 implements Day {
+public class Day23 implements DayOld {
     @Override
     public String part1(List<String> input) {
         var sol = solution(input, false);

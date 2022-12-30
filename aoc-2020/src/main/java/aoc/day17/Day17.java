@@ -1,12 +1,12 @@
 package aoc.day17;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day17 implements Day {
+public class Day17 implements DayOld {
 
     private static Set<Coordinates> initialState;
 

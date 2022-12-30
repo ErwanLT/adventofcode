@@ -1,6 +1,6 @@
 package aoc.day22;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Direction;
 import aoc.Pair;
 import aoc.grid.CharGrid;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 import static aoc.Direction.*;
 
-public class Day22 implements Day {
+public class Day22 implements DayOld {
 
     public record Me (Loc l, Direction d) {}
     public record Location(int c, Direction d) {}

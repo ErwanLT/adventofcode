@@ -1,11 +1,11 @@
 package aoc.day07;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Day07 implements Day {
+public class Day07 implements DayOld {
 
     private static int[] crabPositions;
     private static int minPosition;

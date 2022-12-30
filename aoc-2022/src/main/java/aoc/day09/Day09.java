@@ -1,6 +1,6 @@
 package aoc.day09;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Direction;
 
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 import static aoc.parser.ReadFormatedString.readString;
 
-public class Day09 implements Day {
+public class Day09 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return String.valueOf(simulateRope(1, input));

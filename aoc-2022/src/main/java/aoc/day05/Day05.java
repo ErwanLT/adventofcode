@@ -1,6 +1,6 @@
 package aoc.day05;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.*;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static aoc.parser.ReadFormatedString.readString;
 import static java.lang.Math.toIntExact;
 
-public class Day05 implements Day {
+public class Day05 implements DayOld {
     @Override
     public String part1(List<String> input) {
         List<Deque<Integer>> stacks = input();

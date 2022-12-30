@@ -1,6 +1,6 @@
 package aoc.day12;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import javax.json.*;
@@ -12,7 +12,7 @@ import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day12 implements Day {
+public class Day12 implements DayOld {
 
     private static String day;
     private static final Pattern NUMBER = Pattern.compile("(-?\\d+)");

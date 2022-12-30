@@ -1,13 +1,13 @@
 package aoc.day11;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day11 implements Day {
+public class Day11 implements DayOld {
 
     private final static Set<Integer> forbiddenCharacters = Set.of((int) 'i', (int) 'o', (int) 'l');
     // ascii for 'a'

@@ -1,15 +1,13 @@
 package aoc.day01;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.LongStream;
 
-public class Day01 implements Day {
+public class Day01 implements DayOld {
     private static final String DEFAULT_DELIMITER = "\n";
 
     @Override

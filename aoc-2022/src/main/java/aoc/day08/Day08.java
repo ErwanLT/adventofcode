@@ -1,6 +1,6 @@
 package aoc.day08;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.day11.Direction;
 import aoc.grid.NumGrid;
 import aoc.parser.ParseUtils;
@@ -8,7 +8,7 @@ import aoc.parser.ParseUtils;
 import java.awt.*;
 import java.util.List;
 
-public class Day08 implements Day {
+public class Day08 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

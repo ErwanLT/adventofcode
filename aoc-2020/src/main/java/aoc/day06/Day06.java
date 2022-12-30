@@ -1,6 +1,6 @@
 package aoc.day06;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.List;
 import static com.google.common.primitives.Ints.asList;
 import static java.util.stream.IntStream.range;
 
-public class Day06 implements Day {
+public class Day06 implements DayOld {
 
     private static String inputs = "";
 

@@ -1,6 +1,6 @@
 package aoc.day05;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ReadFormatedString;
 
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day05 implements Day {
+public class Day05 implements DayOld {
 
     private static List<Coords> coords;
     private static Set<Point> all = new HashSet<>();

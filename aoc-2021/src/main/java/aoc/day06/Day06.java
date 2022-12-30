@@ -1,13 +1,13 @@
 package aoc.day06;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.customMap.LongCountMap;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day06 implements Day {
+public class Day06 implements DayOld {
     @Override
     public String part1(List<String> input) {
 

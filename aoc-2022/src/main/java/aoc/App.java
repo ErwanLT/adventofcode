@@ -40,7 +40,7 @@ import static java.util.stream.Collectors.toList;
 
 public class App {
 
-    private static final Map<Integer, Day> DAYS;
+    private static final Map<Integer, DayOld> DAYS;
 
     private static PrettyPrinter printer;
 
@@ -97,7 +97,7 @@ public class App {
     }
 
     private static void allDays(String[] args) {
-        for (Map.Entry<Integer, Day> entry : DAYS.entrySet()) {
+        for (Map.Entry<Integer, DayOld> entry : DAYS.entrySet()) {
             int day = entry.getKey();
 
             if(args.length != 0){

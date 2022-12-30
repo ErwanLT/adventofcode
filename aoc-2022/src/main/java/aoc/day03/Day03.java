@@ -1,12 +1,12 @@
 package aoc.day03;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Day03 implements Day {
+public class Day03 implements DayOld {
     @Override
     public String part1(List<String> input) {
         var sum = ParseUtils.castInputToStream(input)

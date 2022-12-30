@@ -1,10 +1,10 @@
 package aoc.day03;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 
-public class Day03 implements Day {
+public class Day03 implements DayOld {
 
     private static char[][] grid;
 

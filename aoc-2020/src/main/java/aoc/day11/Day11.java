@@ -1,6 +1,6 @@
 package aoc.day11;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static java.util.Arrays.stream;
 
-public class Day11 implements Day {
+public class Day11 implements DayOld {
 
     private static char[][] inputs;
 

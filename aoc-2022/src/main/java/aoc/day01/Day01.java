@@ -1,13 +1,13 @@
 package aoc.day01;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.LongStream;
 
-public class Day01 implements Day {
+public class Day01 implements DayOld {
 
     private static String inputs = "";
 

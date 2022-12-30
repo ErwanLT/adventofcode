@@ -1,12 +1,12 @@
 package aoc.day19;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 
-public class Day19 implements Day {
+public class Day19 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

@@ -1,13 +1,13 @@
 package aoc.day03;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day03 implements Day {
+public class Day03 implements DayOld {
 
     private static List<Point> wires = new ArrayList<>();
     private static List<Point> crossings = new ArrayList<>();

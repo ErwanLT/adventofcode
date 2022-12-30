@@ -1,11 +1,11 @@
 package aoc.day02;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Day02 implements Day {
+public class Day02 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

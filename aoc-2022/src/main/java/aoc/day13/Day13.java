@@ -1,6 +1,6 @@
 package aoc.day13;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Either;
 import aoc.parser.ParseUtils;
 
@@ -12,7 +12,7 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.stream.IntStream.range;
 
-public class Day13 implements Day {
+public class Day13 implements DayOld {
 
     private String inStr = "";
 

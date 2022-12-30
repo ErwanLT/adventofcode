@@ -1,12 +1,12 @@
 package aoc.day13;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-public class Day13 implements Day {
+public class Day13 implements DayOld {
 
     private static final String LOVES = "gain";
     private static final String HATES = "lose";

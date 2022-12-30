@@ -1,12 +1,12 @@
 package aoc.day08;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.function.BiFunction;
 import static java.util.Arrays.stream;
 
-public class Day08 implements Day {
+public class Day08 implements DayOld {
     @Override
     public String part1(List<String> input) {
 

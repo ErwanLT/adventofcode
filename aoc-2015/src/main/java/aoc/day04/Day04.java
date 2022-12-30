@@ -1,12 +1,12 @@
 package aoc.day04;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-public class Day04 implements Day {
+public class Day04 implements DayOld {
 
     private static String in;
 

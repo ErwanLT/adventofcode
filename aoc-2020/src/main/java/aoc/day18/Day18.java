@@ -1,11 +1,11 @@
 package aoc.day18;
 
-import aoc.Day;
+import aoc.DayOld;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 
-public class Day18 implements Day {
+public class Day18 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return String.valueOf(getSolution(true, input));

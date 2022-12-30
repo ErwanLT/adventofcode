@@ -1,6 +1,6 @@
 package aoc.day24;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.awt.*;
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class Day24 implements Day {
+public class Day24 implements DayOld {
 
     private static Set<Point> visitedTiles = new HashSet<>();
 

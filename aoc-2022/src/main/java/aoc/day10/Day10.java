@@ -1,6 +1,6 @@
 package aoc.day10;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day10 implements Day {
+public class Day10 implements DayOld {
 
     private List<String> in = new ArrayList<>();
 

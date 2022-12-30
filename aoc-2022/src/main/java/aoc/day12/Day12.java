@@ -1,6 +1,6 @@
 package aoc.day12;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.grid.NumGrid;
 import aoc.parser.ParseUtils;
 
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day12 implements Day {
+public class Day12 implements DayOld {
 
     private char[][] dayGrid;
     private NumGrid grid;

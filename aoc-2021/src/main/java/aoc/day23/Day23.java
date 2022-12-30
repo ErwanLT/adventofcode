@@ -1,6 +1,6 @@
 package aoc.day23;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-public class Day23 implements Day {
+public class Day23 implements DayOld {
 
     State state1 = new State(List.of(List.of("D1","C1"), List.of("B1", "A1"), List.of("A2","D2"), List.of("C2","B2")), Collections.nCopies(11, "."));
     State state2 = new State(List.of(List.of("D1","D3","D4","C1"), List.of("B1","C3","B3","A1"), List.of("A2","B4","A3","D2"), List.of("C2","A4","C4","B2")), Collections.nCopies(11, "."));;

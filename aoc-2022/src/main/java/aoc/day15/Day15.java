@@ -1,6 +1,6 @@
 package aoc.day15;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.grid.InfiniteGrid;
 import aoc.location.Loc;
 import aoc.location.Range;
@@ -13,7 +13,7 @@ import static aoc.grid.InfiniteGrid.toInfiniteGrid;
 import static aoc.parser.ReadFormatedString.readString;
 import static java.util.Arrays.stream;
 
-public class Day15 implements Day {
+public class Day15 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

@@ -1,6 +1,6 @@
 package aoc.day18;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.customMap.LongCountMap;
 import aoc.day24.HexDirection;
 import aoc.location.Loc3D;
@@ -13,7 +13,7 @@ import static aoc.customMap.LongCountMap.toCountMap;
 import static aoc.parser.ReadFormatedString.readString;
 
 
-public class Day18 implements Day {
+public class Day18 implements DayOld {
     @Override
     public String part1(List<String> input) {
         List<Loc3D> locs = parseInput(input);

@@ -1,6 +1,6 @@
 package aoc.day21;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.utils.MultiMap;
 import aoc.utils.Parser;
 import aoc.utils.Processor;
@@ -8,7 +8,7 @@ import aoc.utils.Wrapper;
 
 import java.util.*;
 
-public class Day21 implements Day {
+public class Day21 implements DayOld {
 
     private static Map<List<String>, Set<String>> foods;
     private static Set<String> allIngredients;

@@ -1,6 +1,6 @@
 package aoc.day08;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 import static java.util.Arrays.stream;
 
-public class Day08 implements Day {
+public class Day08 implements DayOld {
 
     private static int accumulator;
 

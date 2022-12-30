@@ -1,6 +1,6 @@
 package aoc.day14;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ import static java.lang.Long.parseLong;
 import static java.lang.Long.toBinaryString;
 import static java.util.stream.IntStream.range;
 
-public class Day14 implements Day {
+public class Day14 implements DayOld {
 
     private static Instruction[] instructions;
 

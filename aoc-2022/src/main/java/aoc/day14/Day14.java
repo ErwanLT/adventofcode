@@ -1,7 +1,7 @@
 package aoc.day14;
 
 import aoc.AOCUtils;
-import aoc.Day;
+import aoc.DayOld;
 import aoc.grid.InfiniteGrid;
 import aoc.location.Loc;
 import aoc.location.MutableLoc;
@@ -12,14 +12,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static aoc.Direction.*;
 import static aoc.grid.InfiniteGrid.toInfiniteGrid;
 import static aoc.parser.ReadFormatedString.readString;
 
-public class Day14 implements Day {
+public class Day14 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return String.valueOf(amountOfSand(true, input));

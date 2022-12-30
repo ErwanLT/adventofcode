@@ -1,6 +1,6 @@
 package aoc.day17;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ReadFormatedString;
 
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.util.stream.LongStream;
 import static java.lang.Long.MIN_VALUE;
 import static java.lang.Math.toIntExact;
 
-public class Day17 implements Day {
+public class Day17 implements DayOld {
 
 
     @Override

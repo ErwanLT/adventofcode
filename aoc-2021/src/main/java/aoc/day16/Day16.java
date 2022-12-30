@@ -1,12 +1,12 @@
 package aoc.day16;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day16 implements Day {
+public class Day16 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return String.valueOf(findSum(input.get(0)));

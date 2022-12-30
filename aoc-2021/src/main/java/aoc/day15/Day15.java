@@ -1,6 +1,6 @@
 package aoc.day15;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.shortestpath.BidirectionalDijkstraShortestPath;
@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Day15 implements Day {
+public class Day15 implements DayOld {
 
     private static int height;
     private static int width;

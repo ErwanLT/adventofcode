@@ -1,6 +1,6 @@
 package aoc.day07;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day07 implements Day {
+public class Day07 implements DayOld {
 
     static Function<String, Integer> notOperation = s -> (~getValue(s));
 

@@ -1,6 +1,6 @@
 package aoc.day22;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.*;
 import java.util.stream.LongStream;
@@ -8,7 +8,7 @@ import java.util.stream.LongStream;
 import static java.lang.Math.toIntExact;
 import static java.util.stream.Collectors.toCollection;
 
-public class Day22 implements Day {
+public class Day22 implements DayOld {
     @Override
     public String part1(List<String> input) {
         String[] inputArray = String.join("\n", input).split("\n\n");

@@ -1,13 +1,12 @@
 package aoc.day07;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.utils.Computer;
 import aoc.utils.Node;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Day07 implements Day {
+public class Day07 implements DayOld {
 
     @Override
     public String part1(List<String> input) {

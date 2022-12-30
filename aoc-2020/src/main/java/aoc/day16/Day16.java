@@ -1,6 +1,6 @@
 package aoc.day16;
 
-import aoc.Day;
+import aoc.DayOld;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 
@@ -10,7 +10,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.ArrayUtils.subarray;
 
-public class Day16 implements Day {
+public class Day16 implements DayOld {
 
     private static String inputs;
 

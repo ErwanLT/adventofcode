@@ -1,6 +1,6 @@
 package aoc.day20;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day20 implements Day {
+public class Day20 implements DayOld {
 
     private static String algo;
     private static Image image;

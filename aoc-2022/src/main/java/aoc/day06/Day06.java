@@ -1,11 +1,11 @@
 package aoc.day06;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.Set;
 
-public class Day06 implements Day {
+public class Day06 implements DayOld {
     @Override
     public String part1(List<String> input) {
         return calculateAnswer(4, input.get(0));

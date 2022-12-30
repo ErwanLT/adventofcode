@@ -1,6 +1,6 @@
 package aoc.day21;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.Pair;
 
 import java.util.*;
@@ -12,7 +12,7 @@ import static aoc.parser.ReadFormatedString.readString;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
-public class Day21 implements Day {
+public class Day21 implements DayOld {
 
     public record Monkey (String name, String sum) {}
     public record Sum (String monkey1, char op, String monkey2) {}

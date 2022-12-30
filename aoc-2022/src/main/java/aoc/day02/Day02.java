@@ -1,13 +1,13 @@
 package aoc.day02;
 
-import aoc.Day;
+import aoc.DayOld;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 import static aoc.parser.ReadFormatedString.readString;
 
-public class Day02 implements Day {
+public class Day02 implements DayOld {
 
     private Stream<Game> inputs;
 

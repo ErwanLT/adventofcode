@@ -1,6 +1,6 @@
 package aoc.day15;
 
-import aoc.Day;
+import aoc.DayOld;
 import aoc.parser.ParseUtils;
 
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static java.util.stream.IntStream.range;
 
-public class Day15 implements Day {
+public class Day15 implements DayOld {
 
     private static long[] inputs;
 
