@@ -51,6 +51,12 @@ One module for a year / one module per day inside year.
 [![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](aoc-2019)
 [![Stars](https://img.shields.io/badge/⭐️-19-yellow)]()
 
+| Day 	 | Name 	                                                                           | Completion 	 |
+|:-----:|:---------------------------------------------------------------------------------|:------------:|
+| 1   	 | [The Tyranny of the Rocket Equation](aoc-2019/src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
+| 2   	 | [1202 Program Alarm](aoc-2019/src/main/java/aoc/day02/README.md)                 |     ⭐️⭐      |
+| 3   	 | [Crossed Wires](aoc-2019/src/main/java/aoc/day03/README.md)	                     |     ⭐️⭐      |
+
 * [2020](aoc-2020/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2020)

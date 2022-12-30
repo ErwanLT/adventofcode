@@ -5,6 +5,8 @@
 [![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)]()
 [![Stars](https://img.shields.io/badge/⭐️-19-yellow)]()
 
-* [Day 1](src/main/java/aoc/day01/README.md)
-* [Day 2](src/main/java/aoc/day02/README.md)
-* [Day 3](src/main/java/aoc/day03/README.md)
+| Day 	 | Name 	                                                                  | Completion 	 |
+|:-----:|:------------------------------------------------------------------------|:------------:|
+| 1   	 | [The Tyranny of the Rocket Equation](src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
+| 2   	 | [1202 Program Alarm](src/main/java/aoc/day02/README.md)                 |     ⭐️⭐      |
+| 3   	 | [Crossed Wires](src/main/java/aoc/day03/README.md)	                     |     ⭐️⭐      |

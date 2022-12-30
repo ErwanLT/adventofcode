@@ -1,108 +1,120 @@
 package aoc.day03;
 
+import aoc.Day2019;
 import aoc.DayOld;
+import aoc.Direction;
+import com.google.common.base.Objects;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.awt.Point;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class Day03 implements DayOld {
+import static aoc.Direction.*;
 
-    private static List<Point> wires = new ArrayList<>();
-    private static List<Point> crossings = new ArrayList<>();
+public class Day03 extends Day2019 {
 
-    private static Point start = new Point(0, 0);
+    private final Set<Step> intersect;
 
-    @Override
-    public String part1(List<String> input) {
-        generatePath(input.get(0), false);
-        generatePath(input.get(1), true);
+    public Day03() {
+        super(3);
+        String[] strings = dayStrings();
+        Walk[] walks1 = mapToWalks(strings[0]), walks2 = mapToWalks(strings[1]);
+        Set<Step> walkedLocations = new HashSet<>();
+        calculateDistance(walks1, walkedLocations, false);
+        this.intersect = calculateDistance(walks2, walkedLocations, true);
+    }
 
-        List<Integer> distances = crossings.stream().map(point -> distance(point, start)).collect(Collectors.toList());
-        distances.sort(Comparator.comparingInt(a -> a));
-
-        return String.valueOf(distances.get(0));
+    public static void main(String[] args) {
+        new Day03().printParts();
     }
 
     @Override
-    public String part2(List<String> input) {
-        return null;
+    public Object part1() {
+        return intersect.stream().mapToInt(e -> distance(e.point)).min().orElse(Integer.MAX_VALUE);
     }
 
-    private static void generatePath(String wire, boolean crossing) {
-        Point current = start.clone();
-        String[] parts = wire.split(",");
-        for (String part : parts) {
-            int amount = Integer.parseInt(part.substring(1));
-            switch (part.charAt(0)) {
-                case 'U': {
-                    for (int i = 0; i < amount; i++) {
-                        current.setY(current.getY() - 1);
-                        if (!crossing) {
-                            wires.add(current.clone());
-                        } else {
-                            if (isWireCrossing(current)) {
-                                crossings.add(current.clone());
-                            }
-                        }
-                    }
-                    break;
-                }
-                case 'D': {
-                    for (int i = 0; i < amount; i++) {
-                        current.setY(current.getY() + 1);
-                        if (!crossing) {
-                            wires.add(current.clone());
-                        } else {
-                            if (isWireCrossing(current)) {
-                                crossings.add(current.clone());
-                            }
-                        }
-                    }
-                    break;
-                }
-                case 'L': {
-                    for (int i = 0; i < amount; i++) {
-                        current.setX(current.getX() - 1);
-                        if (!crossing) {
-                            wires.add(current.clone());
-                        } else {
-                            if (isWireCrossing(current)) {
-                                crossings.add(current.clone());
-                            }
-                        }
-                    }
-                    break;
+    @Override
+    public Object part2() {
+        return intersect.stream().mapToInt(e -> e.steps).min().orElse(Integer.MAX_VALUE);
+    }
 
+    private Set<Step> calculateDistance(Walk[] walks1, Set<Step> walkedLocations, boolean collect) {
+        Set<Step> intersectingLocations = new HashSet<>();
+        int x = 0, y = 0, steps = 0;
+        for (Walk walk : walks1) {
+            for (; walk.distance > 0; walk.distance--) {
+                switch (walk.dir) {
+                    case NORTH -> y++;
+                    case SOUTH -> y--;
+                    case WEST -> x--;
+                    case EAST -> x++;
                 }
-                case 'R': {
-                    for (int i = 0; i < amount; i++) {
-                        current.setX(current.getX() + 1);
-                        if (!crossing) {
-                            wires.add(current.clone());
-                        } else {
-                            if (isWireCrossing(current)) {
-                                crossings.add(current.clone());
-                            }
-                        }
-                    }
-                    break;
-                }
+                performStep(walkedLocations, collect, intersectingLocations, x, y, steps);
+                steps++;
             }
+        }
+        return intersectingLocations;
+    }
+
+    private void performStep(Set<Step> walkedLocations, boolean collect, Set<Step> intersectingLocations, int x, int y, int steps) {
+        Step currentStep = new Step(new java.awt.Point(x, y), steps);
+        if (collect) {
+            if (walkedLocations.contains(currentStep) && !intersectingLocations.contains(currentStep)) {
+                Step step = walkedLocations.stream().filter(e -> e.equals(currentStep)).findAny().get();
+                intersectingLocations.add(step);
+                step.combine(currentStep);
+            }
+        } else {
+            walkedLocations.add(currentStep);
         }
     }
 
-    private static boolean isWireCrossing(Point p) {
-        for (Point point : wires) {
-            if (point.getX() == p.getX() && point.getY() == p.getY()) {
-                return true;
-            }
-        }
-        return false;
+    public int distance(java.awt.Point p) {
+        return Math.abs(p.x) + Math.abs(p.y);
     }
 
-    private static int distance(Point a, Point b) {
-        return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY());
+    private Walk[] mapToWalks(String string) {
+        return Arrays.stream(string.split(",")).map(Walk::new).toArray(Walk[]::new);
+    }
+
+    class Walk {
+        private final Direction dir;
+        private int distance;
+
+        public Walk(String code) {
+            this.dir = Direction.getByDirCode(code.charAt(0));
+            this.distance = Integer.parseInt(code.substring(1));
+        }
+    }
+
+    class Step {
+        private final java.awt.Point point;
+        private int steps;
+        private boolean isCombined = false;
+
+        public Step(Point point, int steps) {
+            this.point = point;
+            this.steps = steps + 1;
+        }
+
+        public void combine(Step step) {
+            if (!isCombined) {
+                steps += step.steps;
+                isCombined = true;
+            }
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Step step = (Step) o;
+            return com.google.common.base.Objects.equal(point, step.point);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(point);
+        }
     }
 }
