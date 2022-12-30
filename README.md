@@ -35,6 +35,16 @@ One module for a year / one module per day inside year.
 | 1   	 | [Inverse Captcha](aoc-2017/src/main/java/aoc/day01/README.md)     |     ⭐️⭐      |
 | 2   	 | [Corruption Checksum](aoc-2017/src/main/java/aoc/day02/README.md) |     ⭐️⭐      |
 
+
+* [2018](aoc-2018/README.md)
+
+[![Days completed](https://img.shields.io/badge/Days%20completed-01-blue)](aoc-2018)
+[![Stars](https://img.shields.io/badge/⭐️-02-yellow)]()
+
+| Day 	 | Name 	                                                            | Completion 	 |
+|:-----:|:------------------------------------------------------------------|:------------:|
+| 1   	 | [Chronal Calibration](aoc-2018/src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
+
 * [2019](aoc-2019/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](aoc-2019)
