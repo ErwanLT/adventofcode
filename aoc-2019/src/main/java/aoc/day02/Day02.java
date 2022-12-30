@@ -1,36 +1,43 @@
 package aoc.day02;
 
-import aoc.Computer;
-import aoc.Day;
+import aoc.Day2019;
+import aoc.intcode.IntcodeComputer;
 
-import java.util.List;
 
-public class Day02 implements Day {
-    @Override
-    public String part1(List<String> input) {
-        Computer computer = new Computer(input.get(0));
-        computer.getParts()[1] = 12;
-        computer.getParts()[2] = 2;
-        computer.compute();
-        return String.valueOf(computer.getParts()[0]);
+public class Day02 extends Day2019 {
+
+    protected Day02() {
+        super(2);
+    }
+
+    public static void main(String[] args) {
+        new Day02().printParts();
     }
 
     @Override
-    public String part2(List<String> input) {
-        long wantedOutput = 19690720;
-        for (int i = 0; i <= 99; i++) {
-            for (int j = 0; j <= 99; j++) {
-                Computer computer = new Computer(input.get(0));
-                computer.getParts()[1] = i;
-                computer.getParts()[2] = j;
-                computer.compute();
-                long noun = computer.getParts()[1];
-                long verb = computer.getParts()[2];
-                if (computer.getParts()[0] == wantedOutput) {
-                    return String.valueOf(100 * noun + verb);
+    public Object part1() {
+        return execute(12, 2);
+    }
+
+    @Override
+    public Object part2() {
+        return bruteForceFindingNumber(19690720, 99);
+    }
+
+    private long execute(int x, int y) {
+        IntcodeComputer computer = new IntcodeComputer(2, x, y);
+        computer.run();
+        return computer.firstElement();
+    }
+
+    private int bruteForceFindingNumber(int number, int bound) {
+        for (int i = 0; i < bound; i++) {
+            for (int j = 0; j < bound; j++) {
+                if (execute(i, j) == number) {
+                    return 100 * i + j;
                 }
             }
         }
-        return null;
+        return -1;
     }
 }
