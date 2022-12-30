@@ -1,5 +1,7 @@
 package aoc;
 
+import com.eletutour.printer.PrettyPrinter;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -10,6 +12,8 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public abstract class Day {
+
+    private static PrettyPrinter printer = new PrettyPrinter();
 
     public static final String DEFAULT_DELIMITER = "\n";
     protected final int year;
@@ -55,10 +59,10 @@ public abstract class Day {
     public void printParts() {
         solutionPart1 = part1();
         if(solutionPart1 instanceof Optional) solutionPart1 = ((Optional<?>)solutionPart1).get();
-        System.out.println("Part 1: " + solutionPart1);
+        printer.printSuccess("Part 1 answer : " + solutionPart1);
         solutionPart2 = part2();
         if(solutionPart2 instanceof Optional) solutionPart2 = ((Optional<?>)solutionPart2).get();
-        System.out.println("Part 2: " + solutionPart2);
+        printer.printSuccess("Part 2 answer : " + solutionPart2);
     }
 
     public void printParts(int example) {
@@ -68,6 +72,7 @@ public abstract class Day {
     }
 
     protected String day() {
+        printer.printInfo("getting input for day : "+ day);
         return getResourceAsString(getDayPath());
     }
 
