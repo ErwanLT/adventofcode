@@ -14,17 +14,7 @@ public class Day01 implements Day {
 
     @Override
     public String part1(List<String> input) {
-        var frequency = 0;
-
-        for(String s : input){
-            if (s.startsWith("+")){
-                frequency+= Integer.parseInt(s.substring(1));
-            } else {
-                frequency-= Integer.parseInt(s.substring(1));
-            }
-        }
-
-        return String.valueOf(frequency);
+        return String.valueOf(dayNumbersStream(input).sum());
     }
 
     @Override
@@ -41,9 +31,14 @@ public class Day01 implements Day {
         }
     }
 
-    protected long[] dayNumbers(List<String> input) {
+    private LongStream dayNumbersStream(List<String> input) {
         return ParseUtils.castInputToStream(input)
-                .filter(e -> !e.isEmpty()).map(e -> e.replace("\n", "").trim()).mapToLong(Long::parseLong)
+                .filter(e -> !e.isEmpty()).map(e -> e.replace("\n", "").trim()).mapToLong(Long::parseLong);
+    }
+
+
+    private long[] dayNumbers(List<String> input) {
+        return dayNumbersStream(input)
                 .toArray();
     }
 
