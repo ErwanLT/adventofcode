@@ -15,3 +15,4 @@
 | 6   	 | [Universal Orbit Map](src/main/java/aoc/day06/README.md)	               |     ⭐️⭐      |
 | 7   	 | [Amplification Circuit](src/main/java/aoc/day07/README.md)	             |     ⭐️⭐      |
 | 8   	 | [Space Image Format](src/main/java/aoc/day08/README.md)	                |     ⭐️⭐      |
+| 9   	 | [Sensor Boost](src/main/java/aoc/day09/README.md)	                      |     ⭐️⭐      |
