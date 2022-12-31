@@ -12,3 +12,4 @@
 | 3   	 | [Crossed Wires](src/main/java/aoc/day03/README.md)	                     |     ⭐️⭐      |
 | 4   	 | [Secure Container](src/main/java/aoc/day04/README.md)	                  |     ⭐️⭐      |
 | 5   	 | [Sunny with a Chance of Asteroids](src/main/java/aoc/day05/README.md)	  |     ⭐️⭐      |
+| 6   	 | [Universal Orbit Map](src/main/java/aoc/day06/README.md)	               |     ⭐️⭐      |

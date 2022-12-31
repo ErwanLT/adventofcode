@@ -58,6 +58,7 @@ One module for a year / one module per day inside year.
 | 3   	 | [Crossed Wires](aoc-2019/src/main/java/aoc/day03/README.md)	                     |     ⭐️⭐      |
 | 4   	 | [Secure Container](aoc-2019/src/main/java/aoc/day04/README.md)	                  |     ⭐️⭐      |
 | 5   	 | [Sunny with a Chance of Asteroids](aoc-2019src/main/java/aoc/day05/README.md)	   |     ⭐️⭐      |
+| 6   	 | [Universal Orbit Map](aoc-2019/src/main/java/aoc/day06/README.md)	               |     ⭐️⭐      |
 
 * [2020](aoc-2020/README.md)
 
