@@ -72,7 +72,6 @@ public abstract class Day {
     }
 
     protected String day() {
-        printer.printInfo("getting input for day : "+ day);
         return getResourceAsString(getDayPath());
     }
 
