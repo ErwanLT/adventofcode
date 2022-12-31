@@ -6,7 +6,7 @@ import aoc.intcode.IntcodeComputer;
 
 public class Day02 extends Day2019 {
 
-    protected Day02() {
+    public Day02() {
         super(2);
     }
 

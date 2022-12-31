@@ -14,7 +14,7 @@ public class Day06 extends Day2019 {
 
     ArrayListMultimap<String, String> orbits = ArrayListMultimap.create();
 
-    protected Day06() {
+    public Day06() {
         super(6);
     }
 
