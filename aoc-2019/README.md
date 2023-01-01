@@ -16,3 +16,4 @@
 | 7   	 | [Amplification Circuit](src/main/java/aoc/day07/README.md)	             |     ⭐️⭐      |
 | 8   	 | [Space Image Format](src/main/java/aoc/day08/README.md)	                |     ⭐️⭐      |
 | 9   	 | [Sensor Boost](src/main/java/aoc/day09/README.md)	                      |     ⭐️⭐      |
+|  10   | [Monitoring Station](src/main/java/aoc/day10/README.md)	                |     ⭐️⭐      |

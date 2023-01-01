@@ -62,6 +62,7 @@ One module for a year / one module per day inside year.
 | 7   	 | [Amplification Circuit](aoc-2019/src/main/java/aoc/day07/README.md)	             |     ⭐️⭐      |
 | 8   	 | [Space Image Format](aoc-2019/src/main/java/aoc/day08/README.md)	                |     ⭐️⭐      |
 | 9   	 | [Sensor Boost](aoc-2019/src/main/java/aoc/day09/README.md)	                      |     ⭐️⭐      |
+|  10   | [Monitoring Station](aoc-2019/src/main/java/aoc/day10/README.md)	                |     ⭐️⭐      |
 
 * [2020](aoc-2020/README.md)
 
