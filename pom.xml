@@ -17,6 +17,7 @@
         <module>aoc-2022</module>
         <module>aoc-2017</module>
         <module>aoc-2018</module>
+        <module>aoc-2023</module>
     </modules>
 
     <properties>

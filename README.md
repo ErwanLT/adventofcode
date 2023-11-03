@@ -165,3 +165,8 @@ One module for a year / one module per day inside year.
 | 23  	 | [Unstable Diffusion](aoc-2022/src/main/java/aoc/day23/README.md)       |    ⭐️⭐     |
 | 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)           |    ⭐️⭐     |
 | 25  	 | [Full of Hot Air](aoc-2022/src/main/java/aoc/day25/README.md)          |    ⭐️⭐     |
+
+* [2023](aoc-2023/README.md)
+
+[![Days completed](https://img.shields.io/badge/Days%20completed-00-blue)](aoc-2023)
+[![Stars](https://img.shields.io/badge/⭐️-00-yellow)]()

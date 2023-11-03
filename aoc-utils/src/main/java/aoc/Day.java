@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public abstract class Day {
 
-    private static PrettyPrinter printer = new PrettyPrinter();
+    private static final PrettyPrinter printer = new PrettyPrinter();
 
     public static final String DEFAULT_DELIMITER = "\n";
     protected final int year;
