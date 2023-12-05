@@ -140,31 +140,31 @@ One module for a year / one module per day inside year.
 
 | Day 	 | Name 	                                                                 | Completion 	 |
 |:-----:|:-----------------------------------------------------------------------|:------------:|
-| 1   	 | [Calorie Counting](aoc-2022/src/main/java/aoc/day01/README.md)         |    ⭐️⭐     |
-| 2   	 | [Rock Paper Scissors](aoc-2022/src/main/java/aoc/day02/README.md)      |    ⭐️⭐     |
-| 3   	 | [Rucksack Reorganization](aoc-2022/src/main/java/aoc/day03/README.md)  |    ⭐️⭐     |
-| 4   	 | [Camp Cleanup](aoc-2022/src/main/java/aoc/day04/README.md)             |    ⭐️⭐     |
-| 5   	 | [Supply Stacks](aoc-2022/src/main/java/aoc/day05/README.md)            |    ⭐️⭐     |
-| 6   	 | [Tuning Trouble](aoc-2022/src/main/java/aoc/day06/README.md)           |    ⭐️⭐     |
-| 7   	 | [No Space Left On Device](aoc-2022/src/main/java/aoc/day07/README.md)  |    ⭐️⭐     |
-| 8   	 | [Treetop Tree House](aoc-2022/src/main/java/aoc/day08/README.md)       |    ⭐️⭐     |
-| 9   	 | [Rope Bridge](aoc-2022/src/main/java/aoc/day09/README.md)              |    ⭐️⭐     |
-| 10  	 | [Cathode-Ray Tube](aoc-2022/src/main/java/aoc/day10/README.md)         |    ⭐️⭐     |
-| 11  	 | [Monkey in the Middle](aoc-2022/src/main/java/aoc/day11/README.md)     |    ⭐️⭐     |
-| 12  	 | [Hill Climbing Algorithm](aoc-2022/src/main/java/aoc/day12/README.md)  |    ⭐️⭐     |
-| 13  	 | [Distress Signal](aoc-2022/src/main/java/aoc/day13/README.md)          |    ⭐️⭐     |
-| 14  	 | [Regolith Reservoir](aoc-2022/src/main/java/aoc/day14/README.md)       |    ⭐️⭐     |
-| 15  	 | [Beacon Exclusion Zone](aoc-2022/src/main/java/aoc/day15/README.md)    |    ⭐️⭐     |
-| 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	   |    ⭐️⭐     |
-| 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	        |    ⭐️⭐     |
-| 18  	 | [Boiling Boulders](aoc-2022/src/main/java/aoc/day18/README.md)	        |    ⭐️⭐     |
-| 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	     |    ⭐️⭐     |
-| 20  	 | [Grove Positioning System](aoc-2022/src/main/java/aoc/day20/README.md) |    ⭐️⭐     |
-| 21  	 | [Monkey Math](aoc-2022/src/main/java/aoc/day21/README.md)	             |    ⭐️⭐     |
-| 22  	 | [Monkey Map](aoc-2022/src/main/java/aoc/day22/README.md)	              |    ⭐️⭐     |
-| 23  	 | [Unstable Diffusion](aoc-2022/src/main/java/aoc/day23/README.md)       |    ⭐️⭐     |
-| 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)           |    ⭐️⭐     |
-| 25  	 | [Full of Hot Air](aoc-2022/src/main/java/aoc/day25/README.md)          |    ⭐️⭐     |
+| 1   	 | [Calorie Counting](aoc-2022/src/main/java/aoc/day01/README.md)         |     ⭐️⭐      |
+| 2   	 | [Rock Paper Scissors](aoc-2022/src/main/java/aoc/day02/README.md)      |     ⭐️⭐      |
+| 3   	 | [Rucksack Reorganization](aoc-2022/src/main/java/aoc/day03/README.md)  |     ⭐️⭐      |
+| 4   	 | [Camp Cleanup](aoc-2022/src/main/java/aoc/day04/README.md)             |     ⭐️⭐      |
+| 5   	 | [Supply Stacks](aoc-2022/src/main/java/aoc/day05/README.md)            |     ⭐️⭐      |
+| 6   	 | [Tuning Trouble](aoc-2022/src/main/java/aoc/day06/README.md)           |     ⭐️⭐      |
+| 7   	 | [No Space Left On Device](aoc-2022/src/main/java/aoc/day07/README.md)  |     ⭐️⭐      |
+| 8   	 | [Treetop Tree House](aoc-2022/src/main/java/aoc/day08/README.md)       |     ⭐️⭐      |
+| 9   	 | [Rope Bridge](aoc-2022/src/main/java/aoc/day09/README.md)              |     ⭐️⭐      |
+| 10  	 | [Cathode-Ray Tube](aoc-2022/src/main/java/aoc/day10/README.md)         |     ⭐️⭐      |
+| 11  	 | [Monkey in the Middle](aoc-2022/src/main/java/aoc/day11/README.md)     |     ⭐️⭐      |
+| 12  	 | [Hill Climbing Algorithm](aoc-2022/src/main/java/aoc/day12/README.md)  |     ⭐️⭐      |
+| 13  	 | [Distress Signal](aoc-2022/src/main/java/aoc/day13/README.md)          |     ⭐️⭐      |
+| 14  	 | [Regolith Reservoir](aoc-2022/src/main/java/aoc/day14/README.md)       |     ⭐️⭐      |
+| 15  	 | [Beacon Exclusion Zone](aoc-2022/src/main/java/aoc/day15/README.md)    |     ⭐️⭐      |
+| 16  	 | [Proboscidea Volcanium](aoc-2022/src/main/java/aoc/day16/README.md)	   |     ⭐️⭐      |
+| 17  	 | [Pyroclastic Flow](aoc-2022/src/main/java/aoc/day17/README.md)	        |     ⭐️⭐      |
+| 18  	 | [Boiling Boulders](aoc-2022/src/main/java/aoc/day18/README.md)	        |     ⭐️⭐      |
+| 19  	 | [Not Enough Minerals](aoc-2022/src/main/java/aoc/day19/README.md)	     |     ⭐️⭐      |
+| 20  	 | [Grove Positioning System](aoc-2022/src/main/java/aoc/day20/README.md) |     ⭐️⭐      |
+| 21  	 | [Monkey Math](aoc-2022/src/main/java/aoc/day21/README.md)	             |     ⭐️⭐      |
+| 22  	 | [Monkey Map](aoc-2022/src/main/java/aoc/day22/README.md)	              |     ⭐️⭐      |
+| 23  	 | [Unstable Diffusion](aoc-2022/src/main/java/aoc/day23/README.md)       |     ⭐️⭐      |
+| 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)           |     ⭐️⭐      |
+| 25  	 | [Full of Hot Air](aoc-2022/src/main/java/aoc/day25/README.md)          |     ⭐️⭐      |
 
 * [2023](aoc-2023/README.md)
 
@@ -176,4 +176,4 @@ One module for a year / one module per day inside year.
 | 1   	 | [Trebuchet?!](aoc-2023/src/main/java/aoc/day01/README.md)    |     ⭐️⭐      |
 | 2   	 | [Cube Conundrum](aoc-2023/src/main/java/aoc/day02/README.md) |     ⭐️⭐      |
 | 3   	 | [Gear Ratios](aoc-2023/src/main/java/aoc/day03/README.md)    |     ⭐️⭐      |
-| 4   	 | [Scratchcards](aoc-2023/src/main/java/aoc/day04/README.md)    |     ⭐️⭐      |
+| 4   	 | [Scratchcards](aoc-2023/src/main/java/aoc/day04/README.md)   |     ⭐️⭐      |
