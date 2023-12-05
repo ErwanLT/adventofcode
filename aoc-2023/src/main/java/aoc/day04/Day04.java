@@ -57,12 +57,17 @@ public class Day04 extends Day2023 {
         for (var line: dayStrings()) {
             var parts = line.split(": ");
             int cardNumber = IntUtil.parseUnsignedInteger(parts[0]);
+            String cardId = parts[0];
             numberOfCards.put(cardNumber, numberOfCards.getOrDefault(cardNumber, 0) + 1);
 
             var numberList = parts[1].split(" \\| ");
             var winningNumbers = ListUtils.extractUnsignedIntegers(numberList[0]);
             var myNumbers = ListUtils.extractUnsignedIntegers(numberList[1]);
-            var matchedNumbersCount = myNumbers.stream().filter(winningNumbers::contains).count();
+
+            Card card = new Card(cardId, winningNumbers, myNumbers);
+
+            var matchedNumbersCount = card.getMatchedNumbers();
+
             var numberOfWonCards = numberOfCards.getOrDefault(cardNumber, 1);
 
             for (var cardOffset = 1; cardOffset <= matchedNumbersCount; cardOffset++) {

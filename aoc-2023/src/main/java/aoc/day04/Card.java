@@ -34,6 +34,10 @@ public class Card {
         return cardPoints;
     }
 
+    public long getMatchedNumbers() {
+        return numbers.stream().filter(winningNumbers::contains).count();
+    }
+
     @Override
     public String toString() {
         return "Card{" +

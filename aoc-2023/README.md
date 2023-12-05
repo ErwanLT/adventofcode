@@ -10,4 +10,4 @@
 | 1   	 | [Trebuchet?!](src/main/java/aoc/day01/README.md)    |     ⭐️⭐      |
 | 2   	 | [Cube Conundrum](src/main/java/aoc/day02/README.md) |     ⭐️⭐      |
 | 3   	 | [Gear Ratios](src/main/java/aoc/day03/README.md)    |     ⭐️⭐      |
-| 3   	 | [Scratchcards](src/main/java/aoc/day04/README.md)    |     ⭐️⭐      |
+| 3   	 | [Scratchcards](src/main/java/aoc/day04/README.md)   |     ⭐️⭐      |
