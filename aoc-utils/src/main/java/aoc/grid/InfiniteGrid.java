@@ -2,6 +2,7 @@ package aoc.grid;
 
 import aoc.Pair;
 import aoc.location.Loc;
+import com.google.mu.util.stream.BiStream;
 
 import java.util.*;
 import java.util.function.*;
@@ -10,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static aoc.Direction.eight;
+import static aoc.Direction.four;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
@@ -24,7 +27,7 @@ public class InfiniteGrid implements Grid {
         this();
         for (int i = 0; i < g.length; i++) {
             for (int j = 0; j < g[i].length; j++) {
-                if(transparent != g[i][j]) {
+                if (transparent != g[i][j]) {
                     grid.put(new Loc(j, i), g[i][j]);
                 }
             }
@@ -43,6 +46,10 @@ public class InfiniteGrid implements Grid {
         this(new CharGrid(s).grid);
     }
 
+    public InfiniteGrid(InfiniteGrid g) {
+        this(g.grid);
+    }
+
     public IntStream iterate() {
         return grid.values().stream().mapToInt(e -> e);
     }
@@ -51,8 +58,20 @@ public class InfiniteGrid implements Grid {
         return grid.containsKey(p) ? of(grid.get(p)) : empty();
     }
 
+    public Optional<Character> get(long x, long y) {
+        return get(x, y);
+    }
+
+    public Character getOptimistic(long x, long y) {
+        return get(x, y).orElseThrow();
+    }
+
+    public Character getOptimistic(Loc l) {
+        return get(l).orElseThrow();
+    }
+
     public char getChar(Loc p) {
-        return get(p).orElse((char)0);
+        return get(p).orElse((char) 0);
     }
 
     public void set(Loc p, char c) {
@@ -60,17 +79,27 @@ public class InfiniteGrid implements Grid {
     }
 
     public String toString() {
-        long minX = minX();
-        long minY = minY();
-        CharGrid g = new CharGrid(' ', new Loc(width(), height()));
-        grid.forEach((p, i) -> g.set(new Loc(p.x-minX, p.y-minY), i));
-        return g.toString();
+        return toCharGrid().toString();
     }
 
     public static Collector<Loc, Map<Loc, Character>, InfiniteGrid> toInfiniteGrid(char c) {
         final Supplier<Map<Loc, Character>> supplier = HashMap::new;
         final BiConsumer<Map<Loc, Character>, Loc> accumulator = (a, b) -> a.put(b, c);
-        final BinaryOperator<Map<Loc, Character>> combiner = (a, b) -> {a.putAll(b); return a;};
+        final BinaryOperator<Map<Loc, Character>> combiner = (a, b) -> {
+            a.putAll(b);
+            return a;
+        };
+        final Function<Map<Loc, Character>, InfiniteGrid> finisher = InfiniteGrid::new;
+        return Collector.of(supplier, accumulator, combiner, finisher);
+    }
+
+    public static Collector<Pair<Loc, Character>, Map<Loc, Character>, InfiniteGrid> toInfiniteGrid() {
+        final Supplier<Map<Loc, Character>> supplier = HashMap::new;
+        final BiConsumer<Map<Loc, Character>, Pair<Loc, Character>> accumulator = (a, b) -> a.put(b.a(), b.b());
+        final BinaryOperator<Map<Loc, Character>> combiner = (a, b) -> {
+            a.putAll(b);
+            return a;
+        };
         final Function<Map<Loc, Character>, InfiniteGrid> finisher = InfiniteGrid::new;
         return Collector.of(supplier, accumulator, combiner, finisher);
     }
@@ -108,22 +137,81 @@ public class InfiniteGrid implements Grid {
     }
 
     public long height() {
-        return maxY()+1-minY();
+        return maxY() + 1 - minY();
     }
 
     public long width() {
-        return maxX()+1-minX();
+        return maxX() + 1 - minX();
     }
 
     public boolean contains(Loc p) {
-        return grid.keySet().contains(p);
+        return grid.containsKey(p);
     }
 
     public Stream<Loc> stream() {
         return grid.keySet().stream();
     }
 
+    public BiStream<Loc, Character> streamChars() {
+        BiStream.Builder<Loc, Character> builder = BiStream.builder();
+        grid.forEach(builder::add);
+        return builder.build();
+    }
+
+    public BiStream<List<Loc>, String> findGroups(Predicate<Character> predicate, boolean horizontal) {
+        BiStream.Builder<List<Loc>, String> builder = BiStream.builder();
+        StringBuilder currentGroup = new StringBuilder();
+        List<Loc> currentLocs = new ArrayList<>();
+        long width = width();
+        long height = height();
+        for(int i = 0; i<(horizontal ? width : height); i++) {
+            for(int j = 0; j<(horizontal ? height : width); j++) {
+                Loc l = new Loc(horizontal ? j : i, horizontal ? i : j);
+                Character c = getOptimistic(l);
+                boolean matchesPredicate = predicate.test(c);
+                if(matchesPredicate) {
+                    currentGroup.append(c);
+                    currentLocs.add(l);
+                }
+                if ((!matchesPredicate && !currentGroup.isEmpty()) || j == (horizontal ? height : width) - 1) {
+                    builder.add(new ArrayList<>(currentLocs), currentGroup.toString());
+                    currentGroup.delete(0, currentGroup.length());
+                    currentLocs.clear();
+                }
+            }
+        }
+        return builder.build();
+    }
+
+    public Stream<Loc> findAll(Character c) {
+        return stream().filter(l -> get(l).filter(ch -> ch == c).isPresent());
+    }
+
+    public Stream<Loc> findAround(Predicate<Character> predicate, Stream<Loc> locs, boolean diagonal) {
+        return locs.flatMap(l -> (diagonal ? eight() : four()).map(d -> d.move(l))).filter(l -> get(l).filter(predicate).isPresent());
+    }
+
     public void removeIf(BiPredicate<Loc, Character> p) {
         new HashSet<>(grid.entrySet()).stream().filter(e -> p.test(e.getKey(), e.getValue())).forEach(e -> grid.remove(e.getKey()));
+    }
+
+    public char[][] getGrid() {
+        return toCharGrid().getGrid();
+    }
+
+    private CharGrid toCharGrid() {
+        long minX = minX();
+        long minY = minY();
+        CharGrid g = new CharGrid(' ', new Loc(width(), height()));
+        grid.forEach((p, i) -> g.set(new Loc(p.x - minX, p.y - minY), i));
+        return g;
+    }
+
+    public long area() {
+        return (maxY() - minY()) + (maxX() - minX());
+    }
+
+    public void replace(char find, char replaceWith) {
+        grid.entrySet().stream().filter(e -> e.getValue() == find).forEach(e -> grid.put(e.getKey(), replaceWith));
     }
 }

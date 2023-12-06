@@ -37,6 +37,14 @@ public enum Direction {
         else return CENTER;
     }
 
+    public static Direction getByMove(Loc from, Loc to) {
+        if (to.x > from.x) return EAST;
+        else if (to.x < from.x) return WEST;
+        else if (to.y > from.y) return SOUTH;
+        else if (to.y < from.y) return NORTH;
+        else return CENTER;
+    }
+
     public static Point turn(Point w, boolean b) {
         return b ? new Point(-w.y, w.x) : new Point(w.y, -w.x);
     }
@@ -62,12 +70,20 @@ public enum Direction {
         return new Direction[]{NORTH, EAST, SOUTH, WEST, NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST};
     }
 
-    public static Stream<Direction> five() {
-        return Stream.of(NORTH, EAST, SOUTH, WEST, CENTER);
-    }
-
     public static Direction[] round() {
         return new Direction[]{NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST};
+    }
+
+    public static Stream<Direction> four() {
+        return Arrays.stream(fourDirections());
+    }
+
+    public static Stream<Direction> eight() {
+        return Arrays.stream(eightDirections());
+    }
+
+    public static Stream<Direction> five() {
+        return Stream.of(NORTH, EAST, SOUTH, WEST, CENTER);
     }
 
     public Direction turnSteps(int steps) {
@@ -188,7 +204,7 @@ public enum Direction {
 
     public boolean leftOf(Direction robotDir) {
         int n = this.ordinal() - 1;
-        if (n == -1) n = values().length - 1;
+        if (n == -1) n = fourDirections().length - 1;
         return robotDir.ordinal() == n;
     }
 
@@ -196,10 +212,30 @@ public enum Direction {
         int num = degrees % 360;
         Direction dir = this;
         while (num > 0) {
-            dir = turn(right);
+            dir = dir.turn(right);
             num -= 90;
         }
         return dir;
+    }
+
+    public static Direction caretToDirection(char c) {
+        return switch(c) {
+            case '^' -> NORTH;
+            case '>' -> EAST;
+            case 'v' -> SOUTH;
+            case '<' -> WEST;
+            default -> throw new IllegalStateException(c + " is not a caret!");
+        };
+    }
+
+    public char getCaret() {
+        return switch(this) {
+            case NORTH -> '^';
+            case EAST -> '>';
+            case SOUTH -> 'v';
+            case WEST -> '<';
+            default -> throw new IllegalStateException(this + " is not a caret!");
+        };
     }
 
     public Direction turnDegrees(int degrees) {
