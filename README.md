@@ -178,3 +178,4 @@ One module for a year / one module per day inside year.
 | 3   	 | [Gear Ratios](aoc-2023/src/main/java/aoc/day03/README.md)                     |     ⭐️⭐      |
 | 4   	 | [Scratchcards](aoc-2023/src/main/java/aoc/day04/README.md)                    |     ⭐️⭐      |
 | 5   	 | [If You Give A Seed A Fertilizer](aoc-2023/src/main/java/aoc/day05/README.md) |     ⭐️⭐      |
+| 6   	 | [Wait For It](aoc-2023/src/main/java/aoc/day06/README.md)                     |     ⭐️⭐      |
