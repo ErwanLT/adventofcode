@@ -25,23 +25,15 @@ public class Day06 extends Day2023 {
     @Override
     public Object part1() {
 
-        Long product = 1L;
+        return times.stream()
+                .mapToLong(raceTime -> countWaysToWin(raceTime, records.get(times.indexOf(raceTime))))
+                .reduce(1, (a, b) -> a * b);
+    }
 
-        for (var i = 0; i < times.size(); i++) {
-            var raceTime = times.get(i);
-            var waysToWinCount = 0;
-
-            for (var time = 1; time < raceTime; time++) {
-                var distance = (raceTime - time) * time;
-
-                if (distance > records.get(i)) {
-                    waysToWinCount++;
-                }
-            }
-
-            product *= waysToWinCount;
-        }
-        return product;
+    private long countWaysToWin(int raceTime, int record) {
+        return java.util.stream.IntStream.range(1, raceTime)
+                .filter(time -> (raceTime - time) * time > record)
+                .count();
     }
 
     @Override
