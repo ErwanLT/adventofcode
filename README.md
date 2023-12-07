@@ -168,8 +168,8 @@ One module for a year / one module per day inside year.
 
 * [2023](aoc-2023/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-03-blue)](aoc-2023)
-[![Stars](https://img.shields.io/badge/⭐️-06-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-07-blue)](aoc-2023)
+[![Stars](https://img.shields.io/badge/⭐️-14-yellow)]()
 
 | Day 	 | Name 	                                                                        | Completion 	 |
 |:-----:|:------------------------------------------------------------------------------|:------------:|
@@ -179,3 +179,4 @@ One module for a year / one module per day inside year.
 | 4   	 | [Scratchcards](aoc-2023/src/main/java/aoc/day04/README.md)                    |     ⭐️⭐      |
 | 5   	 | [If You Give A Seed A Fertilizer](aoc-2023/src/main/java/aoc/day05/README.md) |     ⭐️⭐      |
 | 6   	 | [Wait For It](aoc-2023/src/main/java/aoc/day06/README.md)                     |     ⭐️⭐      |
+| 7   	 | [Camel Cards](aoc-2023/src/main/java/aoc/day07/README.md)                     |     ⭐️⭐      |
