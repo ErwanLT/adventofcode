@@ -1,6 +1,7 @@
 package aoc;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StringUtil {
@@ -12,5 +13,9 @@ public class StringUtil {
         }
 
         return characterCount;
+    }
+
+    public static List<Long> slongs(String s) {
+        return Regex.matchAll("\\-?\\d+", s).stream().map(Long::parseLong).toList();
     }
 }
