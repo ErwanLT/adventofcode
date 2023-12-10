@@ -4,12 +4,15 @@ import aoc.Direction;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.function.ToLongFunction;
+import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.lang.Math.toIntExact;
+import static java.lang.Math.*;
 
-public class Loc {
+public class Loc implements Comparable<Loc> {
     public final long x;
     public final long y;
 
@@ -54,7 +57,7 @@ public class Loc {
         return new Point(intX(), intY());
     }
 
-    public static Stream<Loc> range(int i, int j){
+    public static Stream<Loc> range(int i, int j) {
         return IntStream.range(0, i).boxed().flatMap(x -> IntStream.range(0, j).mapToObj(y -> new Loc(x, y)));
     }
 
@@ -76,7 +79,7 @@ public class Loc {
 
     @Override
     public String toString() {
-        return getClass().getName() + "[x=" + x + ",y=" + y + "]";
+        return x + ", " + y;
     }
 
     public int intX() {
@@ -88,7 +91,11 @@ public class Loc {
     }
 
     public long distance(Loc pt) {
-        return Math.abs(pt.x-x) + Math.abs(pt.y-y);
+        return abs(pt.x - x) + abs(pt.y - y);
+    }
+
+    public double distanceDouble(Loc pt) {
+        return hypot(x - pt.x, y - pt.y);
     }
 
     public Stream<Loc> eightDirs() {
@@ -96,7 +103,7 @@ public class Loc {
     }
 
     public Stream<Loc> expand(long howMuch) {
-        return new Range(new Loc(x-(howMuch/2), y-(howMuch/2)), new Loc(x+(howMuch/2), y+(howMuch/2))).stream();
+        return new Range(new Loc(x - (howMuch / 2), y - (howMuch / 2)), new Loc(x + (howMuch / 2), y + (howMuch / 2))).stream();
     }
 
     public Stream<Loc> walk(Direction dir, long howFar) {
@@ -105,5 +112,25 @@ public class Loc {
 
     public Stream<Loc> fourDirs() {
         return Arrays.stream(Direction.fourDirections()).map(d -> d.move(this));
+    }
+
+    public double rotation(Loc loc) {
+        double theta = Math.atan2(loc.y - this.y, loc.x - this.x) + Math.PI / 2.0;
+        double angle = Math.toDegrees(theta);
+        return angle < 0 ? angle + 360 : angle;
+    }
+
+    @Override
+    public int compareTo(Loc o) {
+        ToLongFunction<Loc> tlf = a -> a.x * Integer.MAX_VALUE + a.y;
+        return Comparator.comparingLong(tlf).compare(this, o);
+    }
+
+    public boolean contains(long l) {
+        return l >= x && l <= y;
+    }
+
+    public Loc translate(UnaryOperator<Long> mapper) {
+        return new Loc(mapper.apply(x), mapper.apply(y));
     }
 }
