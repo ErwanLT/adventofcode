@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static aoc.MutableElement.mutable;
 import static java.util.stream.IntStream.range;
 
 public class AOCUtils {
@@ -18,6 +19,15 @@ public class AOCUtils {
         if(!b) {
             throw new IllegalStateException(message);
         }
+    }
+
+    public static <A> Stream<Pair<A, A>> connectedPairs(Stream<A> l) {
+        MutableElement<A> m = mutable();
+        return l.map(e -> {
+            var p = new Pair<>(m.get(), e);
+            m.set(e);
+            return p;
+        }).filter(p -> p.a() != null);
     }
 
     public static<A> Stream<Pair<A, A>> connectedPairs(List<A> l) {
@@ -38,6 +48,10 @@ public class AOCUtils {
 
     public static<E> E last(List<E> list) {
         return list.get(list.size() - 1);
+    }
+
+    public static <A, B> Stream<Pair<A, B>> zip(Stream<? extends A> a, Stream<? extends B> b) {
+        return zip(a, b, Pair::new);
     }
 
     public static<A, B, C> Stream<C> zip(Stream<? extends A> a,
