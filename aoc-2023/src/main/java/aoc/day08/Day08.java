@@ -1,12 +1,12 @@
 package aoc.day08;
 
 import aoc.Day2023;
+import aoc.day12.Day12_2019;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static aoc.day12.Day12.lcm;
 import static aoc.parser.DataMapper.readString;
 
 public class Day08 extends Day2023 {
@@ -48,6 +48,6 @@ public class Day08 extends Day2023 {
 
     @Override
     public Object part2() {
-        return lcm(inst.keySet().stream().filter(e -> e.endsWith("A")).mapToLong(e -> walk(input, inst, e, "")).toArray());
+        return Day12_2019.lcm(inst.keySet().stream().filter(e -> e.endsWith("A")).mapToLong(e -> walk(input, inst, e, "")).toArray());
     }
 }

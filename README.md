@@ -168,8 +168,8 @@ One module for a year / one module per day inside year.
 
 * [2023](aoc-2023/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](aoc-2023)
-[![Stars](https://img.shields.io/badge/⭐️-22-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-12-blue)](aoc-2023)
+[![Stars](https://img.shields.io/badge/⭐️-24-yellow)]()
 
 | Day 	 | Name 	                                                                        | Completion 	 |
 |:-----:|:------------------------------------------------------------------------------|:------------:|
@@ -184,3 +184,4 @@ One module for a year / one module per day inside year.
 | 9   	 | [Mirage Maintenance](aoc-2023/src/main/java/aoc/day09/README.md)              |     ⭐️⭐      |
 |  10   | [Pipe Maze](aoc-2023/src/main/java/aoc/day10/README.md)                       |     ⭐️⭐      |
 |  11   | [Cosmic Expansion](aoc-2023/src/main/java/aoc/day11/README.md)                |     ⭐️⭐      |
+|  12   | [Hot Springs](aoc-2023/src/main/java/aoc/day12/README.md)                     |     ⭐️⭐      |

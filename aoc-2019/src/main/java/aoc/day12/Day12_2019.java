@@ -6,17 +6,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-public class Day12 extends Day2019 {
+public class Day12_2019 extends Day2019 {
 
     int[][] moons = {{14, 2, 8}, {7, 4, 10}, {1, 17, 16}, {-4, -1, 1}};
     int[][] velocity = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
-    public Day12(){
+    public Day12_2019(){
         super(12);
     }
 
     public static void main(String[] args) {
-        new Day12().printParts();
+        new Day12_2019().printParts();
     }
 
     @Override
