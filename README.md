@@ -168,8 +168,8 @@ One module for a year / one module per day inside year.
 
 * [2023](aoc-2023/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-14-blue)](aoc-2023)
-[![Stars](https://img.shields.io/badge/⭐️-28-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-15-blue)](aoc-2023)
+[![Stars](https://img.shields.io/badge/⭐️-30-yellow)]()
 
 | Day 	 | Name 	                                                                        | Completion 	 |
 |:-----:|:------------------------------------------------------------------------------|:------------:|
@@ -187,3 +187,4 @@ One module for a year / one module per day inside year.
 |  12   | [Hot Springs](aoc-2023/src/main/java/aoc/day12/README.md)                     |     ⭐️⭐      |
 |  13   | [Point of Incidence](aoc-2023/src/main/java/aoc/day13/README.md)              |     ⭐️⭐      |
 |  14   | [Parabolic Reflector Dish](aoc-2023/src/main/java/aoc/day14/README.md)        |     ⭐️⭐      |
+|  15   | [Lens Library](aoc-2023/src/main/java/aoc/day15/README.md)                    |     ⭐️⭐      |
