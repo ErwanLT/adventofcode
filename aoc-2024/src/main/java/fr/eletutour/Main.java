@@ -1,0 +1,20 @@
+package fr.eletutour;
+
+import aoc.Day;
+
+import java.lang.reflect.InvocationTargetException;
+
+public class Main {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        for (int day = 2; day <3; day++){
+            System.out.println("Day " + day + ":");
+            String paddedDay = String.valueOf(day);
+            if(day < 10) {
+                paddedDay = "0" + day;
+            }
+            Day instance = (Day) Class.forName("aoc.day" + paddedDay + ".Day"+paddedDay).getDeclaredConstructor().newInstance();
+            instance.printParts();
+            System.out.println();
+        }
+    }
+}
