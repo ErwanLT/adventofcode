@@ -1,6 +1,4 @@
-package fr.eletutour;
-
-import aoc.Day;
+package aoc;
 
 public abstract class Day2024 extends Day {
     public Day2024(int day) {

@@ -1,12 +1,10 @@
-package fr.eletutour;
-
-import aoc.Day;
+package aoc;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        for (int day = 2; day <3; day++){
+        for (int day = 1; day <3; day++){
             System.out.println("Day " + day + ":");
             String paddedDay = String.valueOf(day);
             if(day < 10) {

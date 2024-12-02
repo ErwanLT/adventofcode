@@ -1,6 +1,6 @@
-package fr.eletutour.day02;
+package aoc.day02;
 
-import fr.eletutour.Day2024;
+import aoc.Day2024;
 
 import java.util.ArrayList;
 import java.util.List;
