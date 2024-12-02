@@ -5,7 +5,7 @@
 [![Days completed](https://img.shields.io/badge/Days%20completed-02-blue)]()
 [![Stars](https://img.shields.io/badge/⭐️-4-yellow)]()
 
-| Day 	 | Name 	                                                               | Completion 	 |
-|:-----:|:---------------------------------------------------------------------|:------------:|
-| 1   	 | [Historian Hysteria](src/main/java/aoc/day01/README.md)                     |     ⭐️⭐      |
-| 2   	 | [Red-Nosed Reports](src/main/java/aoc/day02/README.md)                  |     ⭐️⭐      |
+| Day 	 | Name 	                                                  | Completion 	 |
+|:-----:|:--------------------------------------------------------|:------------:|
+| 1   	 | [Historian Hysteria](src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
+| 2   	 | [Red-Nosed Reports](src/main/java/aoc/day02/README.md)  |     ⭐️⭐      |

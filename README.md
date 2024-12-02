@@ -4,7 +4,7 @@
 My personal repo for the advent of code event
 One module for a year / one module per day inside year.
 
-* [2015](aoc-2015/README.md)
+## [2015](aoc-2015/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-13-blue)](2015)
 [![Stars](https://img.shields.io/badge/⭐️-26-yellow)]()
@@ -25,7 +25,7 @@ One module for a year / one module per day inside year.
 | 12  | [JSAbacusFramework.io](aoc-2015/src/main/java/aoc/day12/README.md)                   |   ⭐️⭐️️    |
 | 13  | [Knights of the Dinner Table](aoc-2015/src/main/java/aoc/day13/README.md)            |    ⭐️⭐     |
 
-* [2017](aoc-2017/README.md)
+## [2017](aoc-2017/README.md)
  
 [![Days completed](https://img.shields.io/badge/Days%20completed-02-blue)](aoc-2017)
 [![Stars](https://img.shields.io/badge/⭐️-04-yellow)]()
@@ -36,7 +36,7 @@ One module for a year / one module per day inside year.
 | 2   	 | [Corruption Checksum](aoc-2017/src/main/java/aoc/day02/README.md) |     ⭐️⭐      |
 
 
-* [2018](aoc-2018/README.md)
+## [2018](aoc-2018/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-02-blue)](aoc-2018)
 [![Stars](https://img.shields.io/badge/⭐️-04-yellow)]()
@@ -46,7 +46,7 @@ One module for a year / one module per day inside year.
 | 1   	 | [Chronal Calibration](aoc-2018/src/main/java/aoc/day01/README.md)         |     ⭐️⭐      |
 | 2   	 | [Inventory Management System](aoc-2018/src/main/java/aoc/day02/README.md) |     ⭐️⭐      |
 
-* [2019](aoc-2019/README.md)
+## [2019](aoc-2019/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-13-blue)](aoc-2019)
 [![Stars](https://img.shields.io/badge/⭐️-26-yellow)]()
@@ -67,7 +67,7 @@ One module for a year / one module per day inside year.
 |  12   | [The N-Body Problem](aoc-2019/src/main/java/aoc/day12/README.md)	                |     ⭐️⭐      |
 |  13   | [Care Package](aoc-2019/src/main/java/aoc/day13/README.md)	                      |     ⭐️⭐      |
 
-* [2020](aoc-2020/README.md)
+## [2020](aoc-2020/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2020)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
@@ -100,7 +100,7 @@ One module for a year / one module per day inside year.
 | 24  | [Lobby Layout](aoc-2020/src/main/java/aoc/day24/README.md)            |    ⭐️⭐     |
 | 25  | [Combo Breaker](aoc-2020/src/main/java/aoc/day25/README.md)           |    ⭐️⭐     |
 
-* [2021](aoc-2021/README.md)
+## [2021](aoc-2021/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2021)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
@@ -133,7 +133,7 @@ One module for a year / one module per day inside year.
 | 24  	 | [Arithmetic Logic Unit](aoc-2021/src/main/java/aoc/day24/README.md)   |     ⭐️⭐      |
 | 25  	 | [Sea Cucumber](aoc-2021/src/main/java/aoc/day25/README.md)     	      |     ⭐️⭐      |
 
-* [2022](aoc-2022/README.md)
+## [2022](aoc-2022/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)](aoc-2022)
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
@@ -166,7 +166,7 @@ One module for a year / one module per day inside year.
 | 24  	 | [Blizzard Basin](aoc-2022/src/main/java/aoc/day24/README.md)           |     ⭐️⭐      |
 | 25  	 | [Full of Hot Air](aoc-2022/src/main/java/aoc/day25/README.md)          |     ⭐️⭐      |
 
-* [2023](aoc-2023/README.md)
+## [2023](aoc-2023/README.md)
 
 [![Days completed](https://img.shields.io/badge/Days%20completed-16-blue)](aoc-2023)
 [![Stars](https://img.shields.io/badge/⭐️-32-yellow)]()
@@ -189,3 +189,12 @@ One module for a year / one module per day inside year.
 |  14   | [Parabolic Reflector Dish](aoc-2023/src/main/java/aoc/day14/README.md)        |     ⭐️⭐      |
 |  15   | [Lens Library](aoc-2023/src/main/java/aoc/day15/README.md)                    |     ⭐️⭐      |
 |  16   | [The Floor Will Be Lava](aoc-2023/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
+
+## [2024](aoc-2024/README.md)
+[![Days completed](https://img.shields.io/badge/Days%20completed-2-blue)](aoc-2024)
+[![Stars](https://img.shields.io/badge/⭐️-4-yellow)]()
+
+| Day 	 | Name 	                                                           | Completion 	 |
+|:-----:|:-----------------------------------------------------------------|:------------:|
+| 1   	 | [Historian Hysteria](aoc-2024/src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
+| 2   	 | [Red-Nosed Reports](aoc-2024/src/main/java/aoc/day02/README.md)           |     ⭐️⭐      |
