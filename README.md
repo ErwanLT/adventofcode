@@ -191,10 +191,11 @@ One module for a year / one module per day inside year.
 |  16   | [The Floor Will Be Lava](aoc-2023/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 
 ## [2024](aoc-2024/README.md)
-[![Days completed](https://img.shields.io/badge/Days%20completed-2-blue)](aoc-2024)
-[![Stars](https://img.shields.io/badge/⭐️-4-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-3-blue)](aoc-2024)
+[![Stars](https://img.shields.io/badge/⭐️-6-yellow)]()
 
 | Day 	 | Name 	                                                           | Completion 	 |
 |:-----:|:-----------------------------------------------------------------|:------------:|
 | 1   	 | [Historian Hysteria](aoc-2024/src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
-| 2   	 | [Red-Nosed Reports](aoc-2024/src/main/java/aoc/day02/README.md)           |     ⭐️⭐      |
+| 2   	 | [Red-Nosed Reports](aoc-2024/src/main/java/aoc/day02/README.md)  |     ⭐️⭐      |
+| 3   	 | [Mull It Over](aoc-2024/src/main/java/aoc/day03/README.md)       |     ⭐️⭐      |
