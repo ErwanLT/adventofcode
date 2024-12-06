@@ -201,4 +201,4 @@ One module for a year / one module per day inside year.
 | 3   	 | [Mull It Over](aoc-2024/src/main/java/aoc/day03/README.md)       |     ⭐️⭐      |
 | 4   	 | [Ceres Search](aoc-2024/src/main/java/aoc/day04/README.md)       |     ⭐️⭐      |
 | 5   	 | [Print Queue](aoc-2024/src/main/java/aoc/day05/README.md)        |     ⭐️⭐      |
-| 6   	 | [Guard Gallivant](aoc-2024/src/main/java/aoc/day05/README.md)    |     ⭐️⭐      |
+| 6   	 | [Guard Gallivant](aoc-2024/src/main/java/aoc/day06/README.md)    |     ⭐️⭐      |

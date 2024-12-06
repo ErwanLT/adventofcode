@@ -12,4 +12,4 @@
 | 3   	 | [Mull It Over](src/main/java/aoc/day03/README.md)       |     ⭐️⭐      |
 | 4   	 | [Ceres Search](src/main/java/aoc/day04/README.md)       |     ⭐️⭐      |
 | 5   	 | [Print Queue](src/main/java/aoc/day05/README.md)        |     ⭐️⭐      |
-| 6   	 | [Guard Gallivant](src/main/java/aoc/day05/README.md)    |     ⭐️⭐      |
+| 6   	 | [Guard Gallivant](src/main/java/aoc/day06/README.md)    |     ⭐️⭐      |
