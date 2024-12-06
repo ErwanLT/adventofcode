@@ -3,8 +3,10 @@ package aoc.day06;
 import aoc.Day2024;
 import aoc.location.Loc;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Day06 extends Day2024 {
 
@@ -36,9 +38,10 @@ public class Day06 extends Day2024 {
             new Loc(-1, 0)  // LEFT
     };
 
-    public static int countVisitedPositions(char[][] map) {
+    public int countVisitedPositions(char[][] map) {
         GuardState guardState = findGuard(map);
         if (guardState == null) {
+            printer.printError("No guard found on the map.");
             throw new IllegalArgumentException("No guard found on the map.");
         }
 
@@ -64,32 +67,69 @@ public class Day06 extends Day2024 {
         return visited.size();
     }
 
-    public static int countObstructionPositions(char[][] map) {
+    public int countObstructionPositions(char[][] map) {
         GuardState guardState = findGuard(map);
         if (guardState == null) {
+            printer.printError("No guard found on the map.");
             throw new IllegalArgumentException("No guard found on the map.");
         }
 
-        int rows = map.length;
-        int cols = map[0].length;
-        int validObstructions = 0;
+        // Find reachable cells
+        Set<Loc> reachableCells = findReachableCells(map, guardState);
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                if (map[r][c] == '.' && !(r == guardState.position.y && c == guardState.position.x)) {
-                    map[r][c] = '#';
-                    if (createsLoop(map, guardState)) {
-                        validObstructions++;
-                    }
-                    map[r][c] = '.';
+        // Multi-threaded computation
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        List<Future<Integer>> futures = new ArrayList<>();
+        for (Loc cell : reachableCells) {
+            futures.add(executor.submit(() -> {
+                if (createsLoopWithObstruction(map, guardState, cell)) {
+                    return 1;
                 }
+                return 0;
+            }));
+        }
+
+        executor.shutdown();
+
+        return futures.stream()
+                .mapToInt(future -> {
+                    try {
+                        return future.get();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .sum();
+    }
+
+    // Helper method to find reachable cells using BFS
+    private Set<Loc> findReachableCells(char[][] map, GuardState guardState) {
+        Set<Loc> reachable = new HashSet<>();
+        Queue<Loc> queue = new LinkedList<>();
+        queue.add(guardState.position);
+
+        while (!queue.isEmpty()) {
+            Loc current = queue.poll();
+            if (reachable.contains(current) || isOutOfBounds(current, map)) {
+                continue;
+            }
+
+            char cell = map[(int) current.y][(int) current.x];
+            if (cell == '#') {
+                continue; // Skip walls
+            }
+
+            reachable.add(current);
+            for (Loc direction : DIRECTIONS) {
+                queue.add(current.move(direction));
             }
         }
 
-        return validObstructions;
+        return reachable;
     }
 
-    private static boolean createsLoop(char[][] map, GuardState guardState) {
+    // Updated loop check method remains similar, but caching can be added if necessary
+    private static boolean createsLoopWithObstruction(char[][] map, GuardState guardState, Loc obstruction) {
         Set<String> visited = new HashSet<>();
         Loc position = guardState.position;
         int direction = guardState.direction;
@@ -97,24 +137,33 @@ public class Day06 extends Day2024 {
         while (true) {
             String key = position + "-" + direction;
             if (visited.contains(key)) {
-                return true;
+                return true; // Loop detected
             }
             visited.add(key);
 
             Loc nextPosition = position.move(DIRECTIONS[direction]);
+
+            // Check if the next position is the simulated obstruction
+            if (nextPosition.equals(obstruction)) {
+                direction = (direction + 1) % 4; // Turn right at obstruction
+                continue;
+            }
+
+            // Stop if out of bounds
             if (isOutOfBounds(nextPosition, map)) {
                 break;
             }
 
-            char nextCell = map[(int)nextPosition.y][(int)nextPosition.x];
+            // Navigate based on the next cell
+            char nextCell = map[(int) nextPosition.y][(int) nextPosition.x];
             if (nextCell == '#') {
-                direction = (direction + 1) % 4;
+                direction = (direction + 1) % 4; // Turn right at wall
             } else {
-                position = nextPosition;
+                position = nextPosition; // Move forward
             }
         }
 
-        return false;
+        return false; // No loop detected
     }
 
     private static GuardState findGuard(char[][] map) {

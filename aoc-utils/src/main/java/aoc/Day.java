@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public abstract class Day {
 
-    private static final PrettyPrinter printer = new PrettyPrinter();
+    protected final PrettyPrinter printer;
 
     public static final String DEFAULT_DELIMITER = "\n";
     protected final int year;
@@ -26,6 +26,7 @@ public abstract class Day {
     public Day(int year, int day) {
         this.year = year;
         this.day = day;
+        this.printer = new PrettyPrinter();
     }
 
     public Day setExample(int example) {
