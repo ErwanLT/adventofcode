@@ -57,12 +57,14 @@ public abstract class Day {
     public abstract Object part2();
 
     public void printParts() {
+        printer.printInfo("Start");
         solutionPart1 = part1();
         if(solutionPart1 instanceof Optional) solutionPart1 = ((Optional<?>)solutionPart1).get();
         printer.printSuccess("Part 1 answer : " + solutionPart1);
         solutionPart2 = part2();
         if(solutionPart2 instanceof Optional) solutionPart2 = ((Optional<?>)solutionPart2).get();
         printer.printSuccess("Part 2 answer : " + solutionPart2);
+        printer.printInfo("End");
     }
 
     public void printParts(int example) {
