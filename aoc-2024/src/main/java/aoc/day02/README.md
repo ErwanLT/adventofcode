@@ -56,3 +56,5 @@ Thanks to the Problem Dampener, 4 reports are actually safe!
 Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. How many reports are now safe?
 
 Your puzzle answer was `428`.
+
+![img.png](img.png)
