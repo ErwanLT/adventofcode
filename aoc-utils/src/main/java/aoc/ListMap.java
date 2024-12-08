@@ -10,6 +10,10 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 
+
+import com.google.mu.util.stream.BiStream;
+import com.google.mu.util.stream.BiCollector;
+
 public class ListMap<K, V> extends HashMap<K, List<V>> {
     public ListMap() {
     }
@@ -99,5 +103,31 @@ public class ListMap<K, V> extends HashMap<K, List<V>> {
         final BinaryOperator<ListMap<K, U>> combiner = ListMap::mergeWith;
         final Function<ListMap<K, U>, ListMap<K, U>> finisher = Function.identity();
         return Collector.of(supplier, accumulator, combiner, finisher);
+    }
+
+    public static <K, U> BiCollector<K, U, ListMap<K, U>> toListMap() {
+        return new BiCollector<K, U, ListMap<K, U>>() {
+            @Override
+            public <E> Collector<E, ?, ListMap<K, U>> collectorOf(Function<E, K> toKey, Function<E, U> toValue) {
+                final Supplier<ListMap<K, U>> supplier = ListMap::new;
+                final BiConsumer<ListMap<K, U>, E> accumulator = (a, b) -> a.addTo(toKey.apply(b), toValue.apply(b));
+                final BinaryOperator<ListMap<K, U>> combiner = ListMap::mergeWith;
+                final Function<ListMap<K, U>, ListMap<K, U>> finisher = Function.identity();
+                return Collector.of(supplier, accumulator, combiner, finisher);
+            }
+        };
+    }
+
+    public static <K, U> BiCollector<K, U, ListMap<U, K>> toListMapReversed() {
+        return new BiCollector<K, U, ListMap<U, K>>() {
+            @Override
+            public <E> Collector<E, ?, ListMap<U, K>> collectorOf(Function<E, K> toValue, Function<E, U> toKey) {
+                final Supplier<ListMap<U, K>> supplier = ListMap::new;
+                final BiConsumer<ListMap<U, K>, E> accumulator = (a, b) -> a.addTo(toKey.apply(b), toValue.apply(b));
+                final BinaryOperator<ListMap<U, K>> combiner = ListMap::mergeWith;
+                final Function<ListMap<U, K>, ListMap<U, K>> finisher = Function.identity();
+                return Collector.of(supplier, accumulator, combiner, finisher);
+            }
+        };
     }
 }

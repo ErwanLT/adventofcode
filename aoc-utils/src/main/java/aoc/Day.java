@@ -18,14 +18,20 @@ public abstract class Day {
     public static final String DEFAULT_DELIMITER = "\n";
     protected final int year;
     protected final int day;
+    protected final String name;
     protected int example = 0;
 
     private Object solutionPart1;
     private Object solutionPart2;
 
-    public Day(int year, int day) {
+    public Day(int year, int day){
+        this(year, day, "");
+    }
+
+    public Day(int year, int day, String name) {
         this.year = year;
         this.day = day;
+        this.name = name;
         this.printer = new PrettyPrinter();
     }
 
@@ -58,7 +64,7 @@ public abstract class Day {
     public abstract Object part2();
 
     public void printParts() {
-        printer.printInfo("Start");
+        printer.printInfo("Start : " + name);
         solutionPart1 = part1();
         if(solutionPart1 instanceof Optional) solutionPart1 = ((Optional<?>)solutionPart1).get();
         printer.printSuccess("Part 1 answer : " + solutionPart1);

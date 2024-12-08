@@ -3,6 +3,8 @@ package aoc;
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -139,5 +141,9 @@ public class AOCUtils {
             throw new IllegalStateException("It is not safe to subtract "+a+" by "+b+": long overflow will occur");
         }
         return res;
+    }
+
+    public static <A> Stream<A> appendWhile(UnaryOperator<A> func, Predicate<A> pred, A start) {
+        return Stream.iterate(start, func).takeWhile(pred);
     }
 }
