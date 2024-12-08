@@ -13,7 +13,7 @@ public class Day06 extends Day2024 {
     private final char[][] grid;
 
     public Day06() {
-        super(6);
+        super(6, "Guard Gallivant");
         this.grid = dayGrid();
     }
 

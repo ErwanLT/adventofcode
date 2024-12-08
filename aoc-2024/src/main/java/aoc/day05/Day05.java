@@ -9,7 +9,7 @@ public class Day05 extends Day2024 {
     private final List<String> lines;
 
     public Day05() {
-        super(5);
+        super(5, "Print Queue");
         lines = Arrays.asList(dayStrings());
     }
 

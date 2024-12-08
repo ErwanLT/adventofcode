@@ -12,7 +12,7 @@ import static aoc.parser.ReadFormatedString.readString;
 public class Day01 extends Day2024 {
 
     public Day01() {
-        super(1);
+        super(1, "Historian Hysteria");
     }
 
     public record Pair(int a, int b) {}

@@ -9,7 +9,7 @@ public class Day04 extends Day2024 {
     private final char[][] grid;
 
     public Day04() {
-        super(4);
+        super(4, "Ceres Search");
         grid = dayGrid();
     }
 

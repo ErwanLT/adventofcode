@@ -12,7 +12,7 @@ public class Day03 extends Day2024 {
     private static final Pattern pattern = Pattern.compile("mul\\((\\d+),(\\d+)\\)|do\\(\\)|don't\\(\\)");
 
     public Day03() {
-        super(3);
+        super(3, "Mull It Over");
         input = day();
     }
 

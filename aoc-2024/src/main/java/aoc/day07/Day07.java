@@ -10,7 +10,7 @@ public class Day07 extends Day2024 {
     private final String[] input;
 
     public Day07(){
-        super(7);
+        super(7, "Bridge Repair");
         input = dayStrings();
     }
 

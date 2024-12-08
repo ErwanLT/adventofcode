@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 public class Day02 extends Day2024 {
 
     public Day02() {
-        super(2);
+        super(2, "Red-Nosed Reports");
     }
 
     public static void main(String[] args) {
