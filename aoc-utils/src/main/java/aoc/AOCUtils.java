@@ -52,6 +52,10 @@ public class AOCUtils {
         return list.get(list.size() - 1);
     }
 
+    public static <A> Stream<IndexedElement<A>> zipWithIndex(Stream<? extends A> a) {
+        return zip(range(0, Integer.MAX_VALUE).boxed(), a, IndexedElement::new);
+    }
+
     public static <A, B> Stream<Pair<A, B>> zip(Stream<? extends A> a, Stream<? extends B> b) {
         return zip(a, b, Pair::new);
     }

@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2024-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-08-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-16-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-09-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-18-yellow)]()
 
 | Day 	 | Name 	                                                     | Completion 	 |
 |:-----:|:-----------------------------------------------------------|:------------:|
@@ -15,3 +15,4 @@
 | 6   	 | [Guard Gallivant](src/main/java/aoc/day06/README.md)       |     ⭐️⭐      |
 | 7   	 | [Bridge Repair](src/main/java/aoc/day07/README.md)         |     ⭐️⭐      |
 | 8   	 | [Resonant Collinearity](src/main/java/aoc/day08/README.md) |     ⭐️⭐      |
+| 9   	 | [Disk Fragmenter](src/main/java/aoc/day09/README.md)       |     ⭐️⭐      |
