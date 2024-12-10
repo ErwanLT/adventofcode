@@ -191,17 +191,18 @@ One module for a year / one module per day inside year.
 |  16   | [The Floor Will Be Lava](aoc-2023/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 
 ## [2024](aoc-2024/README.md)
-[![Days completed](https://img.shields.io/badge/Days%20completed-9-blue)](aoc-2024)
-[![Stars](https://img.shields.io/badge/⭐️-18-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-10-blue)](aoc-2024)
+[![Stars](https://img.shields.io/badge/⭐️-20-yellow)]()
 
-| Day 	 | Name 	                                                              | Completion 	 |
-|:-----:|:--------------------------------------------------------------------|:------------:|
-| 1   	 | [Historian Hysteria](aoc-2024/src/main/java/aoc/day01/README.md)    |     ⭐️⭐      |
-| 2   	 | [Red-Nosed Reports](aoc-2024/src/main/java/aoc/day02/README.md)     |     ⭐️⭐      |
-| 3   	 | [Mull It Over](aoc-2024/src/main/java/aoc/day03/README.md)          |     ⭐️⭐      |
-| 4   	 | [Ceres Search](aoc-2024/src/main/java/aoc/day04/README.md)          |     ⭐️⭐      |
-| 5   	 | [Print Queue](aoc-2024/src/main/java/aoc/day05/README.md)           |     ⭐️⭐      |
-| 6   	 | [Guard Gallivant](aoc-2024/src/main/java/aoc/day06/README.md)       |     ⭐️⭐      |
-| 7   	 | [Bridge Repair](aoc-2024/src/main/java/aoc/day07/README.md)         |     ⭐️⭐      |
-| 8   	 | [Resonant Collinearity](aoc-2024/src/main/java/aoc/day08/README.md) |     ⭐️⭐      |
-| 9   	 | [Disk Fragmenter](aoc-2024/src/main/java/aoc/day09/README.md)       |     ⭐️⭐      |
+| Day 	  | Name 	                                                              | Completion 	 |
+|:------:|:--------------------------------------------------------------------|:------------:|
+| 1   	  | [Historian Hysteria](aoc-2024/src/main/java/aoc/day01/README.md)    |     ⭐️⭐      |
+| 2   	  | [Red-Nosed Reports](aoc-2024/src/main/java/aoc/day02/README.md)     |     ⭐️⭐      |
+| 3   	  | [Mull It Over](aoc-2024/src/main/java/aoc/day03/README.md)          |     ⭐️⭐      |
+| 4   	  | [Ceres Search](aoc-2024/src/main/java/aoc/day04/README.md)          |     ⭐️⭐      |
+| 5   	  | [Print Queue](aoc-2024/src/main/java/aoc/day05/README.md)           |     ⭐️⭐      |
+| 6   	  | [Guard Gallivant](aoc-2024/src/main/java/aoc/day06/README.md)       |     ⭐️⭐      |
+| 7   	  | [Bridge Repair](aoc-2024/src/main/java/aoc/day07/README.md)         |     ⭐️⭐      |
+| 8   	  | [Resonant Collinearity](aoc-2024/src/main/java/aoc/day08/README.md) |     ⭐️⭐      |
+| 9   	  | [Disk Fragmenter](aoc-2024/src/main/java/aoc/day09/README.md)       |     ⭐️⭐      |
+| 10   	 | [Hoof It](aoc-2024/src/main/java/aoc/day10/README.md)               |     ⭐️⭐      |
