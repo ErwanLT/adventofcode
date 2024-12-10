@@ -190,3 +190,5 @@ It doesn't really matter what you choose to use as an obstacle so long as you an
 You need to get the guard stuck in a loop by adding a single new obstruction. H**ow many different positions could you choose for this obstruction?**
 
 Your puzzle answer was **`1434`**.
+
+![img.png](img.png)
