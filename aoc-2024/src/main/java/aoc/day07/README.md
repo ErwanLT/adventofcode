@@ -48,3 +48,5 @@ Adding up all six test values (the three that could be made before using only `+
 Using your new knowledge of elephant hiding spots, determine which equations could possibly be true. **What is their total calibration result?**
 
 Your puzzle answer was **`92612386119138`**.
+
+![img.png](img.png)
