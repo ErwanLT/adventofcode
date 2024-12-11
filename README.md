@@ -191,8 +191,8 @@ One module for a year / one module per day inside year.
 |  16   | [The Floor Will Be Lava](aoc-2023/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 
 ## [2024](aoc-2024/README.md)
-[![Days completed](https://img.shields.io/badge/Days%20completed-10-blue)](aoc-2024)
-[![Stars](https://img.shields.io/badge/⭐️-20-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-11-blue)](aoc-2024)
+[![Stars](https://img.shields.io/badge/⭐️-22-yellow)]()
 
 | Day 	  | Name 	                                                              | Completion 	 |
 |:------:|:--------------------------------------------------------------------|:------------:|
@@ -206,3 +206,4 @@ One module for a year / one module per day inside year.
 | 8   	  | [Resonant Collinearity](aoc-2024/src/main/java/aoc/day08/README.md) |     ⭐️⭐      |
 | 9   	  | [Disk Fragmenter](aoc-2024/src/main/java/aoc/day09/README.md)       |     ⭐️⭐      |
 | 10   	 | [Hoof It](aoc-2024/src/main/java/aoc/day10/README.md)               |     ⭐️⭐      |
+| 11   	 | [Plutonian Pebbles](aoc-2024/src/main/java/aoc/day11/README.md)     |     ⭐️⭐      |
