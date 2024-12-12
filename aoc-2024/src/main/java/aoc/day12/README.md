@@ -142,3 +142,5 @@ Adding these together produces its new total price of `1206`.
 **What is the new total price of fencing all regions on your map?**
 
 Your puzzle answer was **`898684`**.
+
+![img.png](img.png)
