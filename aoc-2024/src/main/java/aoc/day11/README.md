@@ -62,3 +62,5 @@ The Historians sure are taking a long time. To be fair, the infinite corridors a
 **How many stones would you have after blinking a total of 75 times?**
 
 Your puzzle answer was **`221291560078593`**.
+
+![img.png](img.png)
