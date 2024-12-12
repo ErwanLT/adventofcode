@@ -1,5 +1,6 @@
 package aoc.grid;
 
+import aoc.Direction;
 import aoc.Pair;
 import aoc.location.Loc;
 import com.google.mu.util.stream.BiStream;
@@ -11,8 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static aoc.Direction.eight;
-import static aoc.Direction.four;
+import static aoc.Direction.*;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
@@ -205,6 +205,44 @@ public class InfiniteGrid implements Grid {
         return locs.flatMap(l -> (diagonal ? eight() : four()).map(d -> d.move(l))).filter(l -> get(l).filter(predicate).isPresent());
     }
 
+    public Stream<Loc> findAround(Predicate<Character> predicate, Stream<Loc> locs) {
+        return findAround(predicate, locs, false);
+    }
+
+    public Stream<Loc> findAround(BiPredicate<Character, Character> predicate, Stream<Loc> locs, boolean diagonal) {
+        return locs.flatMap(l -> (diagonal ? eight() : four()).map(d -> d.move(l)).filter(l2 -> get(l2).filter(c -> predicate.test(getOptimistic(l), c)).isPresent()));
+    }
+
+    public Stream<Loc> findAround(BiPredicate<Character, Character> predicate, Stream<Loc> locs) {
+        return findAround(predicate, locs, false);
+    }
+
+    public Stream<Stream<Loc>> around(BiPredicate<Character, Character> predicate, Stream<Loc> locs, boolean diagonal) {
+        return locs.map(l -> (diagonal ? eight() : four()).map(d -> d.move(l)).filter(l2 -> get(l2).filter(c -> predicate.test(getOptimistic(l), c)).isPresent()));
+    }
+
+    public Stream<Stream<Loc>> around(BiPredicate<Character, Character> predicate, Stream<Loc> locs) {
+        return around(predicate, locs, false);
+    }
+
+    public BiStream<Loc, Direction> walkAround(Loc l, boolean diagonal) {
+        BiStream.Builder<Loc, Direction> builder = BiStream.builder();
+        (diagonal ? eight() : four()).forEach(d -> builder.add(d.move(l), d));
+        return builder.build();
+    }
+
+    public BiStream<Loc, Direction> walkAround(Loc l) {
+        return walkAround(l, false);
+    }
+
+    public Stream<Loc> around(Loc l, boolean diagonal) {
+        return (diagonal ? eight() : four()).map(d -> d.move(l));
+    }
+
+    public Stream<Loc> around(Loc l) {
+        return around(l, false);
+    }
+
     public void removeIf(BiPredicate<Loc, Character> p) {
         new HashSet<>(grid.entrySet()).stream().filter(e -> p.test(e.getKey(), e.getValue())).forEach(e -> grid.remove(e.getKey()));
     }
@@ -232,13 +270,15 @@ public class InfiniteGrid implements Grid {
     public Set<Loc> floodFill(Loc start, Predicate<Character> predicate) {
         Set<Loc> output = new HashSet<>();
         Set<Loc> toCheck = new HashSet<>();
+        long minX = minX(), minY = minY(), maxX = maxX(), maxY = maxY();
+        Predicate<Loc> inBounds = l -> l.x >= minX && l.x <= maxX && l.y >= minY && l.y <= maxY;
         toCheck.add(start);
         while (!toCheck.isEmpty()) {
             Set<Loc> newToCheck = new HashSet<>();
             for (Loc l : toCheck) {
                 if (predicate.test(getChar(l))) {
                     output.add(l);
-                    newToCheck.addAll(four().map(d -> d.move(l)).filter(this::contains).filter(l2 -> !output.contains(l2)).collect(Collectors.toSet()));
+                    newToCheck.addAll(four().map(d -> d.move(l)).filter(inBounds).filter(l2 -> !output.contains(l2)).collect(Collectors.toSet()));
                 }
             }
             toCheck = newToCheck;
@@ -281,5 +321,23 @@ public class InfiniteGrid implements Grid {
 
     public Map<Long, List<Character>> rowValues() {
         return rows().entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().stream().map(this::getChar).collect(Collectors.toList())));
+    }
+
+    public void draw(Loc start, Loc end, char c) {
+        for (Loc l : start.line(end)) {
+            set(l, c);
+        }
+    }
+
+    public void repeat(int nTimes) {
+        for (int i = 0; i < nTimes; i++) {
+            long minX = minX(), minY = minY(), maxX = maxX(), maxY = maxY();
+            long width = maxX - minX + 1, height = maxY - minY + 1;
+            List<Loc> locs = new ArrayList<>(grid.keySet());
+            eight().forEach(d -> {
+                Loc corner = d.move(new Loc(minX, minY), d == NORTH || d == SOUTH ? height : width);
+                locs.forEach(l -> set(new Loc(l.x - minX, l.y - minY).move(corner), getOptimistic(l)));
+            });
+        }
     }
 }

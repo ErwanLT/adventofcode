@@ -3,8 +3,10 @@ package aoc.location;
 import aoc.Direction;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.ToLongFunction;
 import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
@@ -51,6 +53,10 @@ public class Loc implements Comparable<Loc> {
 
     public Loc move(Loc l) {
         return new Loc(x + l.x, y + l.y);
+    }
+
+    public Loc move(Direction d) {
+        return d.move(this);
     }
 
     public Point getPoint() {
@@ -132,5 +138,19 @@ public class Loc implements Comparable<Loc> {
 
     public Loc translate(UnaryOperator<Long> mapper) {
         return new Loc(mapper.apply(x), mapper.apply(y));
+    }
+
+    public List<Loc> line(Loc end) {
+        List<Loc> line = new ArrayList<>();
+        Loc start = this;
+        long dx = end.x - start.x;
+        long dy = end.y - start.y;
+        long steps = max(abs(dx), abs(dy));
+        for (long i = 0; i <= steps; i++) {
+            long x = start.x + i * dx / steps;
+            long y = start.y + i * dy / steps;
+            line.add(new Loc(x, y));
+        }
+        return line;
     }
 }

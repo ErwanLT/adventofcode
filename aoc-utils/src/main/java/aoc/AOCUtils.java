@@ -1,6 +1,7 @@
 package aoc;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -149,5 +150,18 @@ public class AOCUtils {
 
     public static <A> Stream<A> appendWhile(UnaryOperator<A> func, Predicate<A> pred, A start) {
         return Stream.iterate(start, func).takeWhile(pred);
+    }
+
+    public static long gcd(long a, long b) {
+        while (b != 0) {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static AtomicLong al() {
+        return new AtomicLong();
     }
 }
