@@ -75,3 +75,5 @@ Now, it is only possible to win a prize on the second and fourth claw machines. 
 Using the corrected prize coordinates, figure out how to win as many prizes as possible. **What is the fewest tokens you would have to spend to win all possible prizes?**
 
 Your puzzle answer was **`82510994362072`**.
+
+![img.png](img.png)
