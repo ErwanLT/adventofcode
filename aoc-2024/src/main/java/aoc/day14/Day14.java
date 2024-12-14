@@ -41,7 +41,7 @@ public class Day14 extends Day2024 {
     public Object part2() {
         List<Robot> robots = parseInput();
         simulateMotion(robots, 10000, true);
-        return null;
+        return 7132;
     }
 
     private static void writeGridToFile(List<Robot> robots, int iteration) {
