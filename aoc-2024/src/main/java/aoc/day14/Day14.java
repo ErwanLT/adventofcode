@@ -44,7 +44,7 @@ public class Day14 extends Day2024 {
         return 7132;
     }
 
-    private static void writeGridToFile(List<Robot> robots, int iteration) {
+    private void writeGridToFile(List<Robot> robots, int iteration) {
         // Créer le fichier it_XXX.txt
         try (PrintWriter writer = new PrintWriter(new FileWriter("it_" + String.format("%03d", iteration) + ".txt"))) {
             char[][] grid = new char[GRID_HEIGHT][GRID_WIDTH];
@@ -65,11 +65,11 @@ public class Day14 extends Day2024 {
                 writer.println(new String(row)); // Convertir chaque ligne en chaîne et l'écrire dans le fichier
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            printer.printError(e.getMessage());
         }
     }
 
-    private static int[][] simulateMotion(List<Robot> robots, int seconds, boolean part2) {
+    private int[][] simulateMotion(List<Robot> robots, int seconds, boolean part2) {
         int[][] grid = new int[GRID_HEIGHT][GRID_WIDTH];
         for (int t = 0; t < seconds; t++) {
             for (Robot robot : robots) {
@@ -98,7 +98,7 @@ public class Day14 extends Day2024 {
 
                 if (x < midX && y < midY) q1 += grid[y][x];
                 else if (x >= midX && y < midY) q2 += grid[y][x];
-                else if (x < midX && y >= midY) q3 += grid[y][x];
+                else if (x < midX) q3 += grid[y][x];
                 else q4 += grid[y][x];
             }
         }
