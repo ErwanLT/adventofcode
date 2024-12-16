@@ -135,5 +135,6 @@ In the second example, there are `64` tiles that are part of at least one of the
 ```
 Analyze your map further. **How many tiles are part of at least one of the best paths through the maze?**
 
+Your puzzle answer was **`559`**.
 
 ![img.png](img.png)
