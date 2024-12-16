@@ -1,11 +1,10 @@
 package aoc;
 
+import org.apache.commons.lang3.function.TriFunction;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -163,5 +162,28 @@ public class AOCUtils {
 
     public static AtomicLong al() {
         return new AtomicLong();
+    }
+
+    public static <A> void alternating(Stream<A> stream, Consumer<A> func1, Consumer<A> func2) {
+        zipWithIndex(stream).forEach(p -> {
+            if (p.i() % 2 == 0) {
+                func1.accept(p.e());
+            } else {
+                func2.accept(p.e());
+            }
+        });
+    }
+
+    public static <A, B> A recurse(A value, B seed, TriFunction<A, Deque<B>, B, A> func) {
+        var stack = new LinkedList<B>();
+        stack.push(seed);
+        while (!stack.isEmpty()) {
+            B current = stack.pop();
+            A next = func.apply(value, stack, current);
+            if (next != value) {
+                stack.push(current);
+            }
+        }
+        return value;
     }
 }
