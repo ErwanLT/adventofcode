@@ -186,4 +186,15 @@ public class AOCUtils {
         }
         return value;
     }
+
+    public static <A, B> A recurseQueue(A value, Queue<B> stack, TriFunction<A, Queue<B>, B, A> func) {
+        while (!stack.isEmpty()) {
+            B current = stack.poll();
+            A next = func.apply(value, stack, current);
+            if (next != value) {
+                stack.add(current);
+            }
+        }
+        return value;
+    }
 }
