@@ -95,3 +95,4 @@ Simulate more of the bytes that are about to corrupt your memory space. **What a
 
 Your puzzle answer was **`62,6`**.
 
+![img.png](img.png)
