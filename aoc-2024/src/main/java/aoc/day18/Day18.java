@@ -14,7 +14,7 @@ public class Day18 extends Day2024 {
     public static final long BOUND = 70;
 
     public Day18() {
-        super(18);
+        super(18, "RAM Run");
     }
 
     public static void main(String[] args) {

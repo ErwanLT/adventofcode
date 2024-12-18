@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2024-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-17-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-34-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-18-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-36-yellow)]()
 
 | Day 	  | Name 	                                                      | Completion 	 |
 |:------:|:------------------------------------------------------------|:------------:|
@@ -24,3 +24,4 @@
 | 15   	 | [Warehouse Woes](src/main/java/aoc/day15/README.md)         |     ⭐️⭐      |
 | 16   	 | [Reindeer Maze](src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 | 17   	 | [Chronospatial Computer](src/main/java/aoc/day17/README.md) |     ⭐️⭐      |
+| 18   	 | [RAM Run](src/main/java/aoc/day18/README.md)                |     ⭐️⭐      |
