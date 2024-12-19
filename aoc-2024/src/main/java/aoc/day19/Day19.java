@@ -41,7 +41,7 @@ public class Day19 extends Day2024 {
     }
 
     private static boolean canConstructDesign(String design, List<String> towelPatterns, Map<String, Boolean> memo) {
-        // Check memoized results explicitly
+        // Check memorized results explicitly
         if (memo.containsKey(design)) {
             return memo.get(design);
         }
@@ -68,8 +68,20 @@ public class Day19 extends Day2024 {
         return false;
     }
 
+    @Override
+    public Object part2() {
+        InputData inputData = parseInput();
+        return countTotalArrangements(inputData.towelPatterns(), inputData.designs());
+    }
+
+    private static long countTotalArrangements(List<String> towelPatterns, List<String> designs) {
+        return designs.stream()
+                .mapToLong(design -> countArrangements(design, towelPatterns, createMemoMapLong()))
+                .sum();
+    }
+
     private static long countArrangements(String design, List<String> towelPatterns, Map<String, Long> memo) {
-        // Check memoized results explicitly
+        // Check memorized results explicitly
         if (memo.containsKey(design)) {
             return memo.get(design);
         }
@@ -94,19 +106,6 @@ public class Day19 extends Day2024 {
         memo.put(design, arrangements);
         return arrangements;
     }
-
-    @Override
-    public Object part2() {
-        InputData inputData = parseInput();
-        return countTotalArrangements(inputData.towelPatterns(), inputData.designs());
-    }
-
-    private static long countTotalArrangements(List<String> towelPatterns, List<String> designs) {
-        return designs.stream()
-                .mapToLong(design -> countArrangements(design, towelPatterns, createMemoMapLong()))
-                .sum();
-    }
-
 
     // Helper methods for memoization maps
     private static Map<String, Boolean> createMemoMap() {
