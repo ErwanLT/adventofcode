@@ -17,41 +17,38 @@ public class Day19 extends Day2024 {
         new Day19().printParts();
     }
 
-    private List<List<String>> parseInput() {
-        var split = day().split("\n\n");
+    private record InputData(List<String> towelPatterns, List<String> designs) {}
+
+    private InputData parseInput() {
+        String[] split = day().split("\n\n");
         List<String> towelPatterns = Arrays.asList(split[0].split(", "));
-        List<String> designs = Arrays.stream(split[1].strip().split("\n")).map(String::trim).toList();
-        return List.of(towelPatterns, designs);
+        List<String> designs = Arrays.stream(split[1].strip().split("\n"))
+                .map(String::trim)
+                .toList();
+        return new InputData(towelPatterns, designs);
     }
 
     @Override
     public Object part1() {
-        var split = parseInput();
-
-        List<String> towelPatterns = split.getFirst();
-        List<String> designs = split.getLast();
-
-        return countPossibleDesigns(towelPatterns, designs);
+        InputData inputData = parseInput();
+        return countPossibleDesigns(inputData.towelPatterns(), inputData.designs());
     }
 
     private static int countPossibleDesigns(List<String> towelPatterns, List<String> designs) {
-        int possibleCount = 0;
-        for (String design : designs) {
-            if (canConstructDesign(design, towelPatterns, new HashMap<>())) {
-                possibleCount++;
-            }
-        }
-        return possibleCount;
+        return (int) designs.stream()
+                .filter(design -> canConstructDesign(design, towelPatterns, createMemoMap()))
+                .count();
     }
 
     private static boolean canConstructDesign(String design, List<String> towelPatterns, Map<String, Boolean> memo) {
-        // Check memoized results
+        // Check memoized results explicitly
         if (memo.containsKey(design)) {
             return memo.get(design);
         }
 
         // Base case: empty design
         if (design.isEmpty()) {
+            memo.put(design, true);
             return true;
         }
 
@@ -60,44 +57,27 @@ public class Day19 extends Day2024 {
             if (design.startsWith(pattern)) {
                 String remainingDesign = design.substring(pattern.length());
                 if (canConstructDesign(remainingDesign, towelPatterns, memo)) {
-                    memo.put(design, true);
+                    memo.put(design, true); // Memoize result
                     return true;
                 }
             }
         }
 
-        // If no pattern works, mark as impossible
-        memo.put(design, false);
+        // No pattern works
+        memo.put(design, false); // Memoize result
         return false;
     }
 
-    @Override
-    public Object part2() {
-        var split = parseInput();
-
-        List<String> towelPatterns = split.getFirst();
-        List<String> designs = split.getLast();
-
-        return countTotalArrangements(towelPatterns, designs);
-    }
-
-    private static long countTotalArrangements(List<String> towelPatterns, List<String> designs) {
-        long totalArrangements = 0;
-        for (String design : designs) {
-            totalArrangements += countArrangements(design, towelPatterns, new HashMap<>());
-        }
-        return totalArrangements;
-    }
-
     private static long countArrangements(String design, List<String> towelPatterns, Map<String, Long> memo) {
-        // Check memoized results
+        // Check memoized results explicitly
         if (memo.containsKey(design)) {
             return memo.get(design);
         }
 
         // Base case: empty design
         if (design.isEmpty()) {
-            return 1; // One way to arrange an empty design
+            memo.put(design, 1L); // One way to arrange an empty design
+            return 1L;
         }
 
         long arrangements = 0;
@@ -113,5 +93,27 @@ public class Day19 extends Day2024 {
         // Memoize the result
         memo.put(design, arrangements);
         return arrangements;
+    }
+
+    @Override
+    public Object part2() {
+        InputData inputData = parseInput();
+        return countTotalArrangements(inputData.towelPatterns(), inputData.designs());
+    }
+
+    private static long countTotalArrangements(List<String> towelPatterns, List<String> designs) {
+        return designs.stream()
+                .mapToLong(design -> countArrangements(design, towelPatterns, createMemoMapLong()))
+                .sum();
+    }
+
+
+    // Helper methods for memoization maps
+    private static Map<String, Boolean> createMemoMap() {
+        return new HashMap<>();
+    }
+
+    private static Map<String, Long> createMemoMapLong() {
+        return new HashMap<>();
     }
 }
