@@ -5,11 +5,11 @@ import java.util.function.BiFunction;
 public record Pair<A, B>(A a, B b) implements Comparable<Pair<A, B>> {
 
     public static <A, B> Pair<A, B> pair(A a, B b) {
-        return new Pair(a, b);
+        return new Pair<>(a, b);
     }
 
     public static <A, B> Pair<A, B> of(A a, B b) {
-        return new Pair(a, b);
+        return pair(a, b);
     }
 
     public A getLeft() {
@@ -20,8 +20,12 @@ public record Pair<A, B>(A a, B b) implements Comparable<Pair<A, B>> {
         return b;
     }
 
-    public <C, D> Pair<C, D> map(BiFunction<A, B, Pair<C, D>> func) {
+    public <C> C map(BiFunction<A, B, C> func) {
         return func.apply(a(), b());
+    }
+
+    public Pair<B, A> flip() {
+        return new Pair<>(b, a);
     }
 
     @Override

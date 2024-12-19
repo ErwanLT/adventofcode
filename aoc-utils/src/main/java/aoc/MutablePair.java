@@ -58,7 +58,7 @@ public class MutablePair<A, B> implements Comparable<MutablePair<A, B>> {
     if (obj == null || obj.getClass() != this.getClass()) return false;
     var that = (MutablePair) obj;
     return Objects.equals(this.a, that.a) &&
-        Objects.equals(this.b, that.b);
+            Objects.equals(this.b, that.b);
   }
 
   @Override
@@ -69,8 +69,8 @@ public class MutablePair<A, B> implements Comparable<MutablePair<A, B>> {
   @Override
   public String toString() {
     return "MutablePair[" +
-        "a=" + a + ", " +
-        "b=" + b + ']';
+            "a=" + a + ", " +
+            "b=" + b + ']';
   }
 
   public void set(A a, B b) {
