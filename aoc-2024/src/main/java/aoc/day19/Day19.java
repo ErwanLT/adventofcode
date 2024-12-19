@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Day19 extends Day2024 {
+
     public Day19() {
         super(19, "Linen Layout");
     }
@@ -16,13 +17,19 @@ public class Day19 extends Day2024 {
         new Day19().printParts();
     }
 
-    @Override
-    public Object part1() {
-        var input = day();
-        var split = input.split("\n\n");
-
+    private List<List<String>> parseInput() {
+        var split = day().split("\n\n");
         List<String> towelPatterns = Arrays.asList(split[0].split(", "));
         List<String> designs = Arrays.stream(split[1].strip().split("\n")).map(String::trim).toList();
+        return List.of(towelPatterns, designs);
+    }
+
+    @Override
+    public Object part1() {
+        var split = parseInput();
+
+        List<String> towelPatterns = split.getFirst();
+        List<String> designs = split.getLast();
 
         return countPossibleDesigns(towelPatterns, designs);
     }
@@ -66,11 +73,10 @@ public class Day19 extends Day2024 {
 
     @Override
     public Object part2() {
-        var input = day();
-        var split = input.split("\n\n");
+        var split = parseInput();
 
-        List<String> towelPatterns = Arrays.asList(split[0].split(", "));
-        List<String> designs = Arrays.stream(split[1].strip().split("\n")).map(String::trim).toList();
+        List<String> towelPatterns = split.getFirst();
+        List<String> designs = split.getLast();
 
         return countTotalArrangements(towelPatterns, designs);
     }
