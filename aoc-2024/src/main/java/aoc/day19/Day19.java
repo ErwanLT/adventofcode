@@ -34,8 +34,8 @@ public class Day19 extends Day2024 {
         return countPossibleDesigns(inputData.towelPatterns(), inputData.designs());
     }
 
-    private static int countPossibleDesigns(List<String> towelPatterns, List<String> designs) {
-        return (int) designs.stream()
+    private static long countPossibleDesigns(List<String> towelPatterns, List<String> designs) {
+        return designs.stream()
                 .filter(design -> canConstructDesign(design, towelPatterns, createMemoMap()))
                 .count();
     }
