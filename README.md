@@ -191,8 +191,8 @@ One module for a year / one module per day inside year.
 |  16   | [The Floor Will Be Lava](aoc-2023/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 
 ## [2024](aoc-2024/README.md)
-[![Days completed](https://img.shields.io/badge/Days%20completed-18-blue)](aoc-2024)
-[![Stars](https://img.shields.io/badge/⭐️-36-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-19-blue)](aoc-2024)
+[![Stars](https://img.shields.io/badge/⭐️-38-yellow)]()
 
 | Day 	  | Name 	                                                               | Completion 	 |
 |:------:|:---------------------------------------------------------------------|:------------:|
@@ -214,3 +214,4 @@ One module for a year / one module per day inside year.
 | 16   	 | [Reindeer Maze](aoc-2024/src/main/java/aoc/day16/README.md)          |     ⭐️⭐      |
 | 17   	 | [Chronospatial Computer](aoc-2024/src/main/java/aoc/day17/README.md) |     ⭐️⭐      |
 | 18   	 | [RAM Run](aoc-2024/src/main/java/aoc/day18/README.md)                |     ⭐️⭐      |
+| 19   	 | [Linen Layout](aoc-2024/src/main/java/aoc/day19/README.md)           |     ⭐️⭐      |
