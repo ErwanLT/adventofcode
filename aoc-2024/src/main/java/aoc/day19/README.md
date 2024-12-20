@@ -77,3 +77,5 @@ Adding up all of the ways the towels in this example could be arranged into the 
 They'll let you into the onsen as soon as you have the list. **What do you get if you add up the number of different ways you could make each design?**
 
 Your puzzle answer was **`692596560138745`**.
+
+![img.png](img.png)
