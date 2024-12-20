@@ -184,3 +184,4 @@ Find the best cheats using the updated cheating rules. **How many cheats would s
 
 Your puzzle answer was **`990096`**.
 
+![img.png](img.png)
