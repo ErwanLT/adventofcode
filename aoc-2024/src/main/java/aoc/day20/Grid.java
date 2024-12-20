@@ -63,20 +63,6 @@ public class Grid {
                 }
             }
         }
-        saveCostMapToFile("grid_output.txt");
-    }
-
-    private void saveCostMapToFile(String filename) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-            for (double[] row : costMap) {
-                for (double cell : row) {
-                    writer.printf("%5.0f,", cell);
-                }
-                writer.println();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public int calculateCheats(int minCheat) {

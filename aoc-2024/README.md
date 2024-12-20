@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2024-brightgreen)](https://adventofcode.com/2022/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-19-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-38-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-20-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-40-yellow)]()
 
 | Day 	  | Name 	                                                      | Completion 	 |
 |:------:|:------------------------------------------------------------|:------------:|
@@ -26,3 +26,4 @@
 | 17   	 | [Chronospatial Computer](src/main/java/aoc/day17/README.md) |     ⭐️⭐      |
 | 18   	 | [RAM Run](src/main/java/aoc/day18/README.md)                |     ⭐️⭐      |
 | 19   	 | [Linen Layout](src/main/java/aoc/day19/README.md)           |     ⭐️⭐      |
+| 20   	 | [Race Condition](src/main/java/aoc/day20/README.md)         |     ⭐️⭐      |
