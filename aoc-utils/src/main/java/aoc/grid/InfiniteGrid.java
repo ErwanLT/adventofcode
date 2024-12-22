@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static aoc.AOCUtils.recurse;
 import static aoc.Direction.*;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -143,12 +144,12 @@ public class InfiniteGrid implements Grid {
         return grid.keySet().stream().mapToLong(e -> e.x).max().orElse(0);
     }
 
-    public InfiniteGrid move(long x, long y) {
-        return new InfiniteGrid(grid.entrySet().stream().map(e -> new Pair<>(e.getKey().move(x, y), e.getValue())).collect(Collectors.toMap(Pair::a, Pair::b)));
-    }
-
     public InfiniteGrid move(Direction d) {
         return new InfiniteGrid(grid.entrySet().stream().map(e -> new Pair<>(e.getKey().move(d), e.getValue())).collect(Collectors.toMap(Pair::a, Pair::b)));
+    }
+
+    public InfiniteGrid move(long x, long y) {
+        return new InfiniteGrid(grid.entrySet().stream().map(e -> new Pair<>(e.getKey().move(x, y), e.getValue())).collect(Collectors.toMap(Pair::a, Pair::b)));
     }
 
     public void place(InfiniteGrid s) {
@@ -202,12 +203,16 @@ public class InfiniteGrid implements Grid {
         return builder.build();
     }
 
-    public Stream<Loc> findAll(Predicate<Character> predicate) {
-        return stream().filter(l -> contains(l) && predicate.test(getOptimistic(l)));
+    public Loc find(Character c) {
+        return findAll(c).findFirst().orElseThrow();
     }
 
     public Stream<Loc> findAll(Character c) {
         return stream().filter(l -> contains(l) && getOptimistic(l) == c);
+    }
+
+    public Stream<Loc> findAll(Predicate<Character> predicate) {
+        return stream().filter(l -> contains(l) && predicate.test(getOptimistic(l)));
     }
 
     public Stream<Loc> findAround(Predicate<Character> predicate, Stream<Loc> locs, boolean diagonal) {
@@ -363,5 +368,30 @@ public class InfiniteGrid implements Grid {
             }
         }
         return new InfiniteGrid(newGrid);
+    }
+
+    public Map<Loc, Integer> bfs(Loc loc, char...walls) {
+        return bfs(loc, Integer.MAX_VALUE, walls);
+    }
+
+    public Map<Loc, Integer> bfs(Loc loc, int maxSteps, char...walls) {
+        return recurse(new HashMap<Loc, Integer>(Map.of(loc, 0)), loc, (dist, queue, current) -> {
+            if (dist.get(current) == maxSteps) {
+                return dist;
+            }
+            four().map(current::move).filter(l -> !dist.containsKey(l) && (walls.length == 0 || getChar(l) != '#')).forEach(l -> {
+                dist.put(l, dist.get(current) + 1);
+                queue.add(l);
+            });
+            return dist;
+        });
+    }
+
+    public BiStream<Loc, Integer> bfsStream(Loc loc, char...walls) {
+        return BiStream.from(bfs(loc, walls));
+    }
+
+    public BiStream<Loc, Integer> bfsStream(Loc loc, int maxSteps, char...walls) {
+        return BiStream.from(bfs(loc, maxSteps, walls));
     }
 }
