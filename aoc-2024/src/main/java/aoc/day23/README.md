@@ -90,3 +90,4 @@ The LAN party posters say that the **password** to get into the LAN party is the
 
 Your puzzle answer was **`cc,dz,ea,hj,if,it,kf,qo,sk,ug,ut,uv,wh`**.
 
+![img.png](img.png)
