@@ -18,6 +18,9 @@ public class Day24 extends Day2024 {
 
     public Day24() {
         super(24, "Crossed Wires");
+        var input = day().split("\n\n");
+        getInitalValues(input[0]);
+        getInstructions(input[1]);
     }
 
     public static void main(String[] args) {
@@ -26,9 +29,6 @@ public class Day24 extends Day2024 {
 
     @Override
     public Object part1() {
-        var input = day().split("\n\n");
-        getInitalValues(input[0]);
-        getInstructions(input[1]);
 
         resolveInstruction();
         var binaryOutput = wireValues.entrySet().stream()
@@ -52,14 +52,12 @@ public class Day24 extends Day2024 {
             while (iterator.hasNext()) {
                 Operation operation = iterator.next();
                 if(wireValues.containsKey(operation.wire1()) && wireValues.containsKey(operation.wire2())){
-                    printer.printInfo("compute operation: " + operation);
                     String result = switch (operation.instruction()) {
                         case "AND" -> computeANDOperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
                         case "OR" -> computeOROperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
                         case "XOR" -> computeXOROperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
                         default -> throw new IllegalStateException("Unexpected value: " + operation.instruction());
                     };
-                    printer.printInfo("Putting value : " + result + " in wire: " + operation.wireOutput());
                     wireValues.put(operation.wireOutput(), result);
                     iterator.remove();
                 }
@@ -68,7 +66,6 @@ public class Day24 extends Day2024 {
     }
 
     private String computeANDOperation(String s, String s1) {
-        printer.printInfo("Computing AND operation for: " + s + " and " + s1);
         if(s.equals("1") && s1.equals("1")){
             return "1";
         } else {
@@ -77,7 +74,6 @@ public class Day24 extends Day2024 {
     }
 
     private String computeOROperation(String s, String s1) {
-        printer.printInfo("Computing OR operation for: " + s + " and " + s1);
         if(s.equals("1") || s1.equals("1")){
             return "1";
         } else {
@@ -86,7 +82,6 @@ public class Day24 extends Day2024 {
     }
 
     private String computeXOROperation(String s, String s1) {
-        printer.printInfo("Computing XOR operation for: " + s + " and " + s1);
         if(s.equals(s1)){
             return "0";
         } else {
