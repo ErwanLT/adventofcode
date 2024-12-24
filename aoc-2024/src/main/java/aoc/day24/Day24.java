@@ -29,7 +29,6 @@ public class Day24 extends Day2024 {
 
     @Override
     public Object part1() {
-
         resolveInstruction();
         var binaryOutput = wireValues.entrySet().stream()
                 .filter(e -> e.getKey().startsWith("z"))
@@ -51,41 +50,11 @@ public class Day24 extends Day2024 {
             var iterator = instructionsCopy.iterator();
             while (iterator.hasNext()) {
                 Operation operation = iterator.next();
-                if(wireValues.containsKey(operation.wire1()) && wireValues.containsKey(operation.wire2())){
-                    String result = switch (operation.instruction()) {
-                        case "AND" -> computeANDOperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
-                        case "OR" -> computeOROperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
-                        case "XOR" -> computeXOROperation(wireValues.get(operation.wire1()), wireValues.get(operation.wire2()));
-                        default -> throw new IllegalStateException("Unexpected value: " + operation.instruction());
-                    };
-                    wireValues.put(operation.wireOutput(), result);
+                if (wireValues.containsKey(operation.wire1()) && wireValues.containsKey(operation.wire2())) {
+                    wireValues.put(operation.wireOutput(), operation.evaluate(wireValues));
                     iterator.remove();
                 }
             }
-        }
-    }
-
-    private String computeANDOperation(String s, String s1) {
-        if(s.equals("1") && s1.equals("1")){
-            return "1";
-        } else {
-            return "0";
-        }
-    }
-
-    private String computeOROperation(String s, String s1) {
-        if(s.equals("1") || s1.equals("1")){
-            return "1";
-        } else {
-            return "0";
-        }
-    }
-
-    private String computeXOROperation(String s, String s1) {
-        if(s.equals(s1)){
-            return "0";
-        } else {
-            return "1";
         }
     }
 
