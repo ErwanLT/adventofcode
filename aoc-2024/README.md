@@ -5,6 +5,8 @@
 [![Days completed](https://img.shields.io/badge/Days%20completed-25-blue)]()
 [![Stars](https://img.shields.io/badge/⭐️-50-yellow)]()
 
+[![](img/Aoc2024.png)](https://adventofcode.com/2024)
+
 | Day 	  | Name 	                                                      | Completion 	 |
 |:------:|:------------------------------------------------------------|:------------:|
 | 1   	  | [Historian Hysteria](src/main/java/aoc/day01/README.md)     |     ⭐️⭐      |
