@@ -21,8 +21,8 @@ public class Day24 extends Day2024 {
     public Day24() {
         super(24, "Crossed Wires");
         var input = day().split("\n\n");
-        getInitalValues(input[0]);
-        getInstructions(input[1]);
+        parseInitialValues(input[0]);
+        parseInstructions(input[1]);
     }
 
     public static void main(String[] args) {
@@ -31,85 +31,100 @@ public class Day24 extends Day2024 {
 
     @Override
     public Object part1() {
-        resolveInstruction();
-        var binaryOutput = wireValues.entrySet().stream()
-                .filter(e -> e.getKey().startsWith("z"))
-                .map(e -> String.valueOf(e.getValue()))
+        resolveInstructions();
+        String binaryOutput = computeBinaryOutput();
+        printer.printInfo(binaryOutput);
+        String reversedOutput = reverseBinary(binaryOutput);
+        printer.printInfo(reversedOutput);
+        return Long.parseLong(reversedOutput, 2);
+    }
+
+    private String computeBinaryOutput() {
+        return wireValues.entrySet().stream()
+                .filter(entry -> entry.getKey().startsWith("z"))
+                .map(Map.Entry::getValue)
                 .collect(Collectors.joining());
-        printer.printInfo(binaryOutput);
-        binaryOutput = reverseBinary(binaryOutput);
-        printer.printInfo(binaryOutput);
-        return Long.parseLong(binaryOutput, 2);
     }
 
     private String reverseBinary(String binaryOutput) {
         return new StringBuilder(binaryOutput).reverse().toString();
     }
 
-    private void resolveInstruction() {
-        List<Operation> instructionsCopy = new ArrayList<>(instructions);
-        while (!instructionsCopy.isEmpty()){
-            var iterator = instructionsCopy.iterator();
-            while (iterator.hasNext()) {
-                Operation operation = iterator.next();
+    private void resolveInstructions() {
+        List<Operation> unresolvedInstructions = new ArrayList<>(instructions);
+        while (!unresolvedInstructions.isEmpty()) {
+            unresolvedInstructions.removeIf(operation -> {
                 if (wireValues.containsKey(operation.wire1()) && wireValues.containsKey(operation.wire2())) {
                     wireValues.put(operation.wireOutput(), operation.evaluate(wireValues));
-                    iterator.remove();
+                    return true;
                 }
-            }
+                return false;
+            });
         }
     }
 
-    private void getInstructions(String s) {
-        var lines = s.split("\n");
-        for(String l : lines){
-            instructions.add(readString(l, "%s %s %s -> %s", Operation.class));
-        }
+    private void parseInstructions(String input) {
+        Arrays.stream(input.split("\n"))
+                .map(line -> readString(line, "%s %s %s -> %s", Operation.class))
+                .forEach(instructions::add);
     }
 
-    private void getInitalValues(String s) {
-        var lines = s.split("\n");
-        for(String l : lines){
-            String[] parts = l.split(": ");
-            wireValues.put(parts[0], parts[1]);
-        }
+    private void parseInitialValues(String input) {
+        Arrays.stream(input.split("\n"))
+                .map(line -> line.split(": "))
+                .forEach(parts -> wireValues.put(parts[0], parts[1]));
     }
 
     @Override
     public Object part2() {
-        var input = Arrays.asList(dayStrings());
-        Map<String, String> registers = getRegisters(input);
+        List<String> input = Arrays.asList(dayStrings());
+        Map<String, String> registers = parseRegisters(input);
+        List<String> swaps = processRegisters(registers);
+        return swaps.stream().sorted().collect(Collectors.joining(","));
+    }
+
+    private List<String> processRegisters(Map<String, String> registers) {
         List<String> swaps = new ArrayList<>();
         int index = 0;
         String current = "";
-        while (registers.containsKey(String.format("x%02d", index))) {
-            String x = String.format("x%02d", index);
-            String y = String.format("y%02d", index);
-            String z = String.format("z%02d", index);
+
+        while (registers.containsKey(formatRegister("x", index))) {
+            String x = formatRegister("x", index);
+            String y = formatRegister("y", index);
+            String z = formatRegister("z", index);
+
             if (index == 0) {
                 current = findExpression(registers, x, "AND", y);
             } else {
                 String xor = findExpression(registers, x, "XOR", y);
                 String and = findExpression(registers, x, "AND", y);
                 String next = findExpression(registers, xor, "XOR", current);
+
                 if (next == null) {
                     swaps.addAll(List.of(xor, and));
                     swapRegisters(registers, xor, and);
                     index = 0;
                     continue;
                 }
+
                 if (!next.equals(z)) {
                     swaps.addAll(List.of(next, z));
                     swapRegisters(registers, next, z);
                     index = 0;
                     continue;
                 }
+
                 next = findExpression(registers, xor, "AND", current);
                 current = findExpression(registers, and, "OR", next);
             }
             index++;
         }
-        return swaps.stream().sorted().collect(Collectors.joining(","));
+
+        return swaps;
+    }
+
+    private String formatRegister(String prefix, int index) {
+        return String.format("%s%02d", prefix, index);
     }
 
     private static String findExpression(Map<String, String> registers, String op1, String op, String op2) {
@@ -128,16 +143,20 @@ public class Day24 extends Day2024 {
         registers.put(register2, temp);
     }
 
-    private static Map<String, String> getRegisters(List<String> input) {
+    private static Map<String, String> parseRegisters(List<String> input) {
         Map<String, String> registers = new HashMap<>();
-        for (String line : input.subList(0, input.indexOf(""))) {
+        int emptyLineIndex = input.indexOf("");
+
+        input.subList(0, emptyLineIndex).forEach(line -> {
             String[] parts = line.split(": ");
             registers.put(parts[0], parts[1]);
-        }
-        for (String line : input.subList(input.indexOf("") + 1, input.size())) {
+        });
+
+        input.subList(emptyLineIndex + 1, input.size()).forEach(line -> {
             String[] parts = line.split(" -> ");
             registers.put(parts[1], parts[0]);
-        }
+        });
+
         return registers;
     }
 }
