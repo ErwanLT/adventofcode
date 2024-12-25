@@ -121,3 +121,5 @@ One of The Historians holds up the list they've been using this whole time to ke
 The Chief's eyes get wide. "With all this, we might just have enough time to finish the chronicle! Santa said he wanted it wrapped up with a bow, so I'll call down to the wrapping department and... hey, could you bring it up to Santa? I'll need to be in my seat to watch the sleigh launch by then."
 
 You nod, and The Historians quickly work to collect their notes into the final set of pages for the chronicle.
+
+![img.png](img.png)
