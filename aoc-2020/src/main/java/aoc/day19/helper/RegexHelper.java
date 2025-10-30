@@ -1,12 +1,13 @@
 package aoc.day19.helper;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.regex.MatchResult;
 
-@RequiredArgsConstructor
 public class RegexHelper implements MatchResult {
     private final MatchResult result;
+
+    public RegexHelper(MatchResult result) {
+        this.result = result;
+    }
 
     @Override
     public int start() {

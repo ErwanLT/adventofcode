@@ -1,7 +1,6 @@
 package aoc.day09;
 
 import aoc.Day2024;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,9 +128,7 @@ public class Day09 extends Day2024 {
 
     // Classe représentant un bloc (fichier ou espace libre)
     static class Block {
-        @Getter
         private final Object id; // Soit un entier (ID fichier), soit une chaîne "."
-        @Getter
         private final int size; // Taille du bloc
 
         public Block(Object id, int size) {
@@ -142,6 +139,14 @@ public class Day09 extends Day2024 {
         @Override
         public String toString() {
             return "(" + id + ", " + size + ")";
+        }
+
+        public Object getId() {
+            return this.id;
+        }
+
+        public int getSize() {
+            return this.size;
         }
     }
 }

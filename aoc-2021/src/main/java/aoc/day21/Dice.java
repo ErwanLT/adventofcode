@@ -1,14 +1,9 @@
 package aoc.day21;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Dice {
     int rolls;
     int value;
-    private static int maxValue =  100;
+    private static int maxValue = 100;
 
     public int roll() {
         rolls++;
@@ -18,5 +13,21 @@ public class Dice {
 
     public int rollTreeTimes() {
         return roll() + roll() + roll();
+    }
+
+    public int getRolls() {
+        return this.rolls;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public void setRolls(int rolls) {
+        this.rolls = rolls;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

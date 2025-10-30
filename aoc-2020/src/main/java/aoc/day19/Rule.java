@@ -1,20 +1,19 @@
 package aoc.day19;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-@Data
-@RequiredArgsConstructor
 public class Rule {
 
     public final int id;
     public final List<List<Rule>> children = new ArrayList<>();
     public boolean isLiteral;
     public String raw;
+
+    public Rule(int id) {
+        this.id = id;
+    }
 
     String genRegex(boolean recursive) {
         if (isLiteral) {
@@ -46,6 +45,66 @@ public class Rule {
         }
 
         return builder.append(')').toString();
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public List<List<Rule>> getChildren() {
+        return this.children;
+    }
+
+    public boolean isLiteral() {
+        return this.isLiteral;
+    }
+
+    public String getRaw() {
+        return this.raw;
+    }
+
+    public void setLiteral(boolean isLiteral) {
+        this.isLiteral = isLiteral;
+    }
+
+    public void setRaw(String raw) {
+        this.raw = raw;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Rule)) return false;
+        final Rule other = (Rule) o;
+        if (!other.canEqual((Object) this)) return false;
+        if (this.getId() != other.getId()) return false;
+        final Object this$children = this.getChildren();
+        final Object other$children = other.getChildren();
+        if (this$children == null ? other$children != null : !this$children.equals(other$children)) return false;
+        if (this.isLiteral() != other.isLiteral()) return false;
+        final Object this$raw = this.getRaw();
+        final Object other$raw = other.getRaw();
+        if (this$raw == null ? other$raw != null : !this$raw.equals(other$raw)) return false;
+        return true;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof Rule;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        result = result * PRIME + this.getId();
+        final Object $children = this.getChildren();
+        result = result * PRIME + ($children == null ? 43 : $children.hashCode());
+        result = result * PRIME + (this.isLiteral() ? 79 : 97);
+        final Object $raw = this.getRaw();
+        result = result * PRIME + ($raw == null ? 43 : $raw.hashCode());
+        return result;
+    }
+
+    public String toString() {
+        return "Rule(id=" + this.getId() + ", children=" + this.getChildren() + ", isLiteral=" + this.isLiteral() + ", raw=" + this.getRaw() + ")";
     }
 }
 

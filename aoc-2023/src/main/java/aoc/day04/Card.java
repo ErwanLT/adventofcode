@@ -1,22 +1,21 @@
 package aoc.day04;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
-@AllArgsConstructor
 public class Card {
     public String cardNumber;
 
     public List<Integer> winningNumbers;
 
     public List<Integer> numbers;
+
+    public Card(String cardNumber, List<Integer> winningNumbers, List<Integer> numbers) {
+        this.cardNumber = cardNumber;
+        this.winningNumbers = winningNumbers;
+        this.numbers = numbers;
+    }
 
     public int calculateCardPoints() {
         int cardPoints = 0;
@@ -45,5 +44,29 @@ public class Card {
                 ", winningNumbers=" + winningNumbers +
                 ", numbers=" + numbers +
                 '}';
+    }
+
+    public String getCardNumber() {
+        return this.cardNumber;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public void setWinningNumbers(List<Integer> winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
+
+    public void setNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 }

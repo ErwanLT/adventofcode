@@ -1,22 +1,21 @@
 package aoc.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
 public class Computer {
 
     private List<String> commands;
     private Node pointer;
     private Node root;
 
-    public void computeNodes(){
+    public Computer(List<String> commands, Node pointer, Node root) {
+        this.commands = commands;
+        this.pointer = pointer;
+        this.root = root;
+    }
+
+    public void computeNodes() {
         for (String command : commands) {
             String[] parts = command.split(" ");
 
@@ -44,7 +43,7 @@ public class Computer {
         return total;
     }
 
-    public int setSizeNode(Node node){
+    public int setSizeNode(Node node) {
         int total = node.getChildren().stream().mapToInt(this::setSizeNode).sum() + node.getFiles().stream().mapToInt(FileNode::getSize).sum();
         node.setSize(total);
         return total;
@@ -64,4 +63,27 @@ public class Computer {
     }
 
 
+    public List<String> getCommands() {
+        return this.commands;
+    }
+
+    public Node getPointer() {
+        return this.pointer;
+    }
+
+    public Node getRoot() {
+        return this.root;
+    }
+
+    public void setCommands(List<String> commands) {
+        this.commands = commands;
+    }
+
+    public void setPointer(Node pointer) {
+        this.pointer = pointer;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
 }

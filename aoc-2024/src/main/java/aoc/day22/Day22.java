@@ -1,15 +1,8 @@
 package aoc.day22;
 
 import aoc.Day2024;
-import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Day22 extends Day2024 {
     public Day22() {
@@ -97,7 +90,6 @@ public class Day22 extends Day2024 {
         return new Pair<>(bestSequence, bananas);
     }
 
-    @Getter
     static class Pair<K, V> {
         private final K key;
         private final V value;
@@ -107,5 +99,12 @@ public class Day22 extends Day2024 {
             this.value = value;
         }
 
+        public K getKey() {
+            return this.key;
+        }
+
+        public V getValue() {
+            return this.value;
+        }
     }
 }

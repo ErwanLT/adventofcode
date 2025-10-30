@@ -1,18 +1,9 @@
 package aoc.day22;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
 public class Step {
     public String command;
     public long minX;
@@ -21,6 +12,16 @@ public class Step {
     public long maxY;
     public long minZ;
     public long maxZ;
+
+    public Step(String command, long minX, long maxX, long minY, long maxY, long minZ, long maxZ) {
+        this.command = command;
+        this.minX = minX;
+        this.maxX = maxX;
+        this.minY = minY;
+        this.maxY = maxY;
+        this.minZ = minZ;
+        this.maxZ = maxZ;
+    }
 
     public Stream<Step> getSubCubes(Step s2) {
         if (s2.contains(this)) {
@@ -41,10 +42,10 @@ public class Step {
         zIntersect.add(maxZ);
 
         var res = new ArrayList<Step>();
-        for (int i = 0; i<xIntersect.size()-1; i++) {
-            for (int j = 0; j<yIntersect.size()-1; j++) {
-                for (int k = 0; k<zIntersect.size()-1; k++) {
-                    res.add(new Step(command, xIntersect.get(i), xIntersect.get(i+1), yIntersect.get(j), yIntersect.get(j+1), zIntersect.get(k), zIntersect.get(k+1)));
+        for (int i = 0; i < xIntersect.size() - 1; i++) {
+            for (int j = 0; j < yIntersect.size() - 1; j++) {
+                for (int k = 0; k < zIntersect.size() - 1; k++) {
+                    res.add(new Step(command, xIntersect.get(i), xIntersect.get(i + 1), yIntersect.get(j), yIntersect.get(j + 1), zIntersect.get(k), zIntersect.get(k + 1)));
                 }
             }
         }
@@ -57,5 +58,65 @@ public class Step {
 
     private boolean touches(Step s) {
         return minX <= s.maxX && maxX >= s.minX && minY <= s.maxY && maxY >= s.minY && minZ <= s.maxZ && maxZ >= s.minZ;
+    }
+
+    public String getCommand() {
+        return this.command;
+    }
+
+    public long getMinX() {
+        return this.minX;
+    }
+
+    public long getMaxX() {
+        return this.maxX;
+    }
+
+    public long getMinY() {
+        return this.minY;
+    }
+
+    public long getMaxY() {
+        return this.maxY;
+    }
+
+    public long getMinZ() {
+        return this.minZ;
+    }
+
+    public long getMaxZ() {
+        return this.maxZ;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public void setMinX(long minX) {
+        this.minX = minX;
+    }
+
+    public void setMaxX(long maxX) {
+        this.maxX = maxX;
+    }
+
+    public void setMinY(long minY) {
+        this.minY = minY;
+    }
+
+    public void setMaxY(long maxY) {
+        this.maxY = maxY;
+    }
+
+    public void setMinZ(long minZ) {
+        this.minZ = minZ;
+    }
+
+    public void setMaxZ(long maxZ) {
+        this.maxZ = maxZ;
+    }
+
+    public String toString() {
+        return "Step(command=" + this.getCommand() + ", minX=" + this.getMinX() + ", maxX=" + this.getMaxX() + ", minY=" + this.getMinY() + ", maxY=" + this.getMaxY() + ", minZ=" + this.getMinZ() + ", maxZ=" + this.getMaxZ() + ")";
     }
 }

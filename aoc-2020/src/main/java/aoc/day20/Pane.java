@@ -1,21 +1,17 @@
 package aoc.day20;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Value
-@Getter
-@Setter
-public class Pane {
+public final class Pane {
 
     private final int id;
     private final String[][] area;
+
+    public Pane(int id, String[][] area) {
+        this.id = id;
+        this.area = area;
+    }
 
     public List<String[]> getAllBorders() {
         int n = area.length;
@@ -120,5 +116,34 @@ public class Pane {
             }
         }
         return count;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Pane)) return false;
+        final Pane other = (Pane) o;
+        if (this.getId() != other.getId()) return false;
+        if (!java.util.Arrays.deepEquals(this.getArea(), other.getArea())) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        result = result * PRIME + this.getId();
+        result = result * PRIME + java.util.Arrays.deepHashCode(this.getArea());
+        return result;
+    }
+
+    public String toString() {
+        return "Pane(id=" + this.getId() + ", area=" + java.util.Arrays.deepToString(this.getArea()) + ")";
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String[][] getArea() {
+        return this.area;
     }
 }

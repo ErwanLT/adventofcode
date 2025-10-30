@@ -1,14 +1,16 @@
 package aoc.day17;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
-
-@Value
-@AllArgsConstructor(staticName = "of")
-public class Coordinates {
+public final class Coordinates {
 
     public static final Coordinates ORIGIN = new Coordinates(0, 0, 0, 0);
-    public int x, y, z, w;
+    public final int x, y, z, w;
+
+    private Coordinates(int x, int y, int z, int w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
 
     /**
      * Parses a coordinate in the format "x,y,z,w".
@@ -22,6 +24,10 @@ public class Coordinates {
         int y = Integer.parseInt(arr[1]);
         int z = Integer.parseInt(arr[2]);
         int w = Integer.parseInt(arr[3]);
+        return new Coordinates(x, y, z, w);
+    }
+
+    public static Coordinates of(int x, int y, int z, int w) {
         return new Coordinates(x, y, z, w);
     }
 
@@ -73,5 +79,46 @@ public class Coordinates {
      */
     public int distance(Coordinates other) {
         return distance(other.x, other.y, other.z, other.w);
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public int getZ() {
+        return this.z;
+    }
+
+    public int getW() {
+        return this.w;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Coordinates)) return false;
+        final Coordinates other = (Coordinates) o;
+        if (this.getX() != other.getX()) return false;
+        if (this.getY() != other.getY()) return false;
+        if (this.getZ() != other.getZ()) return false;
+        if (this.getW() != other.getW()) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        result = result * PRIME + this.getX();
+        result = result * PRIME + this.getY();
+        result = result * PRIME + this.getZ();
+        result = result * PRIME + this.getW();
+        return result;
+    }
+
+    public String toString() {
+        return "Coordinates(x=" + this.getX() + ", y=" + this.getY() + ", z=" + this.getZ() + ", w=" + this.getW() + ")";
     }
 }

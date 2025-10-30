@@ -1,12 +1,13 @@
 package aoc.utils;
 
-import lombok.Value;
-
 import java.util.regex.MatchResult;
 
-@Value
-public class Wrapper implements MatchResult {
+public final class Wrapper implements MatchResult {
     private final MatchResult result;
+
+    public Wrapper(MatchResult result) {
+        this.result = result;
+    }
 
     @Override
     public int start() {
@@ -77,5 +78,31 @@ public class Wrapper implements MatchResult {
         if (s.length() != 1)
             throw new IllegalArgumentException("Match group is not one character long.");
         return s.charAt(0);
+    }
+
+    public MatchResult getResult() {
+        return this.result;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Wrapper)) return false;
+        final Wrapper other = (Wrapper) o;
+        final Object this$result = this.getResult();
+        final Object other$result = other.getResult();
+        if (this$result == null ? other$result != null : !this$result.equals(other$result)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $result = this.getResult();
+        result = result * PRIME + ($result == null ? 43 : $result.hashCode());
+        return result;
+    }
+
+    public String toString() {
+        return "Wrapper(result=" + this.getResult() + ")";
     }
 }
