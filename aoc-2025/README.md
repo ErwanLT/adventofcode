@@ -2,8 +2,8 @@
 
 [![About](https://img.shields.io/badge/Advent%20of%20Code-2025-brightgreen)](https://adventofcode.com/2025/about)
 [![Language](https://img.shields.io/badge/Language-Java-orange)](https://www.java.com/)
-[![Days completed](https://img.shields.io/badge/Days%20completed-2-blue)]()
-[![Stars](https://img.shields.io/badge/⭐️-4-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-3-blue)]()
+[![Stars](https://img.shields.io/badge/⭐️-6-yellow)]()
 
 [![](img/Aoc2025.png)](https://adventofcode.com/2025)
 
@@ -11,7 +11,7 @@
 |:------:|:-----------------------------------------------------|:------------:|
 | 1   	  | [Secret Entrance](src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
 | 2   	  | [Gift Shop](src/main/java/aoc/day02/README.md)       |     ⭐️⭐      |
-| 3   	  | [TBD](src/main/java/aoc/day03/README.md)             |              |
+| 3   	  | [Lobby](src/main/java/aoc/day03/README.md)           |     ⭐️⭐      |
 | 4   	  | [TBD](src/main/java/aoc/day04/README.md)             |              |
 | 5   	  | [TBD](src/main/java/aoc/day05/README.md)             |              |
 | 6   	  | [TBD](src/main/java/aoc/day06/README.md)             |              |

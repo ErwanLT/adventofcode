@@ -42,7 +42,7 @@ public abstract class Day {
 
     public static String getResourceAsString(String resource) {
 
-        var inputStream = ClassLoader.getSystemResourceAsStream(resource);
+        var inputStream = Day.class.getResourceAsStream("/" + resource);
 
         return new BufferedReader(
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8))
