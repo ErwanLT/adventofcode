@@ -6,30 +6,28 @@ import java.math.BigInteger;
 
 public class Day03 extends Day2025 {
 
+    private final String[] input;
 
     public Day03() {
         super(3, "Lobby");
-    }
-
-    private int calculateMaxJoltageForBank(String bank) {
-        int maxJoltage = 0;
-        for (int i = 0; i < bank.length(); i++) {
-            for (int j = i + 1; j < bank.length(); j++) {
-                String joltageStr = "" + bank.charAt(i) + bank.charAt(j);
-                int joltage = Integer.parseInt(joltageStr);
-                if (joltage > maxJoltage) {
-                    maxJoltage = joltage;
-                }
-            }
-        }
-        return maxJoltage;
+        this.input = dayStrings();
     }
 
     @Override
     public Object part1() {
-        long totalJoltage = 0;
-        for (String line : dayStrings()) {
-            totalJoltage += calculateMaxJoltageForBank(line);
+        return solve(2);
+    }
+
+    @Override
+    public Object part2() {
+        return solve(12);
+    }
+
+    private BigInteger solve(int k) {
+        BigInteger totalJoltage = BigInteger.ZERO;
+        for (String line : input) {
+            String joltageStr = findLargestJoltage(line, k);
+            totalJoltage = totalJoltage.add(new BigInteger(joltageStr));
         }
         return totalJoltage;
     }
@@ -62,15 +60,5 @@ public class Day03 extends Day2025 {
         }
 
         return result.toString();
-    }
-
-    @Override
-    public Object part2() {
-        BigInteger totalJoltage = BigInteger.ZERO;
-        for (String line : dayStrings()) {
-            String joltageStr = findLargestJoltage(line, 12);
-            totalJoltage = totalJoltage.add(new BigInteger(joltageStr));
-        }
-        return totalJoltage;
     }
 }
