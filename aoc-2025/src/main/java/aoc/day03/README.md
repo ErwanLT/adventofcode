@@ -60,3 +60,5 @@ The total output joltage is now much larger: `987654321111` + `811111111119` + `
 **What is the new total output joltage?**
 
 Your puzzle answer was **`173416889848394`**.
+
+![day3.png](day3.png)
