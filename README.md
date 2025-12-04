@@ -225,15 +225,15 @@ One module for a year / one module per day inside year.
 
 ## [2025](aoc-2025/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-3-blue)](aoc-2025)
-[![Stars](https://img.shields.io/badge/⭐️-6-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-4-blue)](aoc-2025)
+[![Stars](https://img.shields.io/badge/⭐️-8-yellow)]()
 
 | Day 	  | Name 	                                                        | Completion 	 |
 |:------:|:--------------------------------------------------------------|:------------:|
 | 1   	  | [Secret Entrance](aoc-2025/src/main/java/aoc/day01/README.md) |     ⭐️⭐      |
 | 2   	  | [Gift Shop](aoc-2025/src/main/java/aoc/day02/README.md)       |     ⭐️⭐      |
 | 3   	  | [Lobby](aoc-2025/src/main/java/aoc/day03/README.md)           |     ⭐️⭐      |
-| 4   	  | [TBD](aoc-2025/src/main/java/aoc/day04/README.md)             |              |
+| 4   	  | [Printing Department](aoc-2025/src/main/java/aoc/day04/README.md)             |     ⭐️⭐      |
 | 5   	  | [TBD](aoc-2025/src/main/java/aoc/day05/README.md)             |              |
 | 6   	  | [TBD](aoc-2025/src/main/java/aoc/day06/README.md)             |              |
 | 7   	  | [TBD](aoc-2025/src/main/java/aoc/day07/README.md)             |              |
