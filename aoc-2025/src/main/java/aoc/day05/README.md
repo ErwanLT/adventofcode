@@ -59,3 +59,5 @@ The ingredient IDs that these ranges consider to be fresh are `3`, `4`, `5`, `10
 Process the database file again. **How many ingredient IDs are considered to be fresh according to the fresh ingredient ID ranges?**
 
 Your puzzle answer was **`354149806372909`**.
+
+![day5.png](day5.png)
