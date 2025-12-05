@@ -1,13 +1,12 @@
 package aoc.day02;
 
 import aoc.Day2025;
+import aoc.Range;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Day02 extends Day2025 {
-
-    private record Range(long start, long end) {}
 
     private final List<Range> ranges;
 
@@ -39,7 +38,7 @@ public class Day02 extends Day2025 {
     private long compute(boolean part2Mode) {
         long total = 0;
         for (Range r : ranges) {
-            for (long i = r.start(); i <= r.end(); i++) {
+            for (long i = r.min(); i <= r.max(); i++) {
                 if (isInvalid(i, part2Mode)) {
                     total += i;
                 }

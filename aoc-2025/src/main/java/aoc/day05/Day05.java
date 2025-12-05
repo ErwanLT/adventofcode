@@ -1,6 +1,7 @@
 package aoc.day05;
 
 import aoc.Day2025;
+import aoc.Range;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -42,7 +43,7 @@ public class Day05 extends Day2025 {
         Set<Long> foundFreshIds = new HashSet<>();
         for (long id : availableIds) {
             for (Range range : freshRanges) {
-                if (range.contains(id)) {
+                if (range.containsInclusif(id)) {
                     foundFreshIds.add(id);
                     break;
                 }
@@ -57,7 +58,7 @@ public class Day05 extends Day2025 {
 
         long totalFreshIds = 0L;
         for (Range range : mergedRanges) {
-            totalFreshIds += (range.max - range.min + 1);
+            totalFreshIds += range.length();
         }
 
         return totalFreshIds;
@@ -70,15 +71,15 @@ public class Day05 extends Day2025 {
 
         // Create a mutable copy to sort
         List<Range> ranges = new ArrayList<>(inputRanges);
-        ranges.sort(Comparator.comparingLong(range -> range.min));
+        ranges.sort(Comparator.comparingLong(Range::min));
 
         List<Range> merged = new ArrayList<>();
-        Range currentMerge = ranges.get(0);
+        Range currentMerge = ranges.getFirst();
 
         for (int i = 1; i < ranges.size(); i++) {
             Range nextRange = ranges.get(i);
-            if (nextRange.min <= currentMerge.max + 1) {
-                currentMerge = new Range(currentMerge.min, Math.max(currentMerge.max, nextRange.max));
+            if (nextRange.min() <= currentMerge.max() + 1) {
+                currentMerge = new Range(currentMerge.min(), Math.max(currentMerge.max(), nextRange.max()));
             } else {
                 merged.add(currentMerge);
                 currentMerge = nextRange;
@@ -86,11 +87,5 @@ public class Day05 extends Day2025 {
         }
         merged.add(currentMerge);
         return merged;
-    }
-
-    private record Range(long min, long max) {
-        boolean contains(long id) {
-            return id >= min && id <= max;
-        }
     }
 }
