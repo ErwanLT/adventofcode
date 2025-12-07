@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        for (int day = 6; day <7; day++){
+        for (int day = 7; day <8; day++){
             System.out.println("Day " + day + ":");
             String paddedDay = String.valueOf(day);
             if(day < 10) {
