@@ -225,8 +225,8 @@ One module for a year / one module per day inside year.
 
 ## [2025](aoc-2025/README.md)
 
-[![Days completed](https://img.shields.io/badge/Days%20completed-7-blue)](aoc-2025)
-[![Stars](https://img.shields.io/badge/⭐️-14-yellow)]()
+[![Days completed](https://img.shields.io/badge/Days%20completed-8-blue)](aoc-2025)
+[![Stars](https://img.shields.io/badge/⭐️-16-yellow)]()
 
 | Day 	  | Name 	                                                            | Completion 	 |
 |:------:|:------------------------------------------------------------------|:------------:|
@@ -237,7 +237,7 @@ One module for a year / one module per day inside year.
 | 5   	  | [Cafetaria](aoc-2025/src/main/java/aoc/day05/README.md)           |     ⭐️⭐      |
 | 6   	  | [Trash Compactor](aoc-2025/src/main/java/aoc/day06/README.md)     |     ⭐️⭐      |
 | 7   	  | [Laboratories](aoc-2025/src/main/java/aoc/day07/README.md)        |     ⭐️⭐      |
-| 8   	  | [TBD](aoc-2025/src/main/java/aoc/day08/README.md)                 |              |
+| 8   	  | [Playground](aoc-2025/src/main/java/aoc/day08/README.md)                 |     ⭐️⭐      |
 | 9   	  | [TBD](aoc-2025/src/main/java/aoc/day09/README.md)                 |              |
 | 10   	 | [TBD](aoc-2025/src/main/java/aoc/day10/README.md)                 |              |
 | 11   	 | [TBD](aoc-2025/src/main/java/aoc/day11/README.md)                 |              |
