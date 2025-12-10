@@ -3,207 +3,150 @@ package aoc.day10;
 import aoc.Day2025;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Day10 extends Day2025 {
 
+    private final List<MachineLine> machines;
+
     public Day10() {
         super(10, "Factory");
+        machines = Arrays.stream(dayStrings())
+                .filter(s -> !s.trim().isEmpty())
+                .map(MachineLine::new)
+                .toList();
     }
 
     @Override
     public Object part1() {
-        String[] lines = dayStrings();
-        long totalPresses = 0;
-        for (String line : lines) {
-            if (line.trim().isEmpty()) {
-                continue;
-            }
-            totalPresses += solveMachinePart1(line);
-        }
-        return totalPresses;
+        return machines.stream()
+                .filter(m -> m.getLights() != null)
+                .mapToLong(m -> solvePart1(m.getLights(), m.getButtons()))
+                .sum();
     }
 
-    private int solveMachinePart1(String line) {
-        Pattern lightsPattern = Pattern.compile("\\[([.#]+)]");
-        Matcher lightsMatcher = lightsPattern.matcher(line);
-        if (!lightsMatcher.find()) {
-            throw new IllegalArgumentException("Invalid line (lights): " + line);
-        }
-        String lightsStr = lightsMatcher.group(1);
-        int numLights = lightsStr.length();
-        int[] target = new int[numLights];
-        for (int i = 0; i < numLights; i++) {
-            target[i] = lightsStr.charAt(i) == '#' ? 1 : 0;
-        }
+    private int solvePart1(int[] lights, List<int[]> buttons) {
+        int numLights = lights.length;
 
-        List<int[]> buttons = new ArrayList<>();
-        Pattern buttonPattern = Pattern.compile("\\(([^)]+)\\)");
-        Matcher buttonMatcher = buttonPattern.matcher(line);
-        while (buttonMatcher.find()) {
-            int[] button = new int[numLights];
-            String[] indices = buttonMatcher.group(1).split(",");
-            for (String indexStr : indices) {
-                int index = Integer.parseInt(indexStr.trim());
-                if (index < numLights) {
-                    button[index] = 1;
-                }
-            }
-            buttons.add(button);
-        }
-        int numButtons = buttons.size();
-        if (numButtons == 0) {
-            for (int i = 0; i < numLights; i++) {
-                if (target[i] == 1)
-                    return Integer.MAX_VALUE;
+        if (buttons.isEmpty()) {
+            for (int l : lights) {
+                if (l == 1) return Integer.MAX_VALUE;
             }
             return 0;
         }
 
+        int numButtons = buttons.size();
         int[][] matrix = new int[numLights][numButtons + 1];
+
         for (int j = 0; j < numButtons; j++) {
-            int[] button = buttons.get(j);
+            int[] b = buttons.get(j);
             for (int i = 0; i < numLights; i++) {
-                matrix[i][j] = button[i];
+                matrix[i][j] = b[i];
             }
         }
+
         for (int i = 0; i < numLights; i++) {
-            matrix[i][numButtons] = target[i];
+            matrix[i][numButtons] = lights[i];
         }
 
         int pivotRow = 0;
         List<Integer> pivotCols = new ArrayList<>();
-        for (int j = 0; j < numButtons && pivotRow < numLights; j++) {
-            int i = pivotRow;
-            while (i < numLights && matrix[i][j] == 0) {
-                i++;
+
+        for (int col = 0; col < numButtons && pivotRow < numLights; col++) {
+            int row = pivotRow;
+            while (row < numLights && matrix[row][col] == 0) {
+                row++;
             }
 
-            if (i < numLights) {
-                int[] temp = matrix[i];
-                matrix[i] = matrix[pivotRow];
-                matrix[pivotRow] = temp;
+            if (row < numLights) {
+                int[] tmp = matrix[row];
+                matrix[row] = matrix[pivotRow];
+                matrix[pivotRow] = tmp;
 
-                for (int k = 0; k < numLights; k++) {
-                    if (k != pivotRow && matrix[k][j] == 1) {
-                        for (int l = j; l <= numButtons; l++) {
-                            matrix[k][l] ^= matrix[pivotRow][l];
+                for (int r = 0; r < numLights; r++) {
+                    if (r != pivotRow && matrix[r][col] == 1) {
+                        for (int c = col; c <= numButtons; c++) {
+                            matrix[r][c] ^= matrix[pivotRow][c];
                         }
                     }
                 }
-                pivotCols.add(j);
+
+                pivotCols.add(col);
                 pivotRow++;
             }
         }
 
-        for (int i = pivotRow; i < numLights; i++) {
-            if (matrix[i][numButtons] == 1) {
+        for (int r = pivotRow; r < numLights; r++) {
+            if (matrix[r][numButtons] == 1) {
                 return Integer.MAX_VALUE;
             }
         }
 
         List<Integer> freeCols = new ArrayList<>();
-        for (int j = 0; j < numButtons; j++) {
-            if (!pivotCols.contains(j)) {
-                freeCols.add(j);
-            }
+        for (int col = 0; col < numButtons; col++) {
+            if (!pivotCols.contains(col)) freeCols.add(col);
         }
 
         int minPresses = Integer.MAX_VALUE;
-        int numFreeVars = freeCols.size();
-        for (int i = 0; i < (1 << numFreeVars); i++) {
-            int[] solution = new int[numButtons];
-            int currentPresses = 0;
+        int freeCount = freeCols.size();
 
-            for (int k = 0; k < numFreeVars; k++) {
-                if (((i >> k) & 1) == 1) {
-                    solution[freeCols.get(k)] = 1;
-                }
+        for (int mask = 0; mask < (1 << freeCount); mask++) {
+            int[] sol = new int[numButtons];
+
+            for (int k = 0; k < freeCount; k++) {
+                if (((mask >> k) & 1) == 1) sol[freeCols.get(k)] = 1;
             }
 
-            for (int k = pivotRow - 1; k >= 0; k--) {
+            for (int r = pivotRow - 1; r >= 0; r--) {
                 int pivotCol = -1;
-                for (int l = 0; l < numButtons; l++) {
-                    if (matrix[k][l] == 1) {
-                        pivotCol = l;
+                for (int c = 0; c < numButtons; c++) {
+                    if (matrix[r][c] == 1) {
+                        pivotCol = c;
                         break;
                     }
                 }
 
                 if (pivotCol != -1) {
-                    int val = matrix[k][numButtons];
-                    for (int fcIndex : freeCols) {
-                        if (matrix[k][fcIndex] == 1) {
-                            val ^= solution[fcIndex];
+                    int value = matrix[r][numButtons];
+                    for (int fc : freeCols) {
+                        if (matrix[r][fc] == 1) {
+                            value ^= sol[fc];
                         }
                     }
-                    solution[pivotCol] = val;
+                    sol[pivotCol] = value;
                 }
             }
 
-            currentPresses = 0;
-            for (int s : solution) {
-                if (s == 1)
-                    currentPresses++;
-            }
-
-            minPresses = Math.min(minPresses, currentPresses);
+            int sum = Arrays.stream(sol).sum();
+            minPresses = Math.min(minPresses, sum);
         }
 
         return minPresses == Integer.MAX_VALUE ? 0 : minPresses;
     }
 
+
     @Override
     public Object part2() {
-        String[] lines = dayStrings();
-        long totalPresses = 0;
-        for (String line : lines) {
-            if (line.trim().isEmpty()) {
-                continue;
-            }
-            totalPresses += solveMachinePart2(line);
-        }
-        return totalPresses;
+        return machines.stream()
+                .filter(m -> m.getJoltages() != null)
+                .mapToLong(m -> solvePart2(m.getJoltages(), m.getButtons()))
+                .sum();
     }
 
-    private int solveMachinePart2(String line) {
-        Pattern joltagePattern = Pattern.compile("\\{([^}]+)\\}");
-        Matcher joltageMatcher = joltagePattern.matcher(line);
-        if (!joltageMatcher.find()) {
-            throw new IllegalArgumentException("Invalid line (joltage): " + line);
-        }
-        String[] joltageStrs = joltageMatcher.group(1).split(",");
-        int numCounters = joltageStrs.length;
-        int[] targetJoltage = new int[numCounters];
-        for (int i = 0; i < numCounters; i++) {
-            targetJoltage[i] = Integer.parseInt(joltageStrs[i].trim());
-        }
+    // Remis au même algorithme que dans ta version initiale (gauss RREF + recherche bornée)
+    private int solvePart2(int[] targetJoltage, List<int[]> buttons) {
+        int numCounters = targetJoltage.length;
 
-        List<int[]> buttons = new ArrayList<>();
-        Pattern buttonPattern = Pattern.compile("\\(([^)]+)\\)");
-        Matcher buttonMatcher = buttonPattern.matcher(line);
-        while (buttonMatcher.find()) {
-            int[] button = new int[numCounters];
-            String[] indices = buttonMatcher.group(1).split(",");
-            for (String indexStr : indices) {
-                int index = Integer.parseInt(indexStr.trim());
-                if (index < numCounters) {
-                    button[index] = 1;
-                }
-            }
-            buttons.add(button);
-        }
-        int numButtons = buttons.size();
-
-        if (numButtons == 0) {
+        if (buttons.isEmpty()) {
             for (int target : targetJoltage) {
                 if (target != 0)
                     return Integer.MAX_VALUE;
             }
             return 0;
         }
+
+        int numButtons = buttons.size();
 
         // Build augmented matrix [A|b] where Ax = b
         double[][] matrix = new double[numCounters][numButtons + 1];
@@ -219,7 +162,7 @@ public class Day10 extends Day2025 {
         List<Integer> pivotCols = new ArrayList<>();
 
         for (int col = 0; col < numButtons && pivotRow < numCounters; col++) {
-            // Find pivot
+            // Find pivot (partial pivoting)
             int maxRow = pivotRow;
             for (int row = pivotRow + 1; row < numCounters; row++) {
                 if (Math.abs(matrix[row][col]) > Math.abs(matrix[maxRow][col])) {
@@ -271,7 +214,6 @@ public class Day10 extends Day2025 {
             }
         }
 
-        // Calculate upper bounds for each variable
         int[] upperBounds = new int[numButtons];
         for (int j = 0; j < numButtons; j++) {
             int maxBound = Integer.MAX_VALUE;
@@ -305,13 +247,11 @@ public class Day10 extends Day2025 {
 
             if (valid) {
                 int total = 0;
-                for (int s : solution) {
-                    total += s;
-                }
+                for (int s : solution) total += s;
                 minPresses = total;
             }
         } else {
-            // Enumerate free variable assignments
+            // Enumerate free variable assignments (original recursive search)
             minPresses = searchFreeVariables(matrix, pivotCols, freeCols, upperBounds, numButtons, 0,
                     new int[numButtons]);
         }
@@ -341,9 +281,7 @@ public class Day10 extends Day2025 {
 
             // Calculate total presses
             int total = 0;
-            for (int s : solution) {
-                total += s;
-            }
+            for (int s : solution) total += s;
             return total;
         }
 
