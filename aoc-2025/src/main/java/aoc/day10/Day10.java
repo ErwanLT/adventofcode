@@ -31,62 +31,22 @@ public class Day10 extends Day2025 {
 
         if (buttons.isEmpty()) {
             for (int l : lights) {
-                if (l == 1) return Integer.MAX_VALUE;
+                if (l == 1)
+                    return Integer.MAX_VALUE;
             }
             return 0;
         }
 
         int numButtons = buttons.size();
-        int[][] matrix = new int[numLights][numButtons + 1];
+        int[][] matrix = buildIntMatrix(lights, buttons, numLights, numButtons);
 
-        for (int j = 0; j < numButtons; j++) {
-            int[] b = buttons.get(j);
-            for (int i = 0; i < numLights; i++) {
-                matrix[i][j] = b[i];
-            }
+        GaussResult gaussResult = gaussianEliminationInt(matrix, numLights, numButtons);
+
+        if (checkInconsistencyInt(matrix, gaussResult.pivotRow, numLights, numButtons)) {
+            return Integer.MAX_VALUE;
         }
 
-        for (int i = 0; i < numLights; i++) {
-            matrix[i][numButtons] = lights[i];
-        }
-
-        int pivotRow = 0;
-        List<Integer> pivotCols = new ArrayList<>();
-
-        for (int col = 0; col < numButtons && pivotRow < numLights; col++) {
-            int row = pivotRow;
-            while (row < numLights && matrix[row][col] == 0) {
-                row++;
-            }
-
-            if (row < numLights) {
-                int[] tmp = matrix[row];
-                matrix[row] = matrix[pivotRow];
-                matrix[pivotRow] = tmp;
-
-                for (int r = 0; r < numLights; r++) {
-                    if (r != pivotRow && matrix[r][col] == 1) {
-                        for (int c = col; c <= numButtons; c++) {
-                            matrix[r][c] ^= matrix[pivotRow][c];
-                        }
-                    }
-                }
-
-                pivotCols.add(col);
-                pivotRow++;
-            }
-        }
-
-        for (int r = pivotRow; r < numLights; r++) {
-            if (matrix[r][numButtons] == 1) {
-                return Integer.MAX_VALUE;
-            }
-        }
-
-        List<Integer> freeCols = new ArrayList<>();
-        for (int col = 0; col < numButtons; col++) {
-            if (!pivotCols.contains(col)) freeCols.add(col);
-        }
+        List<Integer> freeCols = findFreeVariables(gaussResult.pivotCols, numButtons);
 
         int minPresses = Integer.MAX_VALUE;
         int freeCount = freeCols.size();
@@ -95,10 +55,11 @@ public class Day10 extends Day2025 {
             int[] sol = new int[numButtons];
 
             for (int k = 0; k < freeCount; k++) {
-                if (((mask >> k) & 1) == 1) sol[freeCols.get(k)] = 1;
+                if (((mask >> k) & 1) == 1)
+                    sol[freeCols.get(k)] = 1;
             }
 
-            for (int r = pivotRow - 1; r >= 0; r--) {
+            for (int r = gaussResult.pivotRow - 1; r >= 0; r--) {
                 int pivotCol = -1;
                 for (int c = 0; c < numButtons; c++) {
                     if (matrix[r][c] == 1) {
@@ -125,7 +86,6 @@ public class Day10 extends Day2025 {
         return minPresses == Integer.MAX_VALUE ? 0 : minPresses;
     }
 
-
     @Override
     public Object part2() {
         return machines.stream()
@@ -134,7 +94,7 @@ public class Day10 extends Day2025 {
                 .sum();
     }
 
-    // Remis au même algorithme que dans ta version initiale (gauss RREF + recherche bornée)
+
     private int solvePart2(int[] targetJoltage, List<int[]> buttons) {
         int numCounters = targetJoltage.length;
 
@@ -148,71 +108,15 @@ public class Day10 extends Day2025 {
 
         int numButtons = buttons.size();
 
-        // Build augmented matrix [A|b] where Ax = b
-        double[][] matrix = new double[numCounters][numButtons + 1];
-        for (int i = 0; i < numCounters; i++) {
-            for (int j = 0; j < numButtons; j++) {
-                matrix[i][j] = buttons.get(j)[i];
-            }
-            matrix[i][numButtons] = targetJoltage[i];
+        double[][] matrix = buildDoubleMatrix(targetJoltage, buttons, numCounters, numButtons);
+
+        GaussResult gaussResult = gaussianEliminationDouble(matrix, numCounters, numButtons);
+
+        if (checkInconsistencyDouble(matrix, gaussResult.pivotRow, numCounters, numButtons)) {
+            return Integer.MAX_VALUE;
         }
 
-        // Gaussian elimination to RREF
-        int pivotRow = 0;
-        List<Integer> pivotCols = new ArrayList<>();
-
-        for (int col = 0; col < numButtons && pivotRow < numCounters; col++) {
-            // Find pivot (partial pivoting)
-            int maxRow = pivotRow;
-            for (int row = pivotRow + 1; row < numCounters; row++) {
-                if (Math.abs(matrix[row][col]) > Math.abs(matrix[maxRow][col])) {
-                    maxRow = row;
-                }
-            }
-
-            if (Math.abs(matrix[maxRow][col]) < 1e-9) {
-                continue; // No pivot in this column
-            }
-
-            // Swap rows
-            double[] temp = matrix[maxRow];
-            matrix[maxRow] = matrix[pivotRow];
-            matrix[pivotRow] = temp;
-
-            // Scale pivot row
-            double pivot = matrix[pivotRow][col];
-            for (int j = col; j <= numButtons; j++) {
-                matrix[pivotRow][j] /= pivot;
-            }
-
-            // Eliminate column
-            for (int row = 0; row < numCounters; row++) {
-                if (row != pivotRow && Math.abs(matrix[row][col]) > 1e-9) {
-                    double factor = matrix[row][col];
-                    for (int j = col; j <= numButtons; j++) {
-                        matrix[row][j] -= factor * matrix[pivotRow][j];
-                    }
-                }
-            }
-
-            pivotCols.add(col);
-            pivotRow++;
-        }
-
-        // Check for inconsistency
-        for (int row = pivotRow; row < numCounters; row++) {
-            if (Math.abs(matrix[row][numButtons]) > 1e-9) {
-                return Integer.MAX_VALUE; // No solution
-            }
-        }
-
-        // Identify free variables
-        List<Integer> freeCols = new ArrayList<>();
-        for (int col = 0; col < numButtons; col++) {
-            if (!pivotCols.contains(col)) {
-                freeCols.add(col);
-            }
-        }
+        List<Integer> freeCols = findFreeVariables(gaussResult.pivotCols, numButtons);
 
         int[] upperBounds = new int[numButtons];
         for (int j = 0; j < numButtons; j++) {
@@ -234,8 +138,8 @@ public class Day10 extends Day2025 {
             int[] solution = new int[numButtons];
             boolean valid = true;
 
-            for (int i = 0; i < pivotCols.size(); i++) {
-                int col = pivotCols.get(i);
+            for (int i = 0; i < gaussResult.pivotCols.size(); i++) {
+                int col = gaussResult.pivotCols.get(i);
                 double val = matrix[i][numButtons];
 
                 if (Math.abs(val - Math.round(val)) > 1e-9 || val < -1e-9) {
@@ -247,12 +151,13 @@ public class Day10 extends Day2025 {
 
             if (valid) {
                 int total = 0;
-                for (int s : solution) total += s;
+                for (int s : solution)
+                    total += s;
                 minPresses = total;
             }
         } else {
             // Enumerate free variable assignments (original recursive search)
-            minPresses = searchFreeVariables(matrix, pivotCols, freeCols, upperBounds, numButtons, 0,
+            minPresses = searchFreeVariables(matrix, gaussResult.pivotCols, freeCols, upperBounds, numButtons, 0,
                     new int[numButtons]);
         }
 
@@ -260,7 +165,7 @@ public class Day10 extends Day2025 {
     }
 
     private int searchFreeVariables(double[][] matrix, List<Integer> pivotCols, List<Integer> freeCols,
-                                    int[] upperBounds, int numButtons, int freeVarIndex, int[] solution) {
+            int[] upperBounds, int numButtons, int freeVarIndex, int[] solution) {
         if (freeVarIndex == freeCols.size()) {
             // Compute pivot variables
             for (int i = 0; i < pivotCols.size(); i++) {
@@ -281,7 +186,8 @@ public class Day10 extends Day2025 {
 
             // Calculate total presses
             int total = 0;
-            for (int s : solution) total += s;
+            for (int s : solution)
+                total += s;
             return total;
         }
 
@@ -296,5 +202,168 @@ public class Day10 extends Day2025 {
         }
 
         return minResult;
+    }
+
+    /**
+     * Builds the augmented matrix for part1 (int-based, binary operations)
+     */
+    private int[][] buildIntMatrix(int[] target, List<int[]> buttons, int numRows, int numButtons) {
+        int[][] matrix = new int[numRows][numButtons + 1];
+
+        for (int j = 0; j < numButtons; j++) {
+            int[] b = buttons.get(j);
+            for (int i = 0; i < numRows; i++) {
+                matrix[i][j] = b[i];
+            }
+        }
+
+        for (int i = 0; i < numRows; i++) {
+            matrix[i][numButtons] = target[i];
+        }
+
+        return matrix;
+    }
+
+    /**
+     * Builds the augmented matrix for part2 (double-based, real arithmetic)
+     */
+    private double[][] buildDoubleMatrix(int[] target, List<int[]> buttons, int numRows, int numButtons) {
+        double[][] matrix = new double[numRows][numButtons + 1];
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numButtons; j++) {
+                matrix[i][j] = buttons.get(j)[i];
+            }
+            matrix[i][numButtons] = target[i];
+        }
+
+        return matrix;
+    }
+
+    /**
+     * Performs Gaussian elimination on an integer matrix (GF(2) - binary field)
+     */
+    private GaussResult gaussianEliminationInt(int[][] matrix, int numRows, int numButtons) {
+        int pivotRow = 0;
+        List<Integer> pivotCols = new ArrayList<>();
+
+        for (int col = 0; col < numButtons && pivotRow < numRows; col++) {
+            int row = pivotRow;
+            while (row < numRows && matrix[row][col] == 0) {
+                row++;
+            }
+
+            if (row < numRows) {
+                // Swap rows
+                int[] tmp = matrix[row];
+                matrix[row] = matrix[pivotRow];
+                matrix[pivotRow] = tmp;
+
+                // Eliminate column (XOR for binary)
+                for (int r = 0; r < numRows; r++) {
+                    if (r != pivotRow && matrix[r][col] == 1) {
+                        for (int c = col; c <= numButtons; c++) {
+                            matrix[r][c] ^= matrix[pivotRow][c];
+                        }
+                    }
+                }
+
+                pivotCols.add(col);
+                pivotRow++;
+            }
+        }
+
+        return new GaussResult(pivotRow, pivotCols);
+    }
+
+    /**
+     * Performs Gaussian elimination on a double matrix (RREF with partial pivoting)
+     */
+    private GaussResult gaussianEliminationDouble(double[][] matrix, int numRows, int numButtons) {
+        int pivotRow = 0;
+        List<Integer> pivotCols = new ArrayList<>();
+
+        for (int col = 0; col < numButtons && pivotRow < numRows; col++) {
+            // Find pivot (partial pivoting)
+            int maxRow = pivotRow;
+            for (int row = pivotRow + 1; row < numRows; row++) {
+                if (Math.abs(matrix[row][col]) > Math.abs(matrix[maxRow][col])) {
+                    maxRow = row;
+                }
+            }
+
+            if (Math.abs(matrix[maxRow][col]) < 1e-9) {
+                continue; // No pivot in this column
+            }
+
+            // Swap rows
+            double[] temp = matrix[maxRow];
+            matrix[maxRow] = matrix[pivotRow];
+            matrix[pivotRow] = temp;
+
+            // Scale pivot row
+            double pivot = matrix[pivotRow][col];
+            for (int j = col; j <= numButtons; j++) {
+                matrix[pivotRow][j] /= pivot;
+            }
+
+            // Eliminate column
+            for (int row = 0; row < numRows; row++) {
+                if (row != pivotRow && Math.abs(matrix[row][col]) > 1e-9) {
+                    double factor = matrix[row][col];
+                    for (int j = col; j <= numButtons; j++) {
+                        matrix[row][j] -= factor * matrix[pivotRow][j];
+                    }
+                }
+            }
+
+            pivotCols.add(col);
+            pivotRow++;
+        }
+
+        return new GaussResult(pivotRow, pivotCols);
+    }
+
+    /**
+     * Checks if the integer matrix system is inconsistent (no solution)
+     */
+    private boolean checkInconsistencyInt(int[][] matrix, int pivotRow, int numRows, int numButtons) {
+        for (int r = pivotRow; r < numRows; r++) {
+            if (matrix[r][numButtons] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the double matrix system is inconsistent (no solution)
+     */
+    private boolean checkInconsistencyDouble(double[][] matrix, int pivotRow, int numRows, int numButtons) {
+        for (int row = pivotRow; row < numRows; row++) {
+            if (Math.abs(matrix[row][numButtons]) > 1e-9) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Identifies free variables (columns without pivots)
+     */
+    private List<Integer> findFreeVariables(List<Integer> pivotCols, int numButtons) {
+        List<Integer> freeCols = new ArrayList<>();
+        for (int col = 0; col < numButtons; col++) {
+            if (!pivotCols.contains(col)) {
+                freeCols.add(col);
+            }
+        }
+        return freeCols;
+    }
+
+    /**
+     * Result of Gaussian elimination containing pivot information
+     */
+    private record GaussResult(int pivotRow, List<Integer> pivotCols) {
     }
 }
