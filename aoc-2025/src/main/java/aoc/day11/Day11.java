@@ -1,19 +1,20 @@
 package aoc.day11;
 
 import aoc.Day2025;
+import aoc.Graph;
+import aoc.Pair;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringJoiner;
 
 public class Day11 extends Day2025 {
 
-    private Map<String, List<String>> graph;
+    private Graph<String> graph;
     private Map<String, Long> memoPart1;
     private Map<String, Long> memoPart2;
     private Set<String> recursionStack;
@@ -24,13 +25,10 @@ public class Day11 extends Day2025 {
     }
 
     private void parseInput() {
-        graph = new HashMap<>();
-        for (String line : dayStrings()) {
-            String[] parts = line.split(": ");
-            String from = parts[0];
-            List<String> to = Arrays.asList(parts[1].split(" "));
-            graph.put(from, to);
-        }
+        graph = dayStream()
+                .map(line -> line.split(": "))
+                .flatMap(parts -> Arrays.stream(parts[1].split(" ")).map(to -> new Pair<>(parts[0].trim(), to.trim())))
+                .collect(Graph.toGraph());
     }
 
     private long countPathsToOut(String currentNode) {
@@ -52,8 +50,8 @@ public class Day11 extends Day2025 {
         recursionStack.add(currentNode);
 
         long pathCount = 0;
-        for (String neighbor : graph.get(currentNode)) {
-            pathCount += countPathsToOut(neighbor);
+        for (Graph.Node<String> neighbor : graph.get(currentNode).children()) {
+            pathCount += countPathsToOut(neighbor.data());
         }
 
         recursionStack.remove(currentNode);
@@ -70,7 +68,7 @@ public class Day11 extends Day2025 {
         if (from.equals(to)) {
             return 1L;
         }
-        
+
         StringJoiner sj = new StringJoiner(",");
         forbidden.stream().sorted().forEach(sj::add);
         String memoKey = from + "->" + to + ":" + sj.toString();
@@ -85,7 +83,8 @@ public class Day11 extends Day2025 {
         recursionStack.add(from);
 
         long pathCount = 0;
-        for (String neighbor : graph.get(from)) {
+        for (Graph.Node<String> neighborNode : graph.get(from).children()) {
+            String neighbor = neighborNode.data();
             if (neighbor.equals(to) || !forbidden.contains(neighbor)) {
                 pathCount += countPaths(neighbor, to, forbidden);
             }
