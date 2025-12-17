@@ -1,8 +1,6 @@
 package aoc.day09;
 
 import aoc.Day2019;
-import aoc.day08.Day08;
-import aoc.intcode.IntcodeComputer;
 
 public class Day09 extends Day2019 {
 
@@ -16,11 +14,11 @@ public class Day09 extends Day2019 {
 
     @Override
     public Object part1() {
-        return new IntcodeComputer(9, 1).run();
+        return null;
     }
 
     @Override
     public Object part2() {
-        return new IntcodeComputer(9, 2).run();
+        return null;
     }
 }

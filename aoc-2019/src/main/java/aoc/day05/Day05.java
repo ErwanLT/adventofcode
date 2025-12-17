@@ -1,7 +1,7 @@
 package aoc.day05;
 
 import aoc.Day2019;
-import aoc.intcode.IntcodeComputer;
+import aoc.intcode.IntCodeComputer;
 
 public class Day05 extends Day2019 {
 
@@ -15,14 +15,15 @@ public class Day05 extends Day2019 {
 
     @Override
     public Object part1() {
-        long res;
-        IntcodeComputer intcodeComputer = new IntcodeComputer(5, 1);
-        while ((res = intcodeComputer.run()) == 0) ;
-        return res;
+        String program = day();
+        IntCodeComputer computer = new IntCodeComputer(program);
+        return computer.runWithInput(1L);
     }
 
     @Override
     public Object part2() {
-        return new IntcodeComputer(5, 5).run();
+        String program = day();
+        IntCodeComputer computer = new IntCodeComputer(program);
+        return computer.runWithInput(5L);
     }
 }
